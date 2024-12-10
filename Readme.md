@@ -1,6 +1,6 @@
 # 2nd Semester Project
 
-Java project developed to simulate an irrigation system. Introduction to unit testing.
+Java project developed to simulate an real estate sellet system. Introduction to unit testing.
 
 Developed with 3 other colleagues
 
