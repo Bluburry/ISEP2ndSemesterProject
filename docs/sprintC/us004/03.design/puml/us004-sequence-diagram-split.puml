@@ -1,0 +1,299 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Property Owner" as User
+participant ":SubmitPropertyUI" as UI
+participant ":SubmitPropertyController" as CTRL
+
+
+
+activate User
+
+    User -> UI : asks to submit new property
+        activate UI
+
+      UI -> CTRL** : create
+            activate CTRL
+        ref over CTRL
+            Get Repositories
+        end ref
+            deactivate CTRL
+
+'UI tem acesso a todos os repositorios
+
+' SUBMIT PROPERTY
+'   User : Chooose Property Type
+
+        UI  ->  CTRL : listAndChoosePropertyType()
+            activate CTRL
+        ref over CTRL
+            Get Property Type List
+        end ref
+            CTRL --> UI : propertyTypesList
+            deactivate CTRL
+
+            UI --> User : shows propertyType list\n and asks to select one
+            deactivate UI
+
+    User -> UI : selects a Property Type
+            activate UI
+
+            UI  ->  UI: keep Property Type choice
+
+'   User : types general data
+
+        UI -> User : ask data (year, month, day,\n area cms. Distance Kms,\n location(street, zipcode, stateUS, city, district))
+        deactivate UI
+
+    User -> UI : types asked data (year, month, day,\n area cms. Distance Kms\n location(street, zipcode, stateUS, city, district))
+        activate UI
+
+        UI -> UI : keep data (year, month, day,\n area cms. Distance Kms\n location(street, zipcode, stateUS, city, district))
+
+'   User : types data according to Property Type
+
+alt propertyType = House or Apartment
+
+    UI -> User : ask data (numberBedrooms, numberParking)
+            deactivate UI
+
+    User -> UI : types asked data (numberBedrooms, numberParking)
+            activate UI
+
+            UI  ->  UI : keep data (numberBedrooms, numberParking)
+
+    group opt
+
+            UI -> User : ask data (numberBathrooms, \navailableEquipment)
+                deactivate UI
+
+        User -> UI : types asked data (numberBathrooms, \navailableEquipment)
+                activate UI
+
+            UI  ->  UI: keep data (numberBathrooms, \navailableEquipment)
+
+    end
+
+
+else propertyType = House
+
+        UI -> User : ask existence basement (YES/NO)
+        deactivate UI
+
+    User -> UI : types answer existence basement (YES/NO)
+           activate UI
+
+        UI  ->  UI : keep data (basement (YES/NO))
+
+        UI -> User : ask is habitable loft (YES/NO)
+        deactivate UI
+
+    User -> UI : types answer habitable loft (YES/NO)
+           activate UI
+
+            UI  ->  UI : keep data (habitable loft (YES/NO))
+
+    group opt
+
+        UI  ->  CTRL : listAndChoseSunExposureType()
+            activate CTRL
+
+        ref over CTRL
+            Get Sun Exposure Type List
+        end ref
+
+            CTRL --> UI : sunExposureTypesList
+                deactivate CTRL
+
+        UI --> User : shows sunExposureTypesList list\n and asks to select one
+            deactivate UI
+
+    User -> UI : selects a Sun Exposure Type
+            activate UI
+
+        UI  ->  UI: keep Sun Exposure Type choice
+
+    end
+
+end
+
+'   User : delivers photo (necessary) and more photos (optional)
+
+        UI -> User: request data (photo)
+        deactivate UI
+
+    User -> UI : input asked data (photo)
+        activate UI
+
+        UI  ->  UI: keep data (photo)
+
+    opt
+
+        loop
+
+            UI -> User: request data (photos)
+            deactivate UI
+
+        User -> UI : input asked data (photos)
+                    activate UI
+
+            UI  ->  UI: keep data (photos)
+
+        end
+
+    end
+
+'   User : Validation of the input
+
+        UI -> User: Display property conditions and ask for validation (YES/NO)
+         deactivate UI
+
+     User -> UI: input: validation (YES/NO)
+         activate UI
+
+ alt validation = YES
+
+' AFTER VALIDATION CREATE NEW PROPERTY
+
+alt propertyType = House
+
+        UI -> CTRL :  createNewHouseProperty(year, month, day, \narea cms. Distance Kms,\n location(street, zipcode, stateUS, city, district), \nnumberBedrooms, numberParking, \nbasement, loft, photo,numberBathrooms, \navailableEquipment, basement (YES/NO),\n habitable loft (YES/NO), Sun Exposure Type choice, photos)
+            activate CTRL
+
+            ref over CTRL
+                Create New House Property
+            end ref
+
+            CTRL -> UI : newHouseProperty
+            deactivate CTRL
+
+        UI -> UI : newAllProperty = newHouseProperty
+
+
+else propertyType = apartment
+
+        UI -> CTRL :  createNewApartmentProperty(year, month, day, \narea cms. Distance Kms,\n location(street, zipcode, stateUS, city, district), \nnumberBedrooms, numberParking, photo,numberBathrooms, \navailableEquipment, photos)
+            activate CTRL
+
+            ref over CTRL
+                Create New Apartment Property
+            end ref
+
+            CTRL -> UI : newApartmentProperty
+            deactivate CTRL
+
+        UI -> UI : newAllProperty = newApartmentProperty
+
+else propertyType = land
+
+        UI -> CTRL :  createNewProperty(year, month, day, \narea cms. Distance Kms,\n location(street, zipcode, stateUS, city, district), photo, photos)
+            activate CTRL
+
+            ref over CTRL
+                Create New Land Property
+            end ref
+
+            CTRL -> UI : newProperty
+            deactivate CTRL
+
+        UI -> UI : newAllProperty = newProperty
+
+end
+
+        UI -> User : displays operation success
+
+ end
+
+        UI -> UI: Keep newAllProperty
+
+
+' SELECT BUSINESS TYPE (RENT/SALE)
+
+        UI -> CTRL : getBusinessTypeRepository()
+            activate CTRL
+
+            ref over CTRL
+                Get Business Type List
+            end ref
+
+            CTRL ->  UI: businessTypeList
+            deactivate CTRL
+
+        UI --> User : shows businessTypeList\n and asks to select one
+        deactivate UI
+
+    User -> UI : selects a Business Type
+    activate UI
+
+alt businessType = Sale
+
+        UI -> User : ask data (salePrice)
+        deactivate UI
+
+    User -> UI : types asked data (salePrice)
+    activate UI
+
+        UI  ->  UI: keep data (salePrice)
+
+else businessType = Rent
+
+        UI -> User : ask data (rentalPrice, DurationContract)
+        deactivate UI
+
+    User -> UI : types asked data (rentalPrice, DurationContract)
+    activate UI
+
+            UI  ->  UI: keep data (rentalPrice, DurationContract)
+
+end
+' CHOOSE A AGENT FROM LIST
+
+        UI  ->  CTRL : getAgentList()
+                activate CTRL
+
+            ref over CTRL
+                Get Agent List
+            end ref
+
+            CTRL --> UI : agentList
+                deactivate CTRL
+
+        UI --> User : shows Agent List list\n and asks to select one
+
+
+    User -> UI : selects Agent Choice
+
+    UI  ->  UI: keep agent
+
+' CREATE A REQUEST
+
+         UI -> User: Display Request Conditions\n (newProperty,agent, salePrice,rentPrice, DurationContract)\n and ask for validation (YES/NO)
+         deactivate UI
+
+     User -> UI: input: validation (YES/NO)
+         activate UI
+
+ alt validation = YES
+
+        UI -> CTRL: createNewRequest(newProperty,agent\n, salePrice, rentPrice, DurationContract)
+        activate CTRL
+
+            ref over CTRL
+                Create New Request
+            end ref
+
+            CTRL -> UI: newRequest
+            deactivate CTRL
+
+        UI -> User : displays operation success
+        deactivate UI
+ end
+
+deactivate User
+
+@enduml

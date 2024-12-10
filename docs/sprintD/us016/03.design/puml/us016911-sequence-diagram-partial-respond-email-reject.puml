@@ -1,0 +1,27 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram Parcial Get Acess to Repositorys List (SSD)
+
+autonumber
+
+'hide footbox
+participant ":RespondBookingRequestController" as CTRL
+
+participant "sendEmailRespondBookingRequestGMAIL\n:SendEmailRespondBookingRequestGMAIL" as sendEmailRespondBookingRequestGMAIL
+
+autonumber 61
+
+    activate CTRL
+
+            CTRL -> sendEmailRespondBookingRequestGMAIL: respondEmailRejected(EMAIL.FORMAT, keepClientEmail, \n keepClientName, keepAdvertismentDTO, keepAgentEmail, \n keepAgentName, keepAgentPhone )
+            activate sendEmailRespondBookingRequestGMAIL
+
+                sendEmailRespondBookingRequestGMAIL -> CTRL: emailSendRejection
+                deactivate sendEmailRespondBookingRequestGMAIL
+
+    deactivate CTRL
+
+@enduml

@@ -1,0 +1,91 @@
+@startuml Sequence Diagram - List Property Request
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Partial - List Property Request
+autonumber
+
+'hide footbox
+actor "Agent" as AG
+participant ":ListPropertyRequestsUI" as UI
+participant ":ListPropertyRequestsController" as CTRL
+
+activate AG
+
+    AG -> UI : asks to view property requests
+    activate UI
+        UI -> CTRL** : creates
+        
+		ref over CTRL
+			Get Repositories
+		end ref
+
+    loop while intended
+
+        UI -> CTRL : getRequestList()
+
+			ref over CTRL
+				Get Request List
+			end ref
+
+			CTRL --> UI : requestsList
+
+		UI --> AG : shows list of property requests assigned to the agent\nand asks to select one
+    deactivate UI
+
+	AG -> UI : selects one request
+	activate UI
+		UI --> AG : asks wether to accept or reject
+	deactivate UI
+
+	alt rejects request
+		AG -> UI : rejects request
+		activate UI
+			UI -> CTRL : removeRequest(request)
+
+				ref over CTRL
+					Removes Request
+				end ref
+
+			UI --> AG : displays operation success
+		deactivate UI
+
+
+	else accepts request
+		AG -> UI : accepts request
+		activate UI
+			UI --> AG : requests comission value
+		deactivate UI
+	
+		AG -> UI : types requested data
+		activate UI
+			UI -> CTRL : getComissionType()
+
+				ref over CTRL
+					Get Commission Types
+				end ref
+
+				CTRL --> UI : commissionTypeList
+
+			UI --> AG : shows commission type list\nand asks to select one
+		deactivate UI
+
+		AG -> UI : selects commission type
+		activate UI
+			UI -> CTRL : approveRequest(request, commissionValue, commissionType)
+
+				ref over CTRL
+					Create Advertisement
+				end ref
+
+				CTRL --> UI : advertisement
+
+			UI --> AG : displays created advertisement
+		end
+	end
+
+
+deactivate AG
+
+@enduml

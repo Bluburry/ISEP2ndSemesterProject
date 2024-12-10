@@ -1,0 +1,144 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+hide circle
+hide methods
+
+
+class Employee{
+}
+
+
+
+class Advertisement {
+    commissionValue
+    commissionType
+    date
+}
+
+class BusinessType <<Enum>>{
+    designation
+}
+
+class PropertyType <<Enum>>{
+    designation
+}
+
+class Property <<Interface>>{
+    photos
+    areaProperty
+    distanceCityCenter
+}
+
+class House {
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+    basement
+    loft
+    sunExposure
+}
+
+class Apartment{
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+}
+class Land{}
+
+
+class Store{
+    id
+    name
+    emailAddress
+    phoneNumber
+}
+
+class Visit{
+    Year
+    Month
+    Day
+    Hour
+    Status
+}
+
+class VisitStatus <<Enum>>{
+    designation
+}
+
+Visit "1" -down- "*" VisitStatus: contains <
+
+class Location <<Interface>> {
+    street
+    zipCode
+    stateUS
+    city
+    district
+}
+
+class Offer{
+    status
+    offer
+}
+
+
+class Person{
+    emailAddress
+    passport
+    tin
+    phoneNumber
+    name
+}
+
+class Request<<Interface>>{
+    date
+}
+
+class RequestSale{
+salePrice
+}
+
+class RequestLease{
+    rentalPrice
+    durationOfContract
+}
+
+
+
+Person <|-- Employee
+Person "1" -- "1..*" Request: associates <
+Person "1" -- "*" Visit: requests >
+Person "1" -- "*" Offer: makes >
+Person "1" - "*" Request: asks to create >
+
+Employee "1" -- "*" Visit:  carries out >
+Employee "1" -- "1" Store:  monitors >
+Employee "1" -- "*" Request: publishes >
+
+Location <|.up. Person
+Location <|.. Property
+Location <|.. Store
+
+Store "1" -- "*" Employee: works <
+Store "1" -- "*" Advertisement: associated <
+
+Advertisement"1" -right- "*" Offer: receives >
+Advertisement "1" -up- "*" Visit: hosts >
+
+Property "1" -down- "*" PropertyType: contains <
+
+Request <|.. RequestLease
+Request <|.. RequestSale
+Request "*" -left- "1" BusinessType: contains >
+Request "1" -- "1" Property
+Request "1" -- "1" Advertisement:contains <
+
+Property <|.down. Land
+Property <|.down. Apartment
+Property <|.down. House
+
+@enduml

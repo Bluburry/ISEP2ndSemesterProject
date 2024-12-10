@@ -1,0 +1,83 @@
+@startuml
+'skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+'skinparam linetype orto
+
+skinparam classAttributeIconSize 0
+
+'left to right direction
+
+class Store {
+        - String id
+        - String name
+        - String emailAddress
+        - int phoneNumber
+        +Store(String id,String name,String emailAddress,int phoneNumber)
+        + getListedProperties(BusinessType keepBusinessType,PropertyType keepPropertyType,int keepNumberBedrooms)
+}
+
+class BruteForceAlgorithm{
+    -long inTime
+    +long getInTime()
+    + Pair<List<Pair<String,Integer>>,List<Pair<String,Integer>>> start(List<Pair<String,Integer>> list)
+    + Pair<List<Pair<String,Integer>>,List<Pair<String,Integer>>> divide(List<Pair<String,Integer>> list)
+    + String toBinary(int num)
+}
+
+
+
+
+class AdvertisementRepository {
+    + getAdvertisements)
+}
+
+class Repositories {
+    - Repositories instance
+    - Repositories()
+    + Repositories getInstance()
+    + AdvertisementRepository getAdvertisementRepository()
+}
+
+class DivideSetOfStoresController {
+    + DivideSetOfStoresController()
+    + Pair<List<Pair<String,Integer>>,List<Pair<String,Integer>>> setOfStoresDivided()
+    + long getTime()
+    }
+
+
+class DivideSetOfStoresUI {
+    + DivideSetOfStoresUI()
+    + run()
+}
+
+class Advertisement{
+    - Date date
+    - Double commissionValue
+    +Advertisement(String commissionType,Double commissionValue,Date date)
+}
+
+class AdvertisementCollection{
+    +List<Pair<String,Integer>> divideAdsByStore(List<Advertisement> ads)
+    + int findPos(List<Pair<String,Integer>> set,String id)
+}
+
+Repositories --> Repositories : instance
+DivideSetOfStoresUI .> DivideSetOfStoresController: controller
+
+DivideSetOfStoresController .> Repositories : repositories
+
+DivideSetOfStoresController ..> BruteForceAlgorithm : algorithm
+
+DivideSetOfStoresController ..> AdvertisementCollection :collection
+
+Repositories --> "1" AdvertisementRepository
+
+DivideSetOfStoresController ...> AdvertisementRepository:advertisementRepository
+AdvertisementRepository --> "*" Advertisement
+Advertisement --> "1" Store
+
+
+
+@enduml

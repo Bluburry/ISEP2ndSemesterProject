@@ -1,0 +1,150 @@
+@startuml Domain Model - List Property Request
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+class "Agent" as Employee
+
+class Person {
+	email
+	name
+	passport
+	tin
+	phoneNumber
+}
+
+class Employee {
+	role
+}
+
+class Advertisement {
+    date
+    commissionValue
+}
+
+class CommissionType <<enum>> {
+    designation
+}
+
+class PropertyType <<enum>> {
+    designation
+}
+
+class Property <<Interface>> {
+    area
+    distance
+    photographs
+}
+
+class Location <<Interface>> {
+    area
+    distance
+    photographs
+    street
+    zip
+    state
+    city
+    district
+}
+
+class Land {
+}
+
+class Apartment {
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+}
+
+class House {
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+    basement
+    loft
+    sunExposure
+}
+
+class BusinessType <<enum>> {
+    description
+}
+
+class Request <<Interface>> {
+	date
+	property
+	price
+}
+
+class RequestLease {
+	durationOfContract
+}
+
+class RequestSale {
+}
+
+class Visit {
+    year
+    month
+    day
+    hour
+    clientEmail
+}
+
+class VisitStatus <<enum>> {
+    description
+}
+
+class Offer {
+    date
+    offer
+    clientEmail
+}
+
+class OfferStatus <<enum>> {
+    description
+}
+
+
+Employee --|> Person 
+
+Advertisement "1" -- "1" Request : contains >
+Advertisement "1" -- "1" CommissionType : has >
+Advertisement "1" -- "*" Visit : has >
+Advertisement "1" -- "*" Offer : has >
+
+Visit "1" -- "1" VisitStatus : has >
+Offer "1" -- "1" OfferStatus : has >
+
+Request "1" -- "1" BusinessType : has >
+Request "1" --> "1" Property : has >
+
+Land "1" -- "1" PropertyType : has >
+Apartment "1" -- "1" PropertyType : has >
+House "1" -- "1" PropertyType : has >
+
+Request <|.. RequestLease
+Request <|.. RequestSale
+
+Property <|.. Land
+Property <|.. Apartment
+Property <|.. House
+
+Location <|.. Land
+Location <|.. Apartment
+Location <|.. House
+
+Employee "1" -- "*" Advertisement : assigned to >
+Employee "1" -- "*" Visit : responds to >
+
+' TODO: perguntar ao certo quanto a estes
+Person "1" -- "*" Visit : makes >
+Person "1" -- "*" Request : makes >
+
+@enduml

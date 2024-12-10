@@ -1,0 +1,296 @@
+@startuml Sequence Diagram (SD) - Create sale announcement
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Agent" as AG
+participant ":CreateSaleAnnouncementUI" as UI
+participant ":CreateSaleAnnouncementController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as PLAT
+participant ":ApplicationSession" as _APP
+participant "appSession\n:ApplicationSession" as APP
+participant "currentSession\n:UserSession" as SESSAO
+participant "personRepository\n:PersonRepository" as PR
+participant "propertyRepository\n:PropertyRepository" as PropertyRepository
+participant "requestRepository\n:RequestRepository" as RequestRepository
+participant "advertisementRepository\n:AdvertisementRepository" as AdvertisementRepository
+participant "businessType\n:BusinessType" as BTR
+participant "propertyType\n:PropertyType" as PTR
+participant "sunExposure\n:SunExposure" as SER
+participant "commissionType\n:CommissionType" as CTR
+participant "property\n:Property" as Property
+participant "building\n:Building" as Building
+participant "house\n:House" as House
+participant "request\n:Request" as Request
+participant "advertisement\n:Advertisement" as Advertisement
+participant "sms\n:SMS" as SMS
+
+activate AG
+
+    AG -> UI : asks to create a new sale announcement
+    activate UI
+        UI -> CTRL** : creates
+        activate CTRL
+            CTRL -> RepositorySingleton : getInstance()
+            activate RepositorySingleton
+                RepositorySingleton --> CTRL : repositories
+            deactivate RepositorySingleton
+            
+            CTRL -> PLAT : getPersonRepository()
+            activate PLAT
+                PLAT --> CTRL : PersonRepository
+            deactivate PLAT
+
+            CTRL -> PLAT : getPropertyRepository()
+            activate PLAT
+                PLAT --> CTRL : propertyRepository
+            deactivate PLAT
+
+            CTRL -> PLAT : getRequestRepository()
+            activate PLAT
+                PLAT --> CTRL : RequestRepository
+            deactivate PLAT
+
+            CTRL -> PLAT : getAdvertisementRepository()
+            activate PLAT
+                PLAT --> CTRL : AdvertisementRepository
+            deactivate PLAT
+
+            CTRL -> _APP : getInstance()
+            activate _APP
+                _APP -> CTRL: appSession
+            deactivate _APP
+
+            CTRL -> APP: getCurrentSession()
+            activate APP
+                APP --> CTRL: currentSession
+            deactivate APP
+
+        deactivate CTRL
+
+loop while intended
+
+        UI --> AG : request owner data (email)
+    deactivate UI
+
+    AG -> UI : types requested data
+    activate UI
+
+        UI ->  CTRL : getOwner(email)
+
+            activate CTRL
+                CTRL -> PR : getPersonByEmail(email)
+                activate PR
+                    PR --> CTRL : person
+                deactivate PR
+                CTRL --> UI : person
+            deactivate CTRL
+
+        UI --> AG : requests general property data\n(area, distance from city center)
+    deactivate UI
+    
+    AG -> UI : types requested data
+    activate UI
+        UI --> AG : requests property location data\n(state, city, district, street, zip code)
+    deactivate UI
+
+    AG -> UI : types requested data
+    activate UI
+        UI -> CTRL : getBusinessTypes()
+
+        activate CTRL
+            CTRL -> BTR : getBusinessTypes()
+            activate BTR
+                BTR --> CTRL: businessTypeList
+            deactivate BTR
+            CTRL --> UI : businessTypeList
+        deactivate CTRL
+
+        UI --> AG : shows business type list\nand asks to select one
+    deactivate UI
+
+    AG -> UI : selects a business type
+    activate UI
+    alt businessType = sale
+        UI --> AG : request sale price
+    else businessType = rent
+        UI --> AG : request price per month
+    AG -> UI : types requested data
+        UI --> AG : request lease duration
+    deactivate UI
+    end
+
+    AG -> UI : types requested data
+    activate UI
+        UI -> CTRL : getPropertyTypes()
+
+        activate CTRL
+            CTRL -> PTR : getPropertyTypes()
+            activate PTR
+                PTR -> CTRL : propertyTypeList
+            deactivate PTR
+            CTRL --> UI : propertyTypeList
+        deactivate CTRL
+        
+        UI --> AG : shows property type list\nand asks to select one
+    deactivate UI
+    
+    AG -> UI : selects a property type
+    alt property = house or apartment
+        activate UI
+            UI --> AG : requests specific data\n(number of bedrooms, number of parking spaces)
+        deactivate UI
+        AG -> UI : types requested data
+
+        opt
+            activate UI
+                UI --> AG : requests optional data\n(number of bathrooms, available equipment)
+            deactivate UI
+            AG -> UI : types requested data
+            activate UI
+        end
+
+        alt property = house
+            opt
+                activate UI
+                    UI --> AG : requests optional data\n(existing basement, inhabitable loft)
+                deactivate UI
+                AG -> UI : types requested data
+
+                activate UI
+                    UI -> CTRL : getSunExposureLocation()
+
+                    activate CTRL
+                        CTRL -> SER : getSunExposureLocation()
+                        activate SER
+                            SER --> CTRL : sunExposureLocationList
+                        deactivate SER
+                        CTRL --> UI : sunExposureLocationList
+                    deactivate CTRL
+                
+                UI --> AG : shows sun exposure location list\nand asks to select one
+                deactivate UI
+                AG -> UI : select a sun exposure location
+                activate UI
+            end
+        end
+    end
+
+    loop [for at least 1 photograph]
+            UI --> AG : requests photograph
+        deactivate UI
+        AG -> UI : submits requested data
+        activate UI
+    end
+    
+        UI --> AG : requests comission value
+        deactivate UI
+    
+    AG -> UI : submits requested data
+    activate UI
+        UI -> CTRL : getComissionType()
+        
+        activate CTRL
+            CTRL -> CTR : getCommissionType()
+            activate CTR
+                CTR --> CTRL : commissionTypeList
+            deactivate CTR
+            CTRL --> UI : commissionTypeList
+        deactivate CTRL
+
+        UI --> AG : shows commission type list\nand asks to select one
+    deactivate UI
+
+    AG -> UI : selects commission type
+    activate UI
+        UI -> CTRL : createAdvertisement(owner, propertyType,\nbusinessType, commissionValue, commissionInfo,\nnumBedrooms, numParkingSpaces, numBathrooms,\navailableEquipment, state, city, district, street, zip,\nbasement, loft, sunExposure, photographs)
+        activate CTRL
+
+            CTRL -> CTRL : getAgentFromSession()
+            activate CTRL
+
+                CTRL -> SESSAO: getUser()
+                activate SESSAO
+                    SESSAO --> CTRL: employeeEmail
+                deactivate SESSAO
+
+                CTRL -> PR : getPersonByEmail(email)
+                activate PR
+                    PR --> CTRL : employee
+                deactivate PR
+
+                CTRL --> CTRL : employee
+            deactivate CTRL
+
+            alt propertyType = land
+                CTRL -> PropertyRepository : createProperty(area, distance, propertyType,\nstate, city, district, street, zip,\nphotographs)
+                activate PropertyRepository
+                    PropertyRepository -> Property** : createProperty(area, distance, propertyType,\nstate, city, district, street, zip,\nphotographs)
+                    activate Property
+                        Property --> PropertyRepository
+                    deactivate Property
+                PropertyRepository --> CTRL : property
+                deactivate PropertyRepository
+
+            else propertyType = apartment
+                CTRL -> PropertyRepository : createBuilding(area, distance, propertyType,\nrentalPrice, leaseDuration,\nnumBathrooms, numParkingSpaces,\nnumBedrooms, availableEquipment,\nstate, city, district, street, zip,\nphotographs)
+                activate PropertyRepository
+                    PropertyRepository -> Building** : createBuilding(area, distance, propertyType,\nrentalPrice, leaseDuration,\nnumBathrooms, numParkingSpaces,\nnumBedrooms, availableEquipment,\nstate, city, district, street, zip,\nphotographs)
+                    activate Building
+                        Building --> PropertyRepository
+                    deactivate Building
+                PropertyRepository --> CTRL : property
+                deactivate PropertyRepository
+
+            else propertyType = house
+                CTRL -> PropertyRepository : createHouse(area, distance, propertyType, salePrice\nnumBathrooms, numParkingSpaces,\nnumBedrooms, availableEquipment,\nbasement, loft, sunExposure,\nstate, city, district, street, zip,\nphotographs)
+                activate PropertyRepository
+                    PropertyRepository -> House** : createHouse(area, distance, propertyType, salePrice\nnumBathrooms, numParkingSpaces,\nnumBedrooms, availableEquipment,\nbasement, loft, sunExposure,\nstate, city, district, street, zip,\nphotographs)
+                    activate House
+                        House --> PropertyRepository
+                    deactivate House
+                PropertyRepository --> CTRL : property
+                deactivate PropertyRepository
+            end
+
+            CTRL -> RequestRepository : createRequest(property,\nbusinessType, salePrice, rentalPrice,\ndurationOfContract, employee, person)
+            activate RequestRepository
+                RequestRepository -> Request** : createRequest(property,\nemployee, person)
+                activate Request
+                    Request --> RequestRepository : request
+                deactivate Request
+                RequestRepository --> CTRL : request
+            deactivate RequestRepository
+
+            CTRL -> AdvertisementRepository : createAdvertisement(request,\ncommissionType, commissionValue)
+            activate AdvertisementRepository
+                AdvertisementRepository -> Advertisement** : createAdvertisement(request,\ncommissionType, commissionValue)
+                activate Advertisement
+                    Advertisement --> AdvertisementRepository : advertisement
+                deactivate Advertisement
+                AdvertisementRepository --> CTRL : advertisement
+            deactivate AdvertisementRepository
+
+            CTRL -> PropertyRepository : getPropertyID(property)
+            activate PropertyRepository
+                PropertyRepository --> CTRL : propertyID
+            deactivate PropertyRepository
+
+            CTRL -> SMS : notifyPropertyListing(agentName, agentPhoneNumber, personPhoneNumber, advertisement, propertyID)
+            activate SMS
+            deactivate SMS
+            
+            CTRL --> UI : advertisement
+        deactivate CTRL
+        
+        UI --> AG : displays operation success
+    deactivate UI
+
+deactivate AG
+end
+
+@enduml

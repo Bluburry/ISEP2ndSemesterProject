@@ -1,0 +1,30 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram Parcial Get SunExposure Type List (SSD)
+
+'hide footbox
+participant ":SubmitPropertyController" as CTRL
+
+participant "repositories\n:Repositories" as repositories
+participant "sunExposureTypesRepository\n:SunExposureTypesRepository" as sunExposureTypesRepository
+
+autonumber 30
+
+
+    CTRL  ->  repositories : getSunExposureTypesRepository()
+        activate repositories
+
+        repositories --> CTRL: sunExposureTypesRepository
+        deactivate repositories
+
+    CTRL -> sunExposureTypesRepository : getSunExposureTypesList()
+        activate sunExposureTypesRepository
+
+        sunExposureTypesRepository --> CTRL : sunExposureTypesList
+        deactivate sunExposureTypesRepository
+
+
+@enduml

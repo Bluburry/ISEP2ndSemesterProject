@@ -1,0 +1,95 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Full (SD)
+autonumber
+
+'016 - Agent respond to a booking request for a visit.
+
+'hide footbox
+actor "Store Manager" as User
+participant ":AnalyseDealsUI" as UI
+participant ":AnalyseDealsController" as CTRL
+
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as repositories
+participant "userSession\n:UserSession" as userSession
+
+participant "personRepository\n:PersonRepository" as personRepository
+participant "advertisementRepository\n:AdvertisementRepository" as advertisementRepository
+participant "advertisementCollection\n:AdvertisementCollection" as advertisementCollection
+
+activate User
+
+    User -> UI : Ask to Analyse Deals Made
+        activate UI
+
+          UI -> CTRL** : create
+                activate CTRL
+
+                CTRL -> RepositorySingleton : getInstance()
+                activate RepositorySingleton
+
+                RepositorySingleton --> CTRL: repositories
+                deactivate RepositorySingleton
+
+                deactivate CTRL
+
+        UI -> User: displayAndChooseMethod()
+
+    User -> UI: keepAnalyseMethod
+
+        UI-> UI : keepAnalyseMethod
+
+        UI -> CTRL: getStoreManagerEmail()
+            activate CTRL
+
+            CTRL -> userSession : getStoreManagerEmail()
+            activate userSession
+
+            userSession -> CTRL: storeManagerEmail
+            deactivate userSession
+
+            CTRL -> UI: storeManagerEmail
+            deactivate CTRL
+
+        UI -> UI: storeManagerEmail
+
+        UI -> CTRL: getStores(storeManagerEmail)
+            activate CTRL
+
+            CTRL -> repositories : getPersonRepository()
+            activate repositories
+
+            repositories -> CTRL: personRepository
+            deactivate repositories
+
+            CTRL -> personRepository : getStores(storeManagerEmail)
+            activate personRepository
+
+            personRepository -> CTRL : storeManagerStoresList
+            deactivate personRepository
+
+            CTRL ->  advertisementRepository : getStoreManagerStoresDealsList(storeManagerStoresList)
+            activate advertisementRepository
+opt (Business Type == SALE && (Property Type == HOUSE || Property Type == APARTMENT))
+            advertisementRepository ->  CTRL : storeManagerStoresDealsList
+            deactivate advertisementRepository
+end
+            CTRL -> advertisementCollection : analyseDeals(keepAnalyseMethod,storeManagerStoresDealsList)
+            activate advertisementCollection
+
+            advertisementCollection -> CTRL: resultAnalyseDeals
+            deactivate advertisementCollection
+
+        CTRL -> UI : resultAnalyseDeals
+        deactivate CTRL
+
+    UI -> User : DisplayResultAnalyseDeals
+    deactivate UI
+
+deactivate User
+
+@enduml

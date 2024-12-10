@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="423px" preserveAspectRatio="none" style="width:420px;height:423px;background:#FFFFFF;" version="1.1" viewBox="0 0 420 423" width="420px" zoomAndPan="magnify"><defs/><g><rect fill="none" height="26.0986" id="_title" style="stroke:none;stroke-width:1.0;" width="399" x="8.25" y="10"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="389" x="13.25" y="28.1318">System Sequence Diagram (SSD) - List property request</text><rect fill="#FFFFFF" height="204.6411" style="stroke:#181818;stroke-width:1.0;" width="10" x="36.5" y="128.1973"/><rect fill="#FFFFFF" height="52.8975" style="stroke:#181818;stroke-width:1.0;" width="10" x="359.5" y="149.146"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="359.5" y="230.9922"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="359.5" y="288.8896"/><rect fill="none" height="161.6924" style="stroke:#000000;stroke-width:1.5;" width="396.5" x="10" y="164.146"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="41" x2="41" y1="118.1973" y2="342.8384"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="364.5" x2="364.5" y1="118.1973" y2="342.8384"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="20" y="115.2305">Agent</text><ellipse cx="41.5" cy="50.5986" fill="#E3E3E3" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M41.5,58.5986 L41.5,85.5986 M28.5,66.5986 L54.5,66.5986 M41.5,85.5986 L28.5,100.5986 M41.5,85.5986 L54.5,100.5986 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="20" y="354.9702">Agent</text><ellipse cx="41.5" cy="366.437" fill="#E3E3E3" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M41.5,374.437 L41.5,401.437 M28.5,382.437 L54.5,382.437 M41.5,401.437 L28.5,416.437 M41.5,401.437 L54.5,416.437 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><rect fill="#E3E3E3" height="30.0986" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="64" x="332.5" y="87.0986"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50" x="339.5" y="107.2305">:System</text><rect fill="#E3E3E3" height="30.0986" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="64" x="332.5" y="341.8384"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50" x="339.5" y="361.9702">:System</text><rect fill="#FFFFFF" height="204.6411" style="stroke:#181818;stroke-width:1.0;" width="10" x="36.5" y="128.1973"/><rect fill="#FFFFFF" height="52.8975" style="stroke:#181818;stroke-width:1.0;" width="10" x="359.5" y="149.146"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="359.5" y="230.9922"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="359.5" y="288.8896"/><polygon fill="#181818" points="347.5,145.146,357.5,149.146,347.5,153.146,351.5,149.146" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="46.5" x2="353.5" y1="149.146" y2="149.146"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="53.5" y="144.3911">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="169" x="64.5" y="144.3911">asks to list property requests</text><path d="M10,164.146 L83,164.146 L83,171.0947 L73,181.0947 L10,181.0947 L10,164.146 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="161.6924" style="stroke:#000000;stroke-width:1.5;" width="396.5" x="10" y="164.146"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="28" x="25" y="177.3398">loop</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="90" x="98" y="176.4639">[while intended]</text><polygon fill="#181818" points="57.5,198.0435,47.5,202.0435,57.5,206.0435,53.5,202.0435" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="51.5" x2="363.5" y1="202.0435" y2="202.0435"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="63.5" y="197.2886">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="258" x="74.5" y="197.2886">lists property requests assigned to the agent</text><polygon fill="#181818" points="347.5,226.9922,357.5,230.9922,347.5,234.9922,351.5,230.9922" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="46.5" x2="353.5" y1="230.9922" y2="230.9922"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="53.5" y="226.2373">3</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="67" x="64.5" y="226.2373">selects one</text><polygon fill="#181818" points="57.5,255.9409,47.5,259.9409,57.5,263.9409,53.5,259.9409" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="51.5" x2="363.5" y1="259.9409" y2="259.9409"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="63.5" y="255.186">4</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="278" x="74.5" y="255.186">asks whether the agent wants to accept or deny</text><polygon fill="#181818" points="347.5,284.8896,357.5,288.8896,347.5,292.8896,351.5,288.8896" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="46.5" x2="353.5" y1="288.8896" y2="288.8896"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="53.5" y="284.1348">5</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="67" x="64.5" y="284.1348">selects one</text><polygon fill="#181818" points="57.5,313.8384,47.5,317.8384,57.5,321.8384,53.5,317.8384" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="51.5" x2="363.5" y1="317.8384" y2="317.8384"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="63.5" y="313.0835">6</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="158" x="74.5" y="313.0835">displays operation success</text><!--MD5=[fa6dd2f9ba231e9977131b47e5ef6bd0]
+@startuml System Sequence Diagram (SSD) - List property request
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - List property request
+
+autonumber
+
+actor "Agent" as Agent
+participant ":System" as System
+
+activate Agent
+
+    Agent -> System : asks to list property requests
+    loop while intended
+        activate System
+            System - -> Agent : lists property requests assigned to the agent
+        deactivate System
+
+        Agent -> System : selects one
+        activate System
+            System - -> Agent : asks whether the agent wants to accept or deny
+        deactivate System
+
+        Agent -> System : selects one
+        activate System
+            System - -> Agent : displays operation success
+        deactivate System
+    end
+
+deactivate Agent
+@enduml
+
+PlantUML version 1.2022.7(Mon Aug 22 18:01:30 WEST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

@@ -1,0 +1,241 @@
+@startuml
+'skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+'skinparam linetype orto
+
+skinparam classAttributeIconSize 0
+
+'left to right direction
+
+class SubmitPropertyUI {
+-PropertyType keepPropertyType;
+-double keepAreaProperty;
+-double keepDistanceCityCenter;
+- List<String> keepPhotographs;
+- String keepStreet;
+- String keepZipCode;
+- String keepStateUS;
+- String keepCity;
+- String keepDistrict;
+- int keepNumberBedrooms;
+- int keepNumberParking;
+- String keepAvailableEquipment;
+- int keepNumberBathrooms;
+- boolean keepBasement;
+- boolean keepLoft;
+- SunExposure keepSunExposure;
+- Property newAllProperty;
+- BusinessType keepBusinessType;
+- double keepSalePrice;
+- double keepRentPrice;
+- int keepDurationContract;
+- Employee keepAgent;
+- String keepOwnerEmail;
++ create SubmitPropertyController()
++ listAndChoosePropertyType()
++ getPropertyType()
++ getKeepAreaProperty()
++ getDistanceCityCenter()
++ getPhotographs()
++ getStreet()
++ getZipCode()
++ getStateUS()
++ getCity()
++ getDistrict()
++ getNumberBedrooms()
++ getNumberParking()
++ getNumberBathrooms()
++ getAvailableEquipment()
++ getBasement()
++ getLoft()
++ listAndChoseSunExposureType()
++ createNewHouseProperty(PropertyType\n keepPropertyType, double keepAreaProperty,\n double keepDistanceCityCenter, List<String> keepPhotographs,\n int keepNumberBedrooms, int keepNumberParking\n int keepNumberBathrooms, String keepAvailableEquipment,\n boolean keepBasement, boolean keepLoft,\n SunExposure keepSunExposure, String keepStreet,\n String keepZipCode, String keepStateUS,\n String keepCity, String keepDistrict)
++ createNewApartmentProperty(keepPropertyType,\n keepAreaProperty, keepDistanceCityCenter, keepPhotographs,\n keepNumberBedrooms, keepNumberParking, keepNumberBathrooms,\n keepAvailableEquipment, keepStreet, keepZipCode, keepStateUS,\n keepCity, keepDistrict)
++ createNewProperty(keepPropertyType,\n keepAreaProperty, keepDistanceCityCenter,\n keepPhotographs, keepStreet, keepZipCode,\n keepStateUS, keepCity, keepDistrict)
++ listAndChooseBusinessType()
++ getAgentList();
++ getAgent();
++ createNewRequestSale(newAllProperty, keepBusinessType,\n keepAgent, keepSalePrice);
++ createNewRequestRent(newAllProperty, keepBusinessType,\n keepAgent, keepRentPrice, keepDurationContract)
+
+}
+
+class SubmitPropertyController {
+- Repositories repositories;
+- PropertyTypeRepository propertyTypeRepository;
+- SunExposureRepository sunExposureTypeRepository;
+- PropertyRepository propertyRepository;
+- StoreRepository storeRepository;
+- BusinessTypeRepository businessTypeRepository;
+- RequestRepository requestRepository
++ getInstance()
++ getPropertyTypeRepository()
++ getPropertyTypeList()
++ createNewHouseProperty(PropertyType keepPropertyType,\n double keepAreaProperty, double keepDistanceCityCenter,\n List<String> keepPhotographs, int keepNumberBedrooms,\n int keepNumberParking, int keepNumberBathrooms,\n String keepAvailableEquipment, boolean keepBasement,\n boolean keepLoft, SunExposure keepSunExposure,\n String keepStreet, String keepZipCode,\n String keepStateUS, String keepCity,\n String keepDistrict)
++ createNewApartmentProperty(PropertyType keepPropertyType, double keepAreaProperty,\n double keepDistanceCityCenter, List<String> keepPhotographs,\n int keepNumberBedrooms, int keepNumberParking,\n int keepNumberBathrooms, String keepAvailableEquipment,\n String keepStreet, String keepZipCode,\n String keepStateUS, String keepCity,\n String keepDistrict)
++ createNewProperty(PropertyType keepPropertyType,\n double keepAreaProperty, double keepDistanceCityCenter,\n List<String> keepPhotographs, String keepStreet,\n String keepZipCode, String keepStateUS, String keepCity,\n String keepDistrict)
++ getBusinessTypeRepository()
++ getBusinessTypeList()
++ getAgentList()
++ createNewRequestSale(Property newAllProperty,\n BusinessType keepBusinessType, Employee keepAgent,\n double keepSalePrice)
++ createNewRequestRent(Property newAllProperty,\n BusinessType keepBusinessType, Employee keepAgent,\n double keepRentPrice, int keepDurationContract)
+}
+
+class Repositories {
+- Repositories()
++ getInstance() : Repositories
++ getPropertyTypeRepository()
++ getPropertyRepository()
++ getSunExposureRepository()
++ getBusinessTypeRepository()
++ getStoreRepository()
++ getRequestRepository()
+}
+
+Repositories --> PropertyTypeRepository
+Repositories --> PropertyRepository
+Repositories --> SunExposureRepository
+Repositories --> BusinessTypeRepository
+Repositories --> RequestRepository
+Repositories --> StoreRepository
+Repositories --> PersonRepository
+
+class Property{
+- double area
+- double distance
+- Location location
+- List<String> photographs
+}
+
+
+PropertyRepository --> "*" Property
+
+class PropertyRepository{
++createNewHouseProperty(keepPropertyType,\n keepAreaProperty, keepDistanceCityCenter,\n keepPhotographs, keepNumberBedrooms,\n keepNumberParking, keepNumberBathrooms,\n keepAvailableEquipment, keepBasement,\n keepLoft, keepSunExposure, keepStreet,\n keepZipCode, keepStateUS,\n keepCity, keepDistrict)
++createNewApartmentProperty(PropertyType keepPropertyType,\n double keepAreaProperty, double keepDistanceCityCenter,\n List<String> keepPhotographs, int keepNumberBedrooms,\n int keepNumberParking, int keepNumberBathrooms,\n String keepAvailableEquipment, String keepStreet,\n String keepZipCode, String keepStateUS,\n String keepCity, String keepDistrict)
++createNewProperty(PropertyType keepPropertyType,\n double keepAreaProperty, double keepDistanceCityCenter,\n List<String> keepPhotographs, String keepStreet,\n String keepZipCode, String keepStateUS,\n String keepCity, String keepDistrict)
+}
+Location "1" -- "1" Property : owns <
+
+Property --> PropertyType
+
+
+class PropertyTypeRepository {
++getPropertyTypeList()
+}
+
+PropertyTypeRepository --> "*" PropertyType
+class PropertyType {
+-String designation
+}
+
+class Building{
+-int: numberBedrooms
+-int: numberParking
+-int: numberBathrooms
+-String: availableEquipment
+}
+Building --|> Property
+
+class House{
+-boolean: basement
+-boolean: habitableLoft
+}
+House --|> Building
+SunExposure --> House
+
+class SunExposure {
+-String: North, South, East, West
+}
+SunExposureRepository --> "*" SunExposure
+class SunExposureRepository {
++getSunExposureTypesList()
+}
+
+class Request{
+- Date date
+}
+Request "*"  -> "1" BusinessType
+Request "1"  -> "1" Property
+Request "*"  -> "1" Agent
+Request "*"  -> "1" Owner
+
+RequestRepository --> "*" Request
+class RequestRepository{
++createNewRequestSale(Property newAllProperty,\n BusinessType keepBusinessType,\n Employee keepAgent, double keepSalePrice)
++createNewRequestRent(Property newAllProperty,\n BusinessType keepBusinessType,\n Employee keepAgent, double keepRentPrice,\n int keepDurationContract)
+}
+
+class Store{
+-name
+-emailAddress
+-phoneNumber
++getAgentList()
+}
+StoreRepository --> "*" Store
+class StoreRepository{
++getAgentList()
+}
+
+
+class Agent{
+}
+
+class BusinessTypeRepository{
++getBusinessTypeList()
+}
+BusinessTypeRepository --> "2" BusinessType
+
+class BusinessType{
+-designation
+}
+BusinessType --> BusinessTypeRent
+BusinessType --> BusinessTypeSale
+class BusinessTypeRent{
+-double:rentalPrice
+-int:durationContract
+}
+
+class BusinessTypeSale{
+-double:salePrice
+}
+
+class Location {
+    street
+    zipCode
+    stateUS
+    city
+    district
+}
+
+class Employee{
+}
+
+class Owner {
+}
+
+SubmitPropertyUI .> SubmitPropertyController
+
+SubmitPropertyController .> Repositories: repositories
+
+PersonRepository --> "*" Person
+
+Owner "1" -- "1..*" Property: owns >
+
+Store <|-- Employee
+
+Person <|-- Owner
+
+Person <|-- Employee
+
+
+
+
+Store -- Location: owns >
+
+Store -- Agent: Employees >
+
+Employee <|-- Agent
+@enduml

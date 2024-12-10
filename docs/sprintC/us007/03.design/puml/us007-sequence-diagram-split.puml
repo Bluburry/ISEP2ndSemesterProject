@@ -1,0 +1,123 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Unregistered User" as ADM
+participant ":RegisterUserUI" as UI
+participant ":RegisterUserController" as CTRL
+
+activate ADM
+
+    ADM -> UI : asks to register in the application
+
+
+    activate UI
+
+        UI -> CTRL**: create()
+        activate CTRL
+            ref over CTRL
+                Get Repositories
+            end ref
+                deactivate CTRL
+        UI -->ADM: asks for name
+
+        ADM -> UI: sends data
+
+        UI -> UI:keepName
+
+        UI -->ADM: asks for e-mail
+
+                ADM -> UI: sends data
+
+        UI -> UI:keepEmail
+
+        UI -->ADM: asks for password
+
+                ADM -> UI: sends data
+
+        UI -> UI:keepPassword
+
+        UI -->ADM: asks for citizenNumber
+
+                        ADM -> UI: sends data
+
+                UI -> UI:keepCitizenNumber
+
+
+        UI -->ADM: asks for tin
+
+                        ADM -> UI: sends data
+
+                UI -> UI:keepTin
+
+        UI -->ADM: asks for phone number
+
+                 ADM -> UI: sends data
+
+        UI -> UI:keepPhoneNumber
+
+        UI -> ADM: asks if the unregistered user wants to\n  give the new user location
+                                    ADM -> UI:true/false
+
+                                                                        UI-> UI :option
+
+                                                                        group opt [true]
+
+
+                                            UI -->ADM: asks for street
+
+                                                             ADM -> UI: sends data
+
+                                                    UI -> UI: keepStreet
+
+
+
+                                           UI -->ADM: asks for zipcode
+
+                                                                    ADM -> UI: sends data
+
+                                                           UI -> UI: keepZipCode
+
+
+                                           UI -->ADM: asks for state
+
+                                                                    ADM -> UI: sends data
+
+                                                           UI -> UI: keepStateUS
+
+                                            UI -->ADM: asks for city
+
+                                                                     ADM -> UI: sends data
+
+                                                            UI -> UI: keepCity
+
+                                           UI -->ADM: asks for district
+
+                                                                    ADM -> UI: sends data
+
+                                                           UI -> UI: keepDistrict
+
+
+
+                                             end group
+
+        UI -> CTRL : registerUserWithClientAndOwnerPerms(keepName,keepEmail\n ,keepPassword,Roles,keepCitizenNumber,keepPhoneNumber,keepTin,keepLocation)
+
+            ref over CTRL
+                Register User With Client And Owner Perms
+            end ref
+
+        CTRL --> UI:true/false
+        deactivate CTRL
+
+        UI --> ADM: display operation success
+
+      deactivate UI
+
+deactivate ADM
+
+@enduml

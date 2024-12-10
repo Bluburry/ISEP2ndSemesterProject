@@ -1,0 +1,24 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD)
+
+autonumber
+
+actor "Unregistered User" as ADM
+participant ":System" as UI
+
+activate ADM
+
+ADM -> UI : asks to divide the set of all stores into two subsets
+
+
+    activate UI
+        ADM <-- UI : displays the subset of stores
+    deactivate UI
+
+deactivate ADM
+
+@enduml

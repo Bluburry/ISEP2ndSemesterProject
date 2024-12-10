@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="410.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipp.isep.dei.esoft.project.ui.gui.ui.BookingRequestListControllerScene3">
+   <children>
+      <Label alignment="CENTER" prefHeight="20.0" prefWidth="700.0" text="ListBookingRequests_03" />
+      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <TextArea fx:id="visitListing" layoutX="14.0" layoutY="60.0" editable="false" prefHeight="310.0" prefWidth="400.0" />
+            <Label layoutX="152.0" layoutY="12.0" prefHeight="40.0" prefWidth="100.0" text="Visits for that advertisement:" textAlignment="CENTER" wrapText="true" />
+            <TextField id="visitChoiceTF" fx:id="visitChoice" alignment="CENTER" layoutX="509.0" layoutY="100.0" prefHeight="25.0" prefWidth="75.0" />
+            <Label layoutX="496.0" layoutY="60.0" prefHeight="40.0" prefWidth="100.0" text="Please choose a visit:" textAlignment="CENTER" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true" />
+            <Button id="backt03Btn" fx:id="back03" layoutX="455.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#back03Click" text="Back" />
+            <Button id="next03Btn" fx:id="next03" layoutX="595.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#next03Click" text="Next" />
+            <RadioButton id="rejectBtn" fx:id="reject" layoutX="449.0" layoutY="255.0" mnemonicParsing="false" selected="true" text="Reject">
+               <toggleGroup>
+                  <ToggleGroup fx:id="choice" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton id="acceptBtn" fx:id="accept" layoutX="587.0" layoutY="255.0" mnemonicParsing="false" text="Accept" toggleGroup="$choice" />
+            <Label id="incorrectVisitLabel" fx:id="incorrectVisit" disable="true" layoutX="476.0" layoutY="153.0" prefHeight="71.0" prefWidth="141.0" textOverrun="LEADING_WORD_ELLIPSIS" visible="false" wrapText="true" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

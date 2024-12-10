@@ -1,0 +1,20 @@
+@startuml Sequence Diagram (SD) - Create sale announcement
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+participant ":CreateSaleAnnouncementController" as CTRL
+participant "personRepository\n:PersonRepository" as PR
+
+autonumber 19
+->  CTRL : getOwner(email)
+activate CTRL
+	CTRL -> PR : getPersonByEmail(email)
+	activate PR
+		PR --> CTRL : person
+	deactivate PR
+deactivate CTRL
+
+@enduml

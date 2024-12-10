@@ -1,0 +1,122 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+left to right direction
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+'US018 - Store Manager Analyses deals.
+
+title Domain Model
+
+class Employee{
+}
+
+
+class Advertisement {
+    commissionValue
+    commissionType
+    date
+}
+
+class BusinessType <<Enum>>{
+    designation
+}
+
+class PropertyType <<Enum>>{
+    designation
+}
+
+class Property <<Interface>>{
+    photos
+    areaProperty
+    distanceCityCenter
+}
+
+class House {
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+    basement
+    loft
+    sunExposure
+}
+
+class Apartment{
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+}
+
+class Store{
+    id
+    name
+    emailAddress
+    phoneNumber
+}
+
+class Location <<Interface>> {
+    street
+    zipCode
+    stateUS
+    city
+    district
+}
+
+class Offer{
+    status
+    offer
+}
+
+
+class Request<<Interface>>{
+    date
+}
+
+class RequestSale{
+salePrice
+}
+
+class RequestLease{
+    rentalPrice
+    durationOfContract
+}
+
+
+
+Person <|-- Employee
+Person "1" -- "1..*" Request: owns >
+Person "1" -- "*" Offer: makes >
+Person "*" -- "*" Advertisement: searches >
+Person "1" - "*" Request: asks to create >
+
+Employee "1" -- "1" Store:  monitors >
+Employee "1" -- "*" Request: publishes >
+
+Location <|.up. Person
+Location <|.. Property
+Location <|.. Store
+
+Store "1" -- "*" Employee: works <
+Store "1" -- "*" Advertisement: associate to a <
+
+Advertisement"1" -- "*" Offer: receives >
+
+Property "1" -- "*" PropertyType: contains <
+
+Request <|.. RequestLease
+Request <|.. RequestSale
+Request "*" -- "1" BusinessType: contains >
+Request "1" -- "1" Property
+Request "1" -- "1" Advertisement:contains <
+
+Property <|.down. Apartment
+Property <|.down. House
+@enduml

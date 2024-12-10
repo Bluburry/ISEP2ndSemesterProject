@@ -1,0 +1,100 @@
+@startuml Sequence Diagram Full - List Booking Request
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Full - List Booking Request
+autonumber
+
+'hide footbox
+actor "Agent" as AG
+participant ":ListPropertyRequestsUI" as UI
+participant ":ListBookingRequestsController" as CTRL
+
+activate AG
+
+    AG -> UI : asks to view property requests
+    activate UI
+        UI -> CTRL** : creates
+        
+		activate CTRL
+                ref over CTRL
+                    Get Preliminary Info
+                end ref
+            CTRL --> UI
+        deactivate CTRL
+    
+        UI --> AG : requests start date for filtering
+    deactivate UI
+
+    AG -> UI : types requested data
+    activate UI
+        UI --> AG : requests end date for filtering
+    deactivate UI
+
+    AG -> UI : types requested data
+    activate UI
+
+    UI -> CTRL : getAdvertisements()
+        activate CTRL
+            ref over CTRL
+                Get Advertisement List
+            end ref
+            CTRL --> UI : advertismentList
+        deactivate CTRL
+    UI --> AG : displays advertisements assigned to the agent\nand asks to select one
+    deactivate UI
+    AG -> UI : selects one
+
+loop while intended
+    activate UI
+        UI -> CTRL : getVisitsList(advertisment, startYear,\nstartMonth, startDay, endYear, endMonth, endDay)
+        activate CTRL
+                ref over CTRL
+                    Get Visit List
+                end ref
+            CTRL --> UI : filteredAndSortedVisitList
+        deactivate CTRL
+        UI -> AG : displays booking requests\nand asks to select one
+    deactivate UI
+
+    AG -> UI : selects one
+    activate UI
+        UI --> AG : requests whether to reject or accept it
+    deactivate UI
+
+    AG -> UI : selects one
+    activate UI
+        UI -> CTRL : answerVisit(advertisement, visit, status)
+        activate CTRL
+            ref over CTRL
+                Change Visit Status
+            end ref
+            CTRL --> UI
+        deactivate CTRL
+
+        UI --> AG : asks if he wishes to view more booking\nrequests for that advertisement\nor look at a new one
+    deactivate UI
+
+    AG -> UI : selects one
+    opt view other requests
+    activate UI
+    UI -> CTRL : getAdvertisements()
+        activate CTRL
+            ref over CTRL
+                Get Advertisement List
+            end ref
+            CTRL --> UI : advertismentList
+        deactivate CTRL
+    UI --> AG : displays advertisements assigned to the agent\nand asks to select one
+    deactivate UI
+    AG -> UI : selects one
+    activate UI
+
+    end
+    deactivate UI
+
+deactivate AG
+end
+
+@enduml

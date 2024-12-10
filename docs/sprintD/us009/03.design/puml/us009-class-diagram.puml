@@ -1,0 +1,236 @@
+@startuml
+'skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+'skinparam linetype orto
+
+skinparam classAttributeIconSize 0
+
+'left to right direction
+
+class ScheduleVisitUI {
+- PropertyType keepPropertyTypeChoice;
+- BusinessType keepBusinessTypeChoice;
+- int keepYear;
+- int keepMonth;
+- int keepDay;
+- int keepHour;
+- Advertisement advertisementChoice
+- AdvertisementDTO advertisementDTOChoice
+- Visit visitChoice
++ create ScheduleVisitController()
++ listAndChoosePropertyType()
++ listAndChooseBusinessType()
++ listAndDisplayandChooseAdvertisementDTO(keepPropertyTypeChoice, keepBusinessTypeChoice)
++ getAdvertismentDTOListSorted(keepPropertyTypeChoice, keepBusinessTypeChoice)
++ displayAdvertisments( adsVisitListDTO, keepPropertyTypeChoice, keepBusinessTypeChoice)
++ displayConditionsAskToConfirm(AdvertisementDTO adchoiceVisitDTO, Visit visit)
+}
+
+'________________________________________________________________________________________
+
+class ScheduleVisitController {
+- Repositories repositories;
+- PropertyRepository propertyRepository;
+- RequestRepository requestRepository;
+- AdvertisementRepository advertisementRepository;
++ getInstance()
++ getPropertyTypeList()
++ getBusinessTypeList()
++ getAdvertismentRepository()
+}
+
+'________________________________________________________________________________________
+
+
+class Repositories {
+- Repositories()
++ getInstance() : Repositories
++ getPropertyRepository()
++ getBusinessTypeRepository()
++ getRequestRepository()
++ getAdvertismentRepository()
+}
+'________________________________________________________________________________________
+
+class PropertyRepository{
++ getPropertyList()
+}
+interface Property {
+- double area;
+- double distance;
+- Location location;
+- List<String> photographs;
+}
+class Land{
+}
+class Apartment{
+- int: numberBedrooms
+- int: numberParking
+- int: numberBathrooms
+- String: availableEquipment
+}
+class House{
+- int: numberBedrooms
+- int: numberParking
+- int: numberBathrooms
+- String: availableEquipment
+- boolean: basement
+- boolean: habitableLoft
+}
+enum SunExposureType {
+- String: North, South, East, West
+}
+class SunExposure {
++ getSunExposureType()
+}
+
+enum PropertyType  {
+ -LAND + APARTMENT + HOUSE
+ -description
+}
+
+interface Location {
+- street
+- zipCode
+- stateUS
+- city
+- district
+}
+'________________________________________________________________________________________
+class RequestRepository{
++ getRequestList()
+}
+class Request{
+- Date date;
+}
+class BusinessType{
++ getBusinessTypeList()
+}
+enum BusinessType  {
+    -description
+}
+class BusinessTypeRent{
+-double:rentalPrice
+-int:durationContract
+}
+class BusinessTypeSale{
+- double:salePrice
+}
+'________________________________________________________________________________________
+class AdvertisementRepository {
++ getAdvertisementList()
+}
+class Advertisement {
+- Request keepRequest;
+- PropertyType keepPropertyType;
+- BusinessType keepBusinessType;
+- Property keepProperty;
+- double area;
+- double distance;
+- int numberBedrooms
+- int numberParking
+- int numberBathrooms
+- String availableEquipment
+- boolean basement
+- boolean loft
+- SunExposure sun
+- String street
+- String zip
+- String state
+- String city
+- String district
+- List<String> photographs
+- double salePrice
+- double rentPrice
+- int duractionOfContract
+- Date date;
+- List Visit
+- List Offer
+}
+class AdvertisementMapper{
++ toDTO(Advertisement ad)
++ fromDTOtoAD(AdvertisementDTO adDTO)
+}
+class AdvertisementDTO{
++ double keepArea;
++ double keepdistance;
++ PropertyType keepPropertyType;
++ BusinessType keepBusinessType;
++ int keepNumberBedrooms;
++ int numberParking ;
++ int numberBathrooms ;
++ String availableEquipment ;
++ Boolean basement ;
++ Boolean loft ;
++ SunExposure sun ;
++ String keepStreet;
++ String keepZip;
++ String keepState;
++ String keepCity;
++ String keepDistrict;
++ List<String> keepPhotographs;
++ double keepSalePrice;
++ double keepRentPrice;
++ int keepDurationOfContract;
++ Date keepDate;
+}
+
+class AdvertisementCollections{
++ getAdvertismentDTOListSorted\n(propertyTypeChoice,businessTypeChoice)
++ createNewAdvertAllInformationList(adsList, propertyTypeChoice\n, businessTypeChoice)
++ sortAdVisitListByDate(adsVisitList)
++ getVerifyVisitTimeFree(adchoiceVisit, visit)
+}
+
+class Visit{
+- int year
+- int Month
+- int Day
+- int Hour
+- String clientEmail
+}
+ScheduleVisitUI .down.> ScheduleVisitController
+
+ScheduleVisitController .down.> Repositories: repositories
+
+Repositories -down-> PropertyRepository
+Repositories -down-> SunExposureRepository
+Repositories -down-> BusinessTypeRepository
+Repositories -down-> RequestRepository
+Repositories -up-> PersonRepository
+Repositories -down-> AdvertisementRepository
+
+PropertyRepository -down-> "*" Property
+Property "1" -down-> "1" PropertyType: owns
+Property "1" -down-> "1" Location: owns
+Land -up-|> Property
+Apartment -up-|> Property
+House -up-|> Property
+SunExposure -up-> House
+SunExposure --> "*" SunExposureType
+
+RequestRepository -down-> "*" Request
+Request "*"  -down-> "1" BusinessType: is classified:
+Request "1"  -> "1" Property: include:
+BusinessType -down-> BusinessTypeRent: can be:
+BusinessType -down-> BusinessTypeSale: can be:
+
+AdvertisementRepository -down-> "*" Advertisement
+AdvertisementRepository .down.> "*" AdvertisementMapper
+AdvertisementMapper .down.> AdvertisementDTO
+AdvertisementMapper .down.> Advertisement
+
+ScheduleVisitController .> AdvertisementCollections
+AdvertisementCollections .> AdvertisementMapper
+
+Advertisement "1"-->"1" Request: include:
+
+PersonRepository -left-> "*" Person
+
+Advertisement "1"--> "*"Visit: allows:
+
+Person "*" --> "*" Visit: makes:
+
+@enduml

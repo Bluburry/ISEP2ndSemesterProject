@@ -1,0 +1,57 @@
+@startuml
+'skinparam monochrome true
+skinparam packageStyle rectangle
+'skinparam shadowing false
+
+skinparam rectangle{
+    BorderColor yellow
+}
+
+'title Use Case Diagram Example
+
+left to right direction
+
+actor "Unregistered User" as unregisteredUser
+actor Owner
+actor Client
+actor Agent
+actor "Store Manager" as storeManager
+actor "Network Manager" as networkManager
+actor "System Administrator" as systemAdministrator
+
+usecase "UC1 - List of Properties" as UC1
+unregisteredUser --> UC1
+usecase "UC2 - Publish Sale Announcement" as UC2
+Agent --> UC2
+usecase "UC3 - Register Employee" as UC3
+systemAdministrator --> UC3
+usecase "UC4 - Request for Listing a Property Sale or Rent" as UC4
+Owner-->UC4
+usecase "UC5 - Register a Store" as UC5
+systemAdministrator --> UC5
+usecase "UC6 - Specify stateUS, city, and district" as UC6
+systemAdministrator --> UC6
+usecase "UC7 - Register in the system" as UC7
+unregisteredUser --> UC7
+usecase "UC8 - List property announcement request" as UC8
+Agent --> UC8
+usecase "UC9 - Client Schedule Visit" as UC9
+Client --> UC9
+usecase "UC10 - Client place an order to purchase the property" as UC10
+Client --> UC10
+usecase "UC11 - Display Listed Purchase Order" as UC11
+Agent --> UC11
+usecase "UC12 - Import information from a legacy system" as UC12
+systemAdministrator --> UC12
+usecase "UC15 - List agent managed properties" as UC15
+Agent --> UC15
+usecase "UC16 - Agent response to client's booking request" as UC16
+Agent --> UC16
+usecase "UC17 - List all deals made" as UC17
+networkManager --> UC17
+usecase "UC18 - Store manager analyse deals" as UC18
+storeManager --> UC18
+usecase "UC19 - Number of properties by group of stores" as UC19
+networkManager --> UC19
+
+@enduml

@@ -1,0 +1,55 @@
+@startuml Sequence Diagram (SD) - Create sale announcement
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+participant ":CreateSaleAnnouncementController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as PLAT
+participant ":ApplicationSession" as _APP
+participant "appSession\n:ApplicationSession" as APP
+
+autonumber 2
+-> CTRL** : creates
+activate CTRL
+	CTRL -> RepositorySingleton : getInstance()
+	activate RepositorySingleton
+		RepositorySingleton --> CTRL : repositories
+	deactivate RepositorySingleton
+	
+	CTRL -> PLAT : getPersonRepository()
+	activate PLAT
+		PLAT --> CTRL : PersonRepository
+	deactivate PLAT
+
+	CTRL -> PLAT : getPropertyRepository()
+	activate PLAT
+		PLAT --> CTRL : propertyRepository
+	deactivate PLAT
+
+	CTRL -> PLAT : getRequestRepository()
+	activate PLAT
+		PLAT --> CTRL : RequestRepository
+	deactivate PLAT
+
+	CTRL -> PLAT : getAdvertisementRepository()
+	activate PLAT
+		PLAT --> CTRL : AdvertisementRepository
+	deactivate PLAT
+
+	CTRL -> _APP : getInstance()
+	activate _APP
+		_APP -> CTRL: appSession
+	deactivate _APP
+
+	CTRL -> APP: getCurrentSession()
+	activate APP
+		APP --> CTRL: currentSession
+	deactivate APP
+
+deactivate CTRL
+
+@enduml

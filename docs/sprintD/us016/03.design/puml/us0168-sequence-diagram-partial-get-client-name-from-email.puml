@@ -1,0 +1,27 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram Parcial Get Acess to Repositorys List (SSD)
+
+autonumber
+
+'hide footbox
+participant ":RespondBookingRequestController" as CTRL
+
+participant "personRepository\n:PersonRepository" as personRepository
+
+autonumber 53
+
+    activate CTRL
+
+        CTRL -> personRepository: getNameClientFromMail(keepClientEmail)
+        activate personRepository
+
+            personRepository -> CTRL: keepClientName
+            deactivate personRepository
+
+        deactivate CTRL
+
+@enduml

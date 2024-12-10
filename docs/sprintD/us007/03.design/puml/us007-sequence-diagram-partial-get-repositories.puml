@@ -1,0 +1,19 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+participant ":RegisterUserController" as CTRL
+participant ":Repositories" as ORG
+
+
+autonumber 2
+-> CTRL : getInstance()
+        CTRL -> ORG : getInstance()
+                 activate ORG
+
+            ORG --> CTRL: repositories
+            deactivate ORG
+
+
+@enduml

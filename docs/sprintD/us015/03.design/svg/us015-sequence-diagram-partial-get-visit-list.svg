@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="368px" preserveAspectRatio="none" style="width:1108px;height:368px;background:#FFFFFF;" version="1.1" viewBox="0 0 1108 368" width="1108px" zoomAndPan="magnify"><defs/><g><rect fill="none" height="27.6094" id="_title" style="stroke:none;stroke-width:1.0;" width="291" x="407.5" y="10"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="281" x="412.5" y="29.5332">Sequence Diagram Partial - Get Visit List</text><rect fill="#FFFFFF" height="154.1094" style="stroke:#181818;stroke-width:1.0;" width="10" x="333" y="142.5313"/><rect fill="#FFFFFF" height="107.4063" style="stroke:#181818;stroke-width:1.0;" width="10" x="700" y="189.2344"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="1043" y="235.9375"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="337.5" x2="337.5" y1="93.8281" y2="314.6406"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="705" x2="705" y1="93.8281" y2="314.6406"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1048" x2="1048" y1="93.8281" y2="314.6406"/><rect fill="#E3E3E3" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="213" x="231.5" y="61.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="199" x="238.5" y="82.752">:ListBookingRequestsController</text><rect fill="#E3E3E3" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="213" x="231.5" y="313.6406"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="199" x="238.5" y="335.1738">:ListBookingRequestsController</text><rect fill="#E3E3E3" height="49.2188" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="176" x="617" y="43.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157" x="626.5" y="65.1426">advertisementRepository</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="162" x="624" y="82.752">:AdvertisementRepository</text><rect fill="#E3E3E3" height="49.2188" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="176" x="617" y="313.6406"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157" x="626.5" y="335.1738">advertisementRepository</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="162" x="624" y="352.7832">:AdvertisementRepository</text><rect fill="#E3E3E3" height="49.2188" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="108" x="994" y="43.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="89" x="1003.5" y="65.1426">advertisement</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="94" x="1001" y="82.752">:Advertisement</text><rect fill="#E3E3E3" height="49.2188" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="108" x="994" y="313.6406"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="89" x="1003.5" y="335.1738">advertisement</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="94" x="1001" y="352.7832">:Advertisement</text><rect fill="#FFFFFF" height="154.1094" style="stroke:#181818;stroke-width:1.0;" width="10" x="333" y="142.5313"/><rect fill="#FFFFFF" height="107.4063" style="stroke:#181818;stroke-width:1.0;" width="10" x="700" y="189.2344"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="1043" y="235.9375"/><polygon fill="#181818" points="321,138.5313,331,142.5313,321,146.5313,325,142.5313" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="0" x2="327" y1="142.5313" y2="142.5313"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="7" y="129.499">31</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="214" x="25" y="121.3232">getVisitsList(advertisment, startYear,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="296" x="25" y="137.6748">startMonth, startDay, endYear, endMonth, endDay)</text><polygon fill="#181818" points="688,185.2344,698,189.2344,688,193.2344,692,189.2344" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="343" x2="694" y1="189.2344" y2="189.2344"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="350" y="176.2021">32</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="320" x="368" y="168.0264">getAdVisitsByDate(advertisement, algorithm, startYear,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="296" x="368" y="184.3779">startMonth, startDay, endYear, endMonth, endDay)</text><polygon fill="#181818" points="1031,231.9375,1041,235.9375,1031,239.9375,1035,235.9375" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="710" x2="1037" y1="235.9375" y2="235.9375"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="717" y="222.9053">33</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="244" x="735" y="214.7295">getVisitsByAlgorithm(algorithm, startYear,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="296" x="735" y="231.0811">startMonth, startDay, endYear, endMonth, endDay)</text><polygon fill="#181818" points="721,262.2891,711,266.2891,721,270.2891,717,266.2891" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="715" x2="1047" y1="266.2891" y2="266.2891"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="727" y="261.4326">34</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="146" x="745" y="261.4326">filteredAndSortedVisitList</text><polygon fill="#181818" points="349,292.6406,339,296.6406,349,300.6406,345,296.6406" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="343" x2="704" y1="296.6406" y2="296.6406"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="355" y="291.7842">35</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="146" x="373" y="291.7842">filteredAndSortedVisitList</text><!--MD5=[aaf4ada1bf6d677e605ba523dd451436]
+@startuml Sequence Diagram Partial - Get Visit List
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Partial - Get Visit List
+autonumber
+
+'hide footbox
+participant ":ListBookingRequestsController" as CTRL
+participant "advertisementRepository\n:AdvertisementRepository" as AR
+participant "advertisement\n:Advertisement" as Advertisement
+
+autonumber 31
+-> CTRL : getVisitsList(advertisment, startYear,\nstartMonth, startDay, endYear, endMonth, endDay)
+activate CTRL
+	CTRL -> AR : getAdVisitsByDate(advertisement, algorithm, startYear,\nstartMonth, startDay, endYear, endMonth, endDay)
+	activate AR
+		AR -> Advertisement : getVisitsByAlgorithm(algorithm, startYear,\nstartMonth, startDay, endYear, endMonth, endDay)
+		activate Advertisement
+			Advertisement - -> AR : filteredAndSortedVisitList
+		deactivate Advertisement
+		AR - -> CTRL : filteredAndSortedVisitList
+	deactivate AR
+deactivate CTRL
+
+@enduml
+
+@startuml Sequence Diagram Partial - Get Visit List
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Partial - Get Visit List
+autonumber
+
+participant ":ListBookingRequestsController" as CTRL
+participant "advertisementRepository\n:AdvertisementRepository" as AR
+participant "advertisement\n:Advertisement" as Advertisement
+
+autonumber 31
+-> CTRL : getVisitsList(advertisment, startYear,\nstartMonth, startDay, endYear, endMonth, endDay)
+activate CTRL
+	CTRL -> AR : getAdVisitsByDate(advertisement, algorithm, startYear,\nstartMonth, startDay, endYear, endMonth, endDay)
+	activate AR
+		AR -> Advertisement : getVisitsByAlgorithm(algorithm, startYear,\nstartMonth, startDay, endYear, endMonth, endDay)
+		activate Advertisement
+			Advertisement - -> AR : filteredAndSortedVisitList
+		deactivate Advertisement
+		AR - -> CTRL : filteredAndSortedVisitList
+	deactivate AR
+deactivate CTRL
+
+@enduml
+
+PlantUML version 1.2022.7(Mon Aug 22 18:01:30 WEST 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: GB
+--></g></svg>

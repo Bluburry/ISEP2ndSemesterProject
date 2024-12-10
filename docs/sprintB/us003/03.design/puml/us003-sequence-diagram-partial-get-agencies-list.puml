@@ -1,0 +1,37 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+
+
+'hide footbox
+participant ":RegisterEmployeeUI" as UI
+participant ":RegisterEmployeeController" as CTRL
+participant "storeRepository:\nStoreRepository" as storeRep
+participant "repositories\n:Repositories" as REPS
+
+autonumber 14
+    activate UI
+    -> UI : selects an user role
+        UI -> CTRL : getStoreList()
+        activate CTRL
+
+        CTRL -> REPS : getStoreRepository()
+        activate REPS
+
+            REPS --> CTRL: storeRepository
+        deactivate REPS
+
+        CTRL -> storeRep : getStoreList()
+        activate storeRep
+
+            storeRep --> CTRL : storeList
+        deactivate storeRep
+
+        CTRL --> UI : storeList
+        deactivate CTRL
+    <-- UI : shows store list
+    deactivate UI
+
+@enduml

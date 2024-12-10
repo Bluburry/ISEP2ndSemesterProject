@@ -1,0 +1,132 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Property Owner" as User
+participant ":MakeOfferUI" as UI
+participant ":MakeOfferController" as CTRL
+
+'Client place an order to purchase the property.
+
+activate User
+
+    User -> UI : asks to Schedule a Visit property
+        activate UI
+
+        UI -> CTRL** : create
+            activate CTRL
+        ref over CTRL
+            Get Repositories
+        end ref
+            deactivate CTRL
+
+        UI -> CTRL :listAndChoosePropertyType()
+
+        ref over CTRL
+            Get PropertyTypeList
+        end ref
+        CTRL --> UI : propertyTypesList
+
+
+        UI --> User : shows Property Type List \n and asks to select one
+        deactivate UI
+
+    User -> UI : selects a Property Type
+            activate UI
+
+        UI  ->  UI: keepPropertyType
+
+        UI -> CTRL :listAndChooseBusinessType()
+
+        ref over CTRL
+            Get BusinessTypeList
+        end ref
+        CTRL --> UI : businessTypesList
+        deactivate CTRL
+
+        UI --> User : shows Business Type List \n and asks to select one
+        deactivate UI
+
+    User -> UI : selects a Business Type
+            activate UI
+
+        UI  ->  UI: keepBusinessType
+
+        UI-> CTRL: listAndDisplayandChooseAdvertisementDTO\n(propertyTypeChoice, businessTypeChoice)
+            activate CTRL
+
+        ref over CTRL
+            Get AdvertismentDTOListSortedByDate
+        end ref
+
+            CTRL -> UI : AdvertisementDTOListSortedByDate
+            deactivate CTRL
+
+        UI --> User : shows AdvertismentDTO List \n and asks to select one
+        deactivate UI
+
+    User -> UI : selects a AdvertismentDTO
+            activate UI
+
+        UI  ->  UI: keepAdvertismentDTO
+
+
+        UI -> User : ask value of Offer (offerValue)
+        deactivate UI
+
+    User -> UI : types asked data (OfferValue)
+        activate UI
+
+        UI -> UI: keeOfferValue
+
+        UI -> CTRL: getClientEmail()
+            activate CTRL
+
+        ref over CTRL
+            Get GetClientEmail
+        end ref
+
+            CTRL -> UI: clientEmail
+            deactivate CTRL
+
+        UI -> UI: keepClientEmail
+
+        UI -> CTRL: VerifyOfferValidation (keepAdvertismentDTO, keeOfferValue, keepClientEmail)
+            activate CTRL
+
+        ref over CTRL
+            Get VerifyOfferValidation
+        end ref
+
+            CTRL -> UI:verififyClientOffer()=true
+            deactivate CTRL
+
+        UI -> User: Display Offer conditions\n and ask for validation (YES/NO)
+        deactivate UI
+
+    User -> UI: input: validation (YES/NO)
+        activate UI
+
+        UI -> CTRL : adNewOffer(keepAdvertisement,keeOfferValue, keepClientEmail)
+        activate CTRL
+
+        ref over CTRL
+            Ad New Offer to Advertisement
+        end ref
+
+        CTRL -> UI: adNewOffer=true
+        deactivate CTRL
+
+alt validation = YES
+
+        UI -> User : displays operation success
+        deactivate UI
+end
+
+deactivate User
+
+@enduml

@@ -1,0 +1,124 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+'left to right direction
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+'Client Schedule Visit
+
+title Domain Model
+
+class Person{
+    emailAddress
+    passport
+    tin
+    phoneNumber
+    name
+}
+
+class Property <<Interface>>{
+    photos
+    areaProperty
+    distanceCityCenter
+}
+
+class House {
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+    basement
+    loft
+    sunExposure
+}
+
+class Apartment{
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+}
+
+class Land{}
+
+class Advertisement {
+    commissionValue
+    commissionType
+    date
+}
+
+class PropertyType{
+    designation
+}
+
+
+class Location <<Interface>>{
+    street
+    zipCode
+    stateUS
+    city
+    district
+}
+
+class Request <<Interface>>{
+    date
+}
+
+class RequestSale{
+    salePrice
+}
+
+class RequestLease{
+    rentalPrice
+    durationOfContract
+}
+
+class RequestType {
+    designation
+}
+
+class BusinessType{
+    designation
+}
+
+class Visit{
+    data
+    report
+}
+
+class Employee{
+}
+
+Person <|.. Employee
+Person "1" -- "*" Visit: requests >
+Person "*" -- "*" Advertisement: searches >
+
+Employee "1" -left- "*" Visit:  carries out >
+Employee "1" -- "*" Request: publishes >
+
+Location <|.left. Person
+Location <|.. Property
+
+Property <|.. House
+Property <|.. Land
+Property <|.. Apartment
+Property "*" -right- "1" PropertyType: contains >
+
+Advertisement "1" -- "*" Visit: hosts >
+
+Request "*" -- "1" BusinessType: contains >
+Request "1" -- "1" Property
+Request "1" -- "1" Advertisement:contains <
+Request "1" -right- "1" RequestType
+Request <|.. RequestSale
+Request <|.. RequestLease
+
+
+
+@enduml

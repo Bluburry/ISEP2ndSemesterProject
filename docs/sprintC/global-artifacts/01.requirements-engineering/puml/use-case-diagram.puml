@@ -1,0 +1,29 @@
+@startuml
+'skinparam monochrome true
+skinparam packageStyle rectangle
+'skinparam shadowing false
+
+skinparam rectangle{
+    BorderColor yellow
+}
+
+'title Use Case Diagram Example
+
+left to right direction
+
+usecase "UC1 - List of Properties" as UC1
+"Unregistered User" --> UC1
+usecase "UC2 - Publish Sale Announcement" as UC2
+Agent --> UC2
+usecase "UC3 - Register Employee" as UC3
+"System Administrator" --> UC3
+usecase "UC4 - Request for Listing a Property Sale or Rent" as UC4
+Owner-->UC4
+usecase "UC5 - Register a Store" as UC5
+"System Administrator" --> UC5
+usecase "UC6 - Specify stateUS, city, and district" as UC6
+"System Administrator" --> UC6
+usecase "UC7 - Register in the system" as UC7
+"Unregistered User" --> UC7
+
+@enduml

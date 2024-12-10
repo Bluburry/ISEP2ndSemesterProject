@@ -1,0 +1,46 @@
+@startuml Sequence Diagram Partial - List Property Request
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Partial - Get Agent Info
+autonumber
+
+'hide footbox
+participant ":ListPropertyRequestsController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant ":ApplicationSession" as _APP
+participant "appSession\n:ApplicationSession" as APP
+participant "currentSession\n:UserSession" as SESSAO
+participant "repositories\n:Repositories" as PLAT
+participant "personRepository\n:PersonRepository" as PersonRepository
+
+autonumber 6
+
+activate CTRL
+	CTRL -> _APP : getInstance()
+	activate _APP
+		_APP -> CTRL: appSession
+	deactivate _APP
+
+	CTRL -> APP: getCurrentSession()
+	activate APP
+		APP --> CTRL: currentSession
+	deactivate APP
+
+	CTRL -> SESSAO: getUserEmail()
+	activate SESSAO
+		SESSAO --> CTRL: employeeEmail
+	deactivate SESSAO
+
+	CTRL -> PLAT : getPersonRepository()
+	activate PLAT
+		PLAT --> CTRL : PersonRepository
+	deactivate PLAT
+	CTRL -> PersonRepository : getPersonByEmail(agentEmail)
+	activate PersonRepository
+		PersonRepository --> CTRL : employee
+	deactivate PersonRepository
+deactivate CTRL
+
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram Parcial Create New Property (SSD)
+
+
+'hide footbox
+
+participant ":SubmitPropertyController" as CTRL
+
+participant "repositories\n:Repositories" as repositories
+participant "propertyRepository\n:PropertyRepository" as propertyRepository
+
+autonumber 65
+
+            CTRL -> repositories : getPropertyRepository()
+            activate repositories
+
+                repositories --> CTRL: PropertyRepository
+                deactivate repositories
+
+            CTRL -> propertyRepository: newProperty (propertyType, \narea cms. Distance Kms,\n location(street, zipcode, stateUS, city, district), photo)
+            activate propertyRepository
+
+                propertyRepository -> CTRL: newProperty
+                deactivate propertyRepository
+
+@enduml

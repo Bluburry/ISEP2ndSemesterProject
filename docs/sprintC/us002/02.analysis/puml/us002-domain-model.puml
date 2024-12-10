@@ -1,0 +1,108 @@
+@startuml Domain Model - Create Sale Announcement
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+class "Agent" as Employee
+
+class Person {
+	email
+	name
+	citizenID
+	tin
+	phoneNumber
+}
+
+class Employee {
+    role
+}
+
+enum PropertyType{
+    designation
+}
+
+class Land {
+    area
+    distance
+    photographs
+    street
+    zip
+    state
+    city
+    district
+}
+
+class Apartment {
+    area
+    distance
+    photographs
+    street
+    zip
+    state
+    city
+    district
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+}
+
+class House {
+    area
+    distance
+    photographs
+    street
+    zip
+    state
+    city
+    district
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+    basement
+    loft
+    sunExposure
+}
+
+enum BusinessType {
+    description
+}
+
+class Request {
+    date
+    durationOfContract
+    price
+}
+
+class CommissionType {
+    designation
+}
+
+class Advertisement {
+    date
+    commissionValue
+}
+
+Employee "1" -- "*" Advertisement : creates >
+Advertisement "1" -- "1" Request : has >
+Advertisement "1" -- "1" CommissionType : has >
+
+Person "1" -- "*" Request : makes >
+
+Request "1" -- "1" BusinessType : has >
+
+Request "1" -- "0..1" Land : has >
+Request "1" -- "0..1" Apartment : has >
+Request "1" -- "0..1" House : has >
+
+Land "1" -- "1" PropertyType : has >
+Apartment "1" -- "1" PropertyType : has >
+House "1" -- "1" PropertyType : has >
+
+@enduml

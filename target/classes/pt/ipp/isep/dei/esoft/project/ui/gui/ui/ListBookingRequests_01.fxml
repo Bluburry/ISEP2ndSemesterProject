@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="410.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipp.isep.dei.esoft.project.ui.gui.ui.BookingRequestListControllerScene1">
+  <children>
+    <MenuBar visible="false" VBox.vgrow="NEVER" />
+      <Label alignment="CENTER" layoutX="350.0" prefHeight="30.0" prefWidth="700.0" text="ListBookingRequests_01" />
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <children>
+            <Button fx:id="next01" alignment="CENTER" layoutX="519.0" layoutY="310.0" mnemonicParsing="false" onMouseClicked="#next01Click" text="Next" />
+            <TextField fx:id="startYear" layoutX="88.0" layoutY="55.0" />
+            <TextField fx:id="startMonth" layoutX="87.5" layoutY="145.0" />
+            <TextField fx:id="startDay" layoutX="87.5" layoutY="235.0" />
+            <TextField fx:id="endYear" layoutX="464.0" layoutY="55.0" />
+            <TextField fx:id="endMonth" layoutX="464.0" layoutY="145.0" />
+            <TextField fx:id="endDay" layoutX="464.0" layoutY="235.0" />
+        <Label alignment="CENTER" layoutX="333.0" layoutY="54.0" style="&#10;" text="Year" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
+          <font>
+            <Font size="18.0" />
+          </font>
+        </Label>
+            <Label alignment="CENTER" layoutX="324.0" layoutY="144.0" style="&#10;" text="Month" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="335.0" layoutY="234.0" style="&#10;" text="Day" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="144.0" layoutY="12.0" style="&#10;" text="Start" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="524.0" layoutY="12.0" style="&#10;" text="End" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="back01" layoutX="137.0" layoutY="310.0" mnemonicParsing="false" onMouseClicked="#back01Click" text="Back" />
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>

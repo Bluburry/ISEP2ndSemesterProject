@@ -1,0 +1,27 @@
+@startuml Sequence Diagram Partial - Get Visit List
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Partial - Get Visit List
+autonumber
+
+'hide footbox
+participant ":ListBookingRequestsController" as CTRL
+participant "advertisementRepository\n:AdvertisementRepository" as AR
+participant "advertisement\n:Advertisement" as Advertisement
+
+autonumber 31
+-> CTRL : getVisitsList(advertisment, startYear,\nstartMonth, startDay, endYear, endMonth, endDay)
+activate CTRL
+	CTRL -> AR : getAdVisitsByDate(advertisement, algorithm, startYear,\nstartMonth, startDay, endYear, endMonth, endDay)
+	activate AR
+		AR -> Advertisement : getVisitsByAlgorithm(algorithm, startYear,\nstartMonth, startDay, endYear, endMonth, endDay)
+		activate Advertisement
+			Advertisement --> AR : filteredAndSortedVisitList
+		deactivate Advertisement
+		AR --> CTRL : filteredAndSortedVisitList
+	deactivate AR
+deactivate CTRL
+
+@enduml

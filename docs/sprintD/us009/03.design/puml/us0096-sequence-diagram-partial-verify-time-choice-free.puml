@@ -1,0 +1,31 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram Parcial Verify time choice free (SSD)
+
+'hide footbox
+
+participant ":ScheduleVisitController" as CTRL
+
+participant "advertisementCollections\n:AdvertisementCollections" as advertisementCollections
+
+autonumber 55
+
+
+        activate CTRL
+
+
+            CTRL -> advertisementCollections : getVerifyVisitTimeFree(adchoiceVisit,date,hour)
+            activate advertisementCollections
+
+alt (validation = Yes)
+
+            advertisementCollections -> CTRL: getVerifyVisitTimeFree(adchoiceVisit,date,hour)=true
+            deactivate advertisementCollections
+end
+
+        deactivate CTRL
+
+@enduml

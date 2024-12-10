@@ -1,0 +1,39 @@
+@startuml Sequence Diagram Partial - List Property Request
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Partial - Create Advertisement
+autonumber
+
+participant ":ListPropertyRequestsController" as CTRL
+participant "repositories\n:Repositories" as PLAT
+participant "advertisementRepository\n:AdvertisementRepository" as AdvertisementRepository
+participant "advertisement\n:Advertisement" as Advertisement
+
+
+activate CTRL
+	CTRL -> CTRL : removeRequest(request)
+	ref over CTRL
+		Remove Request
+	end ref
+
+	alt advertisementRepository = null
+		CTRL -> PLAT : getAdvertisementRepository()
+		activate PLAT
+			PLAT --> CTRL : AdvertisementRepository
+		deactivate PLAT
+	end
+
+	CTRL -> AdvertisementRepository : createAdvertisement(request,\ncommissionType, commissionValue)
+	activate AdvertisementRepository
+		AdvertisementRepository -> Advertisement** : createAdvertisement(request,\ncommissionType, commissionValue)
+		activate Advertisement
+			Advertisement --> AdvertisementRepository : advertisement
+		deactivate Advertisement
+		AdvertisementRepository --> CTRL : advertisement
+	deactivate AdvertisementRepository
+
+deactivate CTRL
+
+@enduml

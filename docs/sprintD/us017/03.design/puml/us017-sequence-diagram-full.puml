@@ -1,0 +1,83 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "System administrator" as ADM
+participant ":ListDealsUI" as UI
+participant ":ListDealsController" as CTRL
+participant ":Repositories" as RepSingleton
+participant "repositories\n:Repositories" as REPS
+participant "advertisementCollection" as advertisementCollection
+participant "advertisementRepository\n:AdvertisementRepository" as advertisementRepository
+
+activate ADM
+
+        ADM -> UI : asks to show the accepted deals
+        activate UI
+
+            UI -> CTRL** : create
+            activate CTRL
+
+            CTRL -> RepSingleton : getInstance()
+            activate RepSingleton
+
+            RepSingleton --> CTRL: repositories
+            deactivate RepSingleton
+            deactivate CTRL
+
+            UI --> ADM : asks to choose which algorithm will be used.
+            deactivate UI
+
+            ADM -> UI : chooses the algorithm.
+            activate UI
+
+            UI --> ADM : asks to choose which order the information will be displayed.
+            deactivate UI
+
+            ADM -> UI : chooses the order and submits the data
+            activate UI
+
+        UI -> CTRL : listDeals(algorithm, order)
+        activate CTRL
+
+        CTRL -> REPS : getAdvertisementRepository()
+        activate REPS
+
+        REPS --> CTRL : advertisementRepository
+        deactivate REPS
+
+        CTRL -> advertisementCollection : madeDealsSort(algorithm, order)
+        activate advertisementCollection
+
+        advertisementCollection -> advertisementRepository : getAdvertisementList()
+        activate advertisementRepository
+
+        advertisementRepository --> advertisementCollection: advertisementList
+        deactivate advertisementRepository
+
+        alt algorithm == 1
+
+            advertisementCollection -> advertisementCollection : selectionSort(advertisementList, order)
+
+        else algorithm == 2
+
+            advertisementCollection -> advertisementCollection : bubbleSort(advertisementList, order)
+
+        end
+
+        advertisementCollection --> CTRL: sortedAds
+        deactivate advertisementCollection
+
+        CTRL --> UI : sortedAds
+        deactivate CTRL
+
+    UI --> ADM: displays the deals, sorted and ordered.
+    deactivate UI
+
+deactivate ADM
+
+@enduml

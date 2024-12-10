@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="1248px" preserveAspectRatio="none" style="width:943px;height:1248px;background:#FFFFFF;" version="1.1" viewBox="0 0 943 1248" width="943px" zoomAndPan="magnify"><defs/><g><rect fill="none" height="27.6094" id="_title" style="stroke:none;stroke-width:1.0;" width="355" x="295.75" y="10"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="345" x="300.75" y="29.5332">Sequence Diagram Partial - List Property Request</text><rect fill="#FFFFFF" height="1025.4609" style="stroke:#181818;stroke-width:1.0;" width="10" x="46.5" y="131.2188"/><rect fill="#FFFFFF" height="298.6094" style="stroke:#181818;stroke-width:1.0;" width="10" x="397.5" y="153.5703"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="397.5" y="482.5313"/><rect fill="#FFFFFF" height="137.5" style="stroke:#181818;stroke-width:1.0;" width="10" x="397.5" y="568.5859"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="397.5" y="752.2734"/><rect fill="#FFFFFF" height="153.8516" style="stroke:#181818;stroke-width:1.0;" width="10" x="397.5" y="812.9766"/><rect fill="#FFFFFF" height="160.5" style="stroke:#181818;stroke-width:1.0;" width="10" x="397.5" y="997.1797"/><rect fill="#FFFFFF" height="79.0547" style="stroke:#181818;stroke-width:1.0;" width="10" x="804.5" y="193.9219"/><rect fill="#FFFFFF" height="76.7969" style="stroke:#181818;stroke-width:1.0;" width="10" x="804.5" y="328.6797"/><rect fill="#FFFFFF" height="76.7969" style="stroke:#181818;stroke-width:1.0;" width="10" x="804.5" y="598.9375"/><rect fill="#FFFFFF" height="76.7969" style="stroke:#181818;stroke-width:1.0;" width="10" x="804.5" y="843.3281"/><rect fill="#FFFFFF" height="76.7969" style="stroke:#181818;stroke-width:1.0;" width="10" x="804.5" y="1027.5313"/><rect fill="none" height="861.7031" style="stroke:#000000;stroke-width:1.5;" width="927.5" x="10" y="287.9766"/><rect fill="none" height="614.7969" style="stroke:#000000;stroke-width:1.5;" width="907.5" x="20" y="527.8828"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="51" x2="51" y1="121.2188" y2="1166.6797"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="402.5" x2="402.5" y1="121.2188" y2="1166.6797"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="809.5" x2="809.5" y1="192.875" y2="1166.6797"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="30" y="118.1426">Agent</text><ellipse cx="51.5" cy="52.1094" fill="#E3E3E3" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M51.5,60.1094 L51.5,87.1094 M38.5,68.1094 L64.5,68.1094 M51.5,87.1094 L38.5,102.1094 M51.5,87.1094 L64.5,102.1094 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="30" y="1180.2129">Agent</text><ellipse cx="51.5" cy="1191.7891" fill="#E3E3E3" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M51.5,1199.7891 L51.5,1226.7891 M38.5,1207.7891 L64.5,1207.7891 M51.5,1226.7891 L38.5,1241.7891 M51.5,1226.7891 L64.5,1241.7891 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><rect fill="#E3E3E3" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="166" x="319.5" y="88.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="152" x="326.5" y="110.1426">:ListPropertyRequestsUI</text><rect fill="#E3E3E3" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="166" x="319.5" y="1165.6797"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="152" x="326.5" y="1187.2129">:ListPropertyRequestsUI</text><rect fill="#E3E3E3" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="216" x="701.5" y="1165.6797"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="202" x="708.5" y="1187.2129">:ListPropertyRequestsController</text><rect fill="#FFFFFF" height="1025.4609" style="stroke:#181818;stroke-width:1.0;" width="10" x="46.5" y="131.2188"/><rect fill="#FFFFFF" height="298.6094" style="stroke:#181818;stroke-width:1.0;" width="10" x="397.5" y="153.5703"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="397.5" y="482.5313"/><rect fill="#FFFFFF" height="137.5" style="stroke:#181818;stroke-width:1.0;" width="10" x="397.5" y="568.5859"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="397.5" y="752.2734"/><rect fill="#FFFFFF" height="153.8516" style="stroke:#181818;stroke-width:1.0;" width="10" x="397.5" y="812.9766"/><rect fill="#FFFFFF" height="160.5" style="stroke:#181818;stroke-width:1.0;" width="10" x="397.5" y="997.1797"/><rect fill="#FFFFFF" height="79.0547" style="stroke:#181818;stroke-width:1.0;" width="10" x="804.5" y="193.9219"/><rect fill="#FFFFFF" height="76.7969" style="stroke:#181818;stroke-width:1.0;" width="10" x="804.5" y="328.6797"/><rect fill="#FFFFFF" height="76.7969" style="stroke:#181818;stroke-width:1.0;" width="10" x="804.5" y="598.9375"/><rect fill="#FFFFFF" height="76.7969" style="stroke:#181818;stroke-width:1.0;" width="10" x="804.5" y="843.3281"/><rect fill="#FFFFFF" height="76.7969" style="stroke:#181818;stroke-width:1.0;" width="10" x="804.5" y="1027.5313"/><polygon fill="#181818" points="385.5,149.5703,395.5,153.5703,385.5,157.5703,389.5,153.5703" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="56.5" x2="391.5" y1="153.5703" y2="153.5703"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="63.5" y="148.7139">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="176" x="74.5" y="148.7139">asks to view property requests</text><polygon fill="#181818" points="689.5,179.9219,699.5,183.9219,689.5,187.9219,693.5,183.9219" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="407.5" x2="695.5" y1="183.9219" y2="183.9219"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="414.5" y="179.0654">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="43" x="425.5" y="179.0654">creates</text><rect fill="#E3E3E3" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="216" x="701.5" y="161.5703"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="202" x="708.5" y="183.1035">:ListPropertyRequestsController</text><rect fill="none" height="41.4453" style="stroke:#000000;stroke-width:1.5;" width="222" x="698.5" y="204.1797"/><path d="M698.5,204.1797 L760.5,204.1797 L760.5,212.1797 L750.5,222.1797 L698.5,222.1797 L698.5,204.1797 " fill="#EEEEEE" style="stroke:#000000;stroke-width:2.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="17" x="711.5" y="219.6748">ref</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="93" x="763" y="238.6367">Get Repositories</text><polygon fill="#181818" points="418.5,268.9766,408.5,272.9766,418.5,276.9766,414.5,272.9766" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="412.5" x2="808.5" y1="272.9766" y2="272.9766"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="424.5" y="268.1201">3</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="435.5" y="268.1201"> </text><path d="M10,287.9766 L83,287.9766 L83,296.3281 L73,306.3281 L10,306.3281 L10,287.9766 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="861.7031" style="stroke:#000000;stroke-width:1.5;" width="927.5" x="10" y="287.9766"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="28" x="25" y="302.4717">loop</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="90" x="98" y="301.3955">[while intended]</text><polygon fill="#181818" points="792.5,324.6797,802.5,328.6797,792.5,332.6797,796.5,328.6797" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="407.5" x2="798.5" y1="328.6797" y2="328.6797"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="414.5" y="323.8232">4</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="95" x="425.5" y="323.8232">getRequestList()</text><rect fill="none" height="41.4453" style="stroke:#000000;stroke-width:1.5;" width="222" x="698.5" y="336.6797"/><path d="M698.5,336.6797 L760.5,336.6797 L760.5,344.6797 L750.5,354.6797 L698.5,354.6797 L698.5,336.6797 " fill="#EEEEEE" style="stroke:#000000;stroke-width:2.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="17" x="711.5" y="352.1748">ref</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="92" x="763.5" y="371.1367">Get Request List</text><polygon fill="#181818" points="418.5,401.4766,408.5,405.4766,418.5,409.4766,414.5,405.4766" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="412.5" x2="808.5" y1="405.4766" y2="405.4766"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="424.5" y="400.6201">5</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="71" x="435.5" y="400.6201">requestsList</text><polygon fill="#181818" points="67.5,448.1797,57.5,452.1797,67.5,456.1797,63.5,452.1797" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="61.5" x2="401.5" y1="452.1797" y2="452.1797"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="73.5" y="439.1475">6</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="306" x="84.5" y="430.9717">shows list of property requests assigned to the agent</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="132" x="84.5" y="447.3232">and asks to select one</text><polygon fill="#181818" points="385.5,478.5313,395.5,482.5313,385.5,486.5313,389.5,482.5313" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="56.5" x2="391.5" y1="482.5313" y2="482.5313"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="63.5" y="477.6748">7</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="114" x="74.5" y="477.6748">selects one request</text><polygon fill="#181818" points="67.5,508.8828,57.5,512.8828,67.5,516.8828,63.5,512.8828" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="61.5" x2="401.5" y1="512.8828" y2="512.8828"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="73.5" y="508.0264">8</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="179" x="84.5" y="508.0264">asks wether to accept or reject</text><path d="M20,527.8828 L81,527.8828 L81,536.2344 L71,546.2344 L20,546.2344 L20,527.8828 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="614.7969" style="stroke:#000000;stroke-width:1.5;" width="907.5" x="20" y="527.8828"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="16" x="35" y="542.3779">alt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="94" x="96" y="541.3018">[rejects request]</text><polygon fill="#181818" points="385.5,564.5859,395.5,568.5859,385.5,572.5859,389.5,568.5859" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="56.5" x2="391.5" y1="568.5859" y2="568.5859"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="63.5" y="563.7295">9</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="86" x="74.5" y="563.7295">rejects request</text><polygon fill="#181818" points="792.5,594.9375,802.5,598.9375,792.5,602.9375,796.5,598.9375" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="407.5" x2="798.5" y1="598.9375" y2="598.9375"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="414.5" y="594.0811">10</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="140" x="432.5" y="594.0811">removeRequest(request)</text><rect fill="none" height="41.4453" style="stroke:#000000;stroke-width:1.5;" width="222" x="698.5" y="606.9375"/><path d="M698.5,606.9375 L760.5,606.9375 L760.5,614.9375 L750.5,624.9375 L698.5,624.9375 L698.5,606.9375 " fill="#EEEEEE" style="stroke:#000000;stroke-width:2.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="17" x="711.5" y="622.4326">ref</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="103" x="758" y="641.3945">Removes Request</text><polygon fill="#181818" points="418.5,671.7344,408.5,675.7344,418.5,679.7344,414.5,675.7344" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="412.5" x2="808.5" y1="675.7344" y2="675.7344"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="424.5" y="670.8779">11</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="442.5" y="670.8779"> </text><polygon fill="#181818" points="67.5,702.0859,57.5,706.0859,67.5,710.0859,63.5,706.0859" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="61.5" x2="401.5" y1="706.0859" y2="706.0859"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="73.5" y="701.2295">12</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="158" x="91.5" y="701.2295">displays operation success</text><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="20" x2="927.5" y1="715.0859" y2="715.0859"/><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="98" x="25" y="726.5049">[accepts request]</text><polygon fill="#181818" points="385.5,748.2734,395.5,752.2734,385.5,756.2734,389.5,752.2734" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="56.5" x2="391.5" y1="752.2734" y2="752.2734"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="63.5" y="747.417">13</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="93" x="81.5" y="747.417">accepts request</text><polygon fill="#181818" points="67.5,778.625,57.5,782.625,67.5,786.625,63.5,782.625" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="61.5" x2="401.5" y1="782.625" y2="782.625"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="73.5" y="777.7686">14</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="146" x="91.5" y="777.7686">requests comission value</text><polygon fill="#181818" points="385.5,808.9766,395.5,812.9766,385.5,816.9766,389.5,812.9766" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="56.5" x2="391.5" y1="812.9766" y2="812.9766"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="63.5" y="808.1201">15</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="122" x="81.5" y="808.1201">types requested data</text><polygon fill="#181818" points="792.5,839.3281,802.5,843.3281,792.5,847.3281,796.5,843.3281" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="407.5" x2="798.5" y1="843.3281" y2="843.3281"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="414.5" y="838.4717">16</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="115" x="432.5" y="838.4717">getComissionType()</text><rect fill="none" height="41.4453" style="stroke:#000000;stroke-width:1.5;" width="222" x="698.5" y="851.3281"/><path d="M698.5,851.3281 L760.5,851.3281 L760.5,859.3281 L750.5,869.3281 L698.5,869.3281 L698.5,851.3281 " fill="#EEEEEE" style="stroke:#000000;stroke-width:2.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="17" x="711.5" y="866.8232">ref</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="130" x="744.5" y="885.7852">Get Commission Types</text><polygon fill="#181818" points="418.5,916.125,408.5,920.125,418.5,924.125,414.5,920.125" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="412.5" x2="808.5" y1="920.125" y2="920.125"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="424.5" y="915.2686">17</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="119" x="442.5" y="915.2686">commissionTypeList</text><polygon fill="#181818" points="67.5,962.8281,57.5,966.8281,67.5,970.8281,63.5,966.8281" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="61.5" x2="401.5" y1="966.8281" y2="966.8281"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="73.5" y="953.7959">18</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="161" x="91.5" y="945.6201">shows commission type list</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="132" x="91.5" y="961.9717">and asks to select one</text><polygon fill="#181818" points="385.5,993.1797,395.5,997.1797,385.5,1001.1797,389.5,997.1797" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="56.5" x2="391.5" y1="997.1797" y2="997.1797"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="63.5" y="992.3232">19</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="145" x="81.5" y="992.3232">selects commission type</text><polygon fill="#181818" points="792.5,1023.5313,802.5,1027.5313,792.5,1031.5313,796.5,1027.5313" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="407.5" x2="798.5" y1="1027.5313" y2="1027.5313"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="414.5" y="1022.6748">20</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="360" x="432.5" y="1022.6748">approveRequest(request, commissionValue, commissionType)</text><rect fill="none" height="41.4453" style="stroke:#000000;stroke-width:1.5;" width="222" x="698.5" y="1035.5313"/><path d="M698.5,1035.5313 L760.5,1035.5313 L760.5,1043.5313 L750.5,1053.5313 L698.5,1053.5313 L698.5,1035.5313 " fill="#EEEEEE" style="stroke:#000000;stroke-width:2.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="17" x="711.5" y="1051.0264">ref</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="118" x="750.5" y="1069.9883">Create Advertisement</text><polygon fill="#181818" points="418.5,1100.3281,408.5,1104.3281,418.5,1108.3281,414.5,1104.3281" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="412.5" x2="808.5" y1="1104.3281" y2="1104.3281"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="424.5" y="1099.4717">21</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="80" x="442.5" y="1099.4717">advertisement</text><polygon fill="#181818" points="67.5,1130.6797,57.5,1134.6797,67.5,1138.6797,63.5,1134.6797" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="61.5" x2="396.5" y1="1134.6797" y2="1134.6797"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="73.5" y="1129.8232">22</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="179" x="91.5" y="1129.8232">displays created advertisement</text><!--MD5=[bb04d3ef20c32e7157a7bf48c3fce855]
+@startuml Sequence Diagram - List Property Request
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Partial - List Property Request
+autonumber
+
+'hide footbox
+actor "Agent" as AG
+participant ":ListPropertyRequestsUI" as UI
+participant ":ListPropertyRequestsController" as CTRL
+
+activate AG
+
+    AG -> UI : asks to view property requests
+    activate UI
+        UI -> CTRL** : creates
+        
+		activate CTRL
+		ref over CTRL
+			Get Repositories
+		end ref
+		CTRL - -> UI
+		deactivate CTRL
+
+    loop while intended
+
+        UI -> CTRL : getRequestList()
+
+		activate CTRL
+			ref over CTRL
+				Get Request List
+			end ref
+
+			CTRL - -> UI : requestsList
+		deactivate CTRL
+
+		UI - -> AG : shows list of property requests assigned to the agent\nand asks to select one
+    deactivate UI
+
+	AG -> UI : selects one request
+	activate UI
+		UI - -> AG : asks wether to accept or reject
+	deactivate UI
+
+	alt rejects request
+		AG -> UI : rejects request
+		activate UI
+			UI -> CTRL : removeRequest(request)
+
+			activate CTRL
+				ref over CTRL
+					Removes Request
+				end ref
+			CTRL - -> UI
+			deactivate CTRL
+
+			UI - -> AG : displays operation success
+		deactivate UI
+
+
+	else accepts request
+		AG -> UI : accepts request
+		activate UI
+			UI - -> AG : requests comission value
+		deactivate UI
+	
+		AG -> UI : types requested data
+		activate UI
+			UI -> CTRL : getComissionType()
+
+			activate CTRL
+				ref over CTRL
+					Get Commission Types
+				end ref
+
+				CTRL - -> UI : commissionTypeList
+			deactivate CTRL
+
+			UI - -> AG : shows commission type list\nand asks to select one
+		deactivate UI
+
+		AG -> UI : selects commission type
+		activate UI
+			UI -> CTRL : approveRequest(request, commissionValue, commissionType)
+
+			activate CTRL
+				ref over CTRL
+					Create Advertisement
+				end ref
+
+				CTRL - -> UI : advertisement
+			deactivate CTRL
+
+			UI - -> AG : displays created advertisement
+		end
+	end
+
+
+deactivate AG
+
+@enduml
+
+@startuml Sequence Diagram - List Property Request
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Partial - List Property Request
+autonumber
+
+actor "Agent" as AG
+participant ":ListPropertyRequestsUI" as UI
+participant ":ListPropertyRequestsController" as CTRL
+
+activate AG
+
+    AG -> UI : asks to view property requests
+    activate UI
+        UI -> CTRL** : creates
+        
+		activate CTRL
+		ref over CTRL
+			Get Repositories
+		end ref
+		CTRL - -> UI
+		deactivate CTRL
+
+    loop while intended
+
+        UI -> CTRL : getRequestList()
+
+		activate CTRL
+			ref over CTRL
+				Get Request List
+			end ref
+
+			CTRL - -> UI : requestsList
+		deactivate CTRL
+
+		UI - -> AG : shows list of property requests assigned to the agent\nand asks to select one
+    deactivate UI
+
+	AG -> UI : selects one request
+	activate UI
+		UI - -> AG : asks wether to accept or reject
+	deactivate UI
+
+	alt rejects request
+		AG -> UI : rejects request
+		activate UI
+			UI -> CTRL : removeRequest(request)
+
+			activate CTRL
+				ref over CTRL
+					Removes Request
+				end ref
+			CTRL - -> UI
+			deactivate CTRL
+
+			UI - -> AG : displays operation success
+		deactivate UI
+
+
+	else accepts request
+		AG -> UI : accepts request
+		activate UI
+			UI - -> AG : requests comission value
+		deactivate UI
+	
+		AG -> UI : types requested data
+		activate UI
+			UI -> CTRL : getComissionType()
+
+			activate CTRL
+				ref over CTRL
+					Get Commission Types
+				end ref
+
+				CTRL - -> UI : commissionTypeList
+			deactivate CTRL
+
+			UI - -> AG : shows commission type list\nand asks to select one
+		deactivate UI
+
+		AG -> UI : selects commission type
+		activate UI
+			UI -> CTRL : approveRequest(request, commissionValue, commissionType)
+
+			activate CTRL
+				ref over CTRL
+					Create Advertisement
+				end ref
+
+				CTRL - -> UI : advertisement
+			deactivate CTRL
+
+			UI - -> AG : displays created advertisement
+		end
+	end
+
+
+deactivate AG
+
+@enduml
+
+PlantUML version 1.2022.7(Mon Aug 22 18:01:30 WEST 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: GB
+--></g></svg>

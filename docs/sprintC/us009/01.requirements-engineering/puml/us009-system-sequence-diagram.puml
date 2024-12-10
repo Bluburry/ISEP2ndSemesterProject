@@ -1,0 +1,38 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD)
+
+autonumber
+
+'Client Schedule Visit
+
+actor "Client" as User
+participant ":System" as System
+
+activate User
+
+    User -> System : asks to schedule a visit
+        activate System
+
+	    System --> User :display and asks to chosse a Property
+        deactivate System
+
+    User -> System : selects the property
+        activate System
+
+        System --> User : requests data: date and hour to visit
+        deactivate System
+
+    User -> System : input data: date and hour to visit
+        activate System
+
+        System -> User : shows confimation of schedule visit
+        deactivate System
+
+ deactivate User
+
+
+@enduml

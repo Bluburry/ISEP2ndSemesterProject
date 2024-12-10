@@ -1,0 +1,217 @@
+@startuml
+'skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+'skinparam linetype orto
+
+skinparam classAttributeIconSize 0
+
+'left to right direction
+
+class ImportFileUI{
+    + create ImportFileController
+}
+
+class ImportFileController{
+    + getInstance()
+    + importInformation(fileLocation)
+}
+
+class Repositories {
+    - Repositories()
+    + getInstance() : Repositories
+    + getAuthenticationRepository()
+    + getPersonRepository()
+    + getStoreRepository()
+    + getPropertyRepository()
+    + getRequestRepository()
+    + getAdvertisementRepository()
+}
+
+class FileClassCollection {
+    + importInformation(fileLocation)
+}
+
+enum PropertyType{
+    - String description
+}
+
+interface Property{}
+
+class Land {
+    - PropertyType propertyType
+    - double area
+    - double distance
+    - String street
+    - String zip
+    - String state
+    - String city
+    - String district
+    - List<String> photographs
+}
+
+class House {
+    - PropertyType propertyType
+    - double area
+    - double distance
+    - String street
+    - String zip
+    - String state
+    - String city
+    - String district
+    - List<String> photographs
+    - int numberBedrooms
+    - int numberParking
+    - int numberBathrooms
+    - String availableEquipment
+    - boolean loft
+    - boolean basement
+    - SunExposure sunExposure
+}
+
+class Apartment {
+    - PropertyType propertyType
+    - double area
+    - double distance
+    - String street
+    - String zip
+    - String state
+    - String city
+    - String district
+    - List<String> photographs
+    - int numberBedrooms
+    - int numberParking
+    - int numberBathrooms
+    - String availableEquipment
+}
+
+interface Request{}
+
+class RequestSale{
+    + Date date
+    + BusinessType businessType
+    + Property property
+    +   owner
+    + Employee agent
+    + double salePrice
+}
+
+class RequestLease{
+    + Date date
+    + BusinessType businessType
+    + Property property
+    + Person owner
+    + Employee agent
+    + int durationOfContract
+    + double rentPrice
+}
+
+enum BusinessType {
+    - String description
+}
+
+class Store{
+    - String name
+    - Email emailAddress
+    - int phoneNumber
+    - String idStore
+}
+
+class Person{
+    - Email emailAddress
+    - String name
+    - int passport
+    - int tin
+    - int phoneNumber
+    - String street
+    - String zip
+    - String state
+    - String city
+    - String district
+}
+
+interface Location{}
+
+class Advertisement {
+    - Date date
+    - Request request
+    - CommissionType commissionType
+    - double commissionValue
+    - List<Visit> visits
+    - List<Offer> offers
+}
+
+enum ComissionType {
+    - String description
+}
+
+class PersonRepository {
+    + addPerson(email, name, citizenNum, tin, phoneNum, userRole)
+}
+
+class StoreRepository {
+    + addStore(id, name, email, phoneNum)
+}
+
+class PropertyRepository {
+    + createNewProperty(propertyType, areaProperty, \n  distanceCityCenter, photographs, street, zipCode, stateUS, city, district)
+    + createNewApartmentProperty(propertyType, areaProperty, distanceCityCenter, photographs, street, \n  zipCode, stateUS, city, district, numberBedrooms, numberParking, numberBathrooms, availableEquipment)
+    + createNewHouseProperty(propertyType, areaProperty, distanceCityCenter, photographs, street, zipCode, stateUS, \n  city, district, numberBedrooms, numberParking, numberBathrooms, availableEquipment, basement, loft, sunExposure)
+}
+
+class RequestRepository {
+    + createSaleRequest(land, businessType, owner, agent, salePrice)
+    + createLeaseRequest(land, businessType, owner, agent, salePrice)
+    + createSaleRequest(apartment, businessType, owner, agent, salePrice)
+    + createSaleRequest(apartment, businessType, owner, agent, salePrice)
+    + createSaleRequest(house, businessType, owner, agent, salePrice)
+    + createSaleRequest(house, businessType, owner, agent, salePrice)
+}
+
+class AdvertisementRepository {
+    + createNewAdvertisement(request, date, commissionType, commissionValue)
+}
+
+Repositories -> Repositories : instance
+ImportFileController .> Repositories : repositories
+
+ImportFileUI .> ImportFileController
+
+
+'Repositories --> "1" AuthenticationRepository
+Repositories --> "1" PersonRepository
+Repositories --> "1" StoreRepository
+Repositories --> "1" PropertyRepository
+Repositories --> "1" RequestRepository
+Repositories --> "1" AdvertisementRepository
+Repositories --> "1" FileClassCollection
+
+PersonRepository --> "*" Person
+
+Location <|.. Person
+
+StoreRepository --> "*" Store
+
+RequestRepository --> "*" Request
+
+Request -> "1" BusinessType
+Request <|.. RequestSale
+Request <|.. RequestLease
+
+AdvertisementRepository --> "*" Advertisement
+
+Advertisement --> "1" ComissionType
+
+PropertyRepository --> "*" Property
+
+Property -> "1" PropertyType
+Property <|.. House
+Property <|.. Land
+Property <|.. Apartment
+
+Location <|.. House
+Location <|.. Land
+Location <|.. Apartment
+
+@enduml

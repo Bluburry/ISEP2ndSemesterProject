@@ -1,0 +1,168 @@
+@startuml Sequence Diagram (SD) - Create sale announcement
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Agent" as AG
+participant ":CreateSaleAnnouncementUI" as UI
+participant ":CreateSaleAnnouncementController" as CTRL
+
+activate AG
+
+    AG -> UI : asks to create a new sale announcement
+    activate UI
+        UI -> CTRL** : creates
+        activate CTRL
+		ref over CTRL
+			Get Preliminary Info
+		end ref
+		CTRL --> UI
+        deactivate CTRL
+
+loop while intended
+
+        UI --> AG : request owner data (email)
+    deactivate UI
+
+    AG -> UI : types requested data
+    activate UI
+
+        UI ->  CTRL : getOwner(email)
+
+            activate CTRL
+                ref over CTRL
+                    Get Owner
+                end ref
+                CTRL --> UI : person
+            deactivate CTRL
+
+        UI --> AG : requests general property data\n(area, distance from city center)
+    deactivate UI
+    
+    AG -> UI : types requested data
+    activate UI
+        UI --> AG : requests property location data\n(state, city, district, street, zip code)
+    deactivate UI
+
+    AG -> UI : types requested data
+    activate UI
+        UI -> CTRL : getBusinessTypes()
+
+        activate CTRL
+            ref over CTRL
+                Get Business Type List
+            end ref
+        CTRL --> UI : businessTypeList
+        deactivate CTRL
+
+        UI --> AG : shows business type list\nand asks to select one
+    deactivate UI
+
+    AG -> UI : selects a business type
+    activate UI
+    alt businessType = sale
+        UI --> AG : request sale price
+    else businessType = rent
+        UI --> AG : request price per month
+    AG -> UI : types requested data
+        UI --> AG : request lease duration
+    deactivate UI
+    end
+
+    AG -> UI : types requested data
+    activate UI
+        UI -> CTRL : getPropertyTypes()
+
+        activate CTRL
+            ref over CTRL
+                Get Property Types List
+            end ref
+            CTRL --> UI : propertyTypeList
+        deactivate CTRL
+        
+        UI --> AG : shows property type list\nand asks to select one
+    deactivate UI
+    
+    AG -> UI : selects a property type
+    alt property = house or apartment
+        activate UI
+            UI --> AG : requests specific data\n(number of bedrooms, number of parking spaces)
+        deactivate UI
+        AG -> UI : types requested data
+
+        opt
+            activate UI
+                UI --> AG : requests optional data\n(number of bathrooms, available equipment)
+            deactivate UI
+            AG -> UI : types requested data
+            activate UI
+        end
+
+        alt property = house
+            opt
+                activate UI
+                    UI --> AG : requests optional data\n(existing basement, inhabitable loft)
+                deactivate UI
+                AG -> UI : types requested data
+
+                activate UI
+                    UI -> CTRL : getSunExposureLocation()
+                    activate CTRL
+                        ref over CTRL
+                            Get Sun Exposure List
+                        end ref
+                        CTRL --> UI : sunExposureLocationList
+                    deactivate CTRL
+                
+                UI --> AG : shows sun exposure location list\nand asks to select one
+                deactivate UI
+                AG -> UI : select a sun exposure location
+                activate UI
+            end
+        end
+    end
+
+    loop [for at least 1 photograph]
+            UI --> AG : requests photograph
+        deactivate UI
+        AG -> UI : submits requested data
+        activate UI
+    end
+    
+        UI --> AG : requests comission value
+        deactivate UI
+    
+    AG -> UI : submits requested data
+    activate UI
+        UI -> CTRL : getComissionType()
+        
+        activate CTRL
+        ref over CTRL
+            Get Commission Type List
+        end ref
+            CTRL --> UI : commissionTypeList
+        deactivate CTRL
+
+        UI --> AG : shows commission type list\nand asks to select one
+    deactivate UI
+
+    AG -> UI : selects commission type
+    activate UI
+        UI -> CTRL : createAdvertisement(owner, propertyType,\nbusinessType, commissionValue, commissionInfo,\nnumBedrooms, numParkingSpaces, numBathrooms,\navailableEquipment, state, city, district, street, zip,\nbasement, loft, sunExposure, photographs)
+        activate CTRL
+		ref over CTRL
+			Create Advertisement
+		end ref
+            CTRL --> UI : advertisement
+        deactivate CTRL
+        
+        UI --> AG : displays operation success
+    deactivate UI
+
+deactivate AG
+end
+
+@enduml

@@ -1,0 +1,7 @@
+Email Domain: DEI
+AgentEmail to Send: AgenteJoao@emprese.pt
+ 	ClientEmail to Receive: cliente@this.app
+ Dear Mrs or Ms Cliente Name
+ Your Visit Request is been Schedule.
+Have a nice day
+Real State Agent: joaoPhoneNumber: 2041852963,000000

@@ -1,0 +1,63 @@
+@startuml
+'skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+'skinparam linetype orto
+
+skinparam classAttributeIconSize 0
+
+left to right direction
+
+
+RegisterUserUI .> RegisterUserController
+
+
+RegisterUserController ..> Repositories : repositories
+
+Repositories --> "1" AuthenticationRepository
+Repositories --> "1" PersonRepository
+
+Repositories --> Repositories : instance
+
+RegisterUserController ..> PersonRepository:personRepository
+RegisterUserController ..> AuthenticationRepository:authRepository
+
+
+class RegisterUserUI {
++create RegisterUserController
+}
+
+
+class RegisterUserController {
+    +boolean registerUserWithClientAndOwnerPerms(String[] roles, String keepName, String keepEmail, String keepPassword, String keepCitizenNumber, String keepPhoneNumber, String keepTin, String keepStreet, String keepZipCode, String keepStateUS, String keepCity, String keepDistrict,boolean option)}
+}
+
+
+class Repositories {
+    - Repositories()
+    + getInstance() : Repositories
+    + getauthenticationRepository()
+    + getPersonRepository()
+}
+
+class AuthenticationRepository {
+
+}
+
+class PersonRepository {
+    -List<Person> persons
+    +boolean addPerson(String keepEmail,String keepName,String keepCitizenNumber,String keepTin,String keepPhoneNumber)
+    +boolean addEmployee(String keepEmail,String keepName,String keepCitizenNumber,String keepTin,String keepPhoneNumber,String role)
+    +boolean addEmployeeWithLocation(String keepEmail,String keepName,String keepCitizenNumber,String keepTin,String keepPhoneNumber,String keepStreet,String keepZipCode,String keepStateUS,String keepCity,String keepDistrict,String role)
+    +boolean addPersonWithLocation(String keepEmail,String keepName,String keepCitizenNumber,String keepTin,String keepPhoneNumber,String keepStreet,String keepZipCode,String keepStateUS,String keepCity,String keepDistrict)
+
+}
+
+
+
+
+
+
+
+@enduml

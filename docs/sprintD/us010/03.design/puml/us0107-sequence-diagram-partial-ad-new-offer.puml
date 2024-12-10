@@ -1,0 +1,25 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram Parcial Ad New Offer to Advertisement (SSD)
+
+autonumber
+
+'hide footbox
+participant ":chooseAgentController" as CTRL
+
+participant "advertisementRepository\n:AdvertisementRepository" as advertisementRepository
+    activate CTRL
+
+        CTRL -> advertisementRepository:  adNewOffer(keepAdvertisement,\nkeeOfferValue, keepClientEmail)
+        activate advertisementRepository
+
+        advertisementRepository -> advertisementRepository: adNewOffer(keepAdvertisement,\nkeeOfferValue, keepClientEmail)
+
+        advertisementRepository -> CTRL: adNewOffer=true
+        deactivate advertisementRepository
+
+    deactivate CTRL
+@enduml

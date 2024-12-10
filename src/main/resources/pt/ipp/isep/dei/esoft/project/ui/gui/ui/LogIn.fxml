@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="primaryPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #eef4f3;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipp.isep.dei.esoft.project.ui.gui.ui.LogInControllerFX">
+   <left>
+      <AnchorPane prefHeight="703.0" prefWidth="388.0" style="-fx-background-color: #b4d4e4;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="249.0" fitWidth="251.0" layoutX="69.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../../../sem2Files/images/logo.PNG" />
+               </image></ImageView>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="57.0" layoutY="352.0" prefHeight="120.0" prefWidth="275.0" text="Welcome" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Caladea" size="54.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="651.0" prefHeight="17.0" prefWidth="352.0" text="software by 1DGH, G31, Martela Código" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+   </left>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <top>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" layoutX="47.0" layoutY="67.0" prefHeight="66.0" prefWidth="720.0" text="Main Menu" textFill="#847c94">
+                     <font>
+                        <Font name="Book Antiqua" size="64.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </top>
+         <center>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="60.0" layoutY="55.0" text="User Email" textFill="#847c94">
+                     <font>
+                        <Font name="Book Antiqua" size="34.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="60.0" layoutY="170.0" text="Password" textFill="#847c94">
+                     <font>
+                        <Font name="Book Antiqua" size="34.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="keepUserEmailTextField" layoutX="60.0" layoutY="100.0" prefHeight="49.0" prefWidth="450.0" promptText="User Email">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+                  <PasswordField fx:id="enterAgentPassTextField" layoutX="60.0" layoutY="215.0" prefHeight="49.0" prefWidth="450.0" promptText="Password">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </PasswordField>
+                  <Button fx:id="logInButton" layoutX="77.0" layoutY="424.0" mnemonicParsing="false" onAction="#logInButtonActionEvent" prefHeight="53.0" prefWidth="261.0" text="LOGIN">
+                     <font>
+                        <Font name="Book Antiqua" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="cancelButton" layoutX="460.0" layoutY="424.0" mnemonicParsing="false" onAction="#cancelButtonActionEvent" prefHeight="53.0" prefWidth="261.0" text="CANCEL">
+                     <font>
+                        <Font name="Book Antiqua" size="24.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="logInMessageLabel" alignment="CENTER" layoutX="77.0" layoutY="321.0" prefHeight="44.0" prefWidth="659.0" textFill="#e1502c">
+                     <font>
+                        <Font name="Book Antiqua" size="34.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </center></BorderPane>
+   </center>
+</BorderPane>

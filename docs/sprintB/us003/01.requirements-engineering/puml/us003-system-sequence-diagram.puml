@@ -1,0 +1,63 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD)
+
+autonumber
+
+actor "System administrator" as Employee
+participant ":System" as System
+
+activate Employee
+
+        Employee -> System : asks to register a new employee.
+    activate System
+
+        System --> Employee : requests employee data (name, citizen's card number,\n tax number, e-mail, telephone number)
+    deactivate System
+
+        Employee -> System : types the employee information
+    activate System
+
+        System --> Employee: requests data for the employee's address
+    deactivate System
+
+         Employee -> System: sends data (street, zipcode, state, city, district)
+    activate System
+
+        System --> Employee : lists user roles and asks to select one
+        deactivate System
+
+                alt role = store network manager
+
+                    System --> Employee : shows store list and asks to select the\nstores that are part of the network
+                    activate System
+
+
+                    Employee -> System : selects the stores
+                    deactivate System
+
+                else role != store network manager
+                    System --> Employee : shows store list and asks to select one
+                    activate System
+
+                    Employee -> System : selects a store
+                    deactivate System
+                end
+
+        Employee -> System : submits data
+        activate System
+
+        System --> Employee : displays the information and requests confirmation
+        deactivate System
+
+        Employee -> System : gives confirmation
+    activate System
+
+        System --> Employee : creates the employee and displays operation success
+    deactivate System
+
+
+@enduml

@@ -1,0 +1,21 @@
+@startuml Sequence Diagram Partial - List Property Request
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Partial - Remove Request
+autonumber
+
+participant ":ListPropertyRequestsController" as CTRL
+participant "requestRepository\n:RequestRepository" as RequestRepository
+
+autonumber 28
+
+activate CTRL
+	CTRL -> RequestRepository : removeRequest(request)
+	activate RequestRepository
+		RequestRepository --> CTRL : 
+	deactivate RequestRepository
+deactivate CTRL
+
+@enduml

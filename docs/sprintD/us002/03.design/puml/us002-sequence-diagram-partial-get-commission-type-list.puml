@@ -1,0 +1,21 @@
+@startuml Sequence Diagram (SD) - Create sale announcement
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+participant ":CreateSaleAnnouncementController" as CTRL
+participant "commissionType\n:CommissionType" as CTR
+
+autonumber 60
+ -> CTRL : getComissionType()
+activate CTRL
+	CTRL -> CTR : getCommissionType()
+	activate CTR
+		CTR --> CTRL : commissionTypeList
+	deactivate CTR
+deactivate CTRL
+
+@enduml

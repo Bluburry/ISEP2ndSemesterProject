@@ -1,0 +1,178 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+hide circle
+hide methods
+
+
+class Employee{
+    name
+    numberCitizen
+    tin
+    email
+    phoneNumber
+}
+
+class Client {
+    name
+    phoneNumber
+    numberCitizen
+    tin
+    email
+}
+
+class Owner {
+    email
+    name
+    numberCitizen
+    tin
+    phoneNumber
+}
+
+class Agent
+
+class Advertisement {
+    status
+    idAdvertisement
+    date
+}
+
+class AdvertisementSale {
+    salePrice
+}
+
+class AdvertisementLease {
+    durationOfContract
+    rentalPrice
+
+}
+
+class AdvertisementType {
+    designation
+}
+
+class PropertyType{
+    designation
+}
+
+class Property{
+    areaProperty
+    distanceCityCenter
+    conditionProperty
+    photos
+    propertyCode
+}
+
+class House {
+    basement
+    loft
+    sunExposure
+}
+
+class Building{
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+}
+
+
+class Store{
+    idCodStore
+    nameStore
+    emailStore
+    contactStore
+}
+
+class Visit{
+    idVisit
+    report
+}
+
+class Location {
+    street
+    zipCode
+    stateUS
+    city
+    district
+}
+
+class StoreManager {
+}
+
+class StoreNetworkManager {
+}
+
+class Offer{
+    idOffer
+    offer
+}
+
+class SystemAdministrator{
+}
+
+class UnregisteredUser
+
+class Company{
+    designation
+}
+
+class Commission{
+
+}
+class CommissionType{
+    designation
+}
+class CommissionPercent{
+    percent
+}
+class CommissionFixValue{
+    value
+}
+
+
+Owner "1" -- "1..*" Property: owns >
+Agent "1" -- "*" Advertisement: publishes, validates and is in charge of >
+House --|> Building
+
+Building --|> Property
+Store "1" -- "*" Agent: works <
+StoreManager "1" -- "1" Store:  monitors >
+Property "1" -- "1" Location: owns >
+StoreNetworkManager "1" -- "*" Store:  analyzes >
+Employee <|-- Agent
+Employee <|-- StoreManager
+Employee <|-- StoreNetworkManager
+Advertisement"1" -- "*"Offer: receives >
+Client"1" -- "*"Offer: makes >
+Store"1" -- "1"Location: owns >
+Advertisement "1" -- "*" Visit: hosts >
+Client "1" -- "*" Visit: requests >
+Agent "1" -- "*" Visit: schedules and carries out >
+Property "1" - "1" Advertisement: represents <
+Client "1" -- "1" Location: owns >
+Employee "1" -- "1" Location: owns >
+Owner "1" -- "1" Location: owns >
+Store "1" -- "*" Advertisement: contains >
+UnregisteredUser "*" -- "*" Advertisement: searches >
+SystemAdministrator "1" -- "*" Store: creates >
+SystemAdministrator "1" -- "*" Employee: creates >
+Client "*" -- "*" Advertisement: searches >
+Employee <|-- SystemAdministrator
+Owner "1" - "*" Advertisement: asks to create >
+PropertyType "1" -- "*" Property: contains <
+Advertisement <|-- AdvertisementSale
+Advertisement <|-- AdvertisementLease
+Advertisement "*" -- "1" AdvertisementType: contains >
+Company "1" -- "*" Store: owns >
+Company "1" -- "*" Employee: employs >
+Company "1" -- "1" SystemAdministrator:manage <
+Commission <|-- CommissionFixValue
+Commission <|-- CommissionPercent
+Commission "*" -- "1" CommissionType: contains >
+Advertisement "1" -- "1" Commission: contains >
+Agent "1" -- "*" Commission: attributes >
+
+@enduml

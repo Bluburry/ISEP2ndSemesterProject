@@ -1,0 +1,21 @@
+@startuml Sequence Diagram  Partial - List Property Request
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Partial - Get Repositories
+autonumber
+
+participant ":ListPropertyRequestsController" as CTRL
+participant ":Repositories" as RepositorySingleton
+
+autonumber 3
+
+activate CTRL
+	CTRL -> RepositorySingleton : getInstance()
+	activate RepositorySingleton
+		RepositorySingleton --> CTRL : repositories
+	deactivate RepositorySingleton
+deactivate CTRL
+
+@enduml

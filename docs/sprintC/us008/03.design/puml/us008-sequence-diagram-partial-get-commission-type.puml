@@ -1,0 +1,23 @@
+@startuml Sequence Diagram Partial - List Property Request
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Partial - Get Commission Types
+autonumber
+
+'hide footbox
+participant ":ListPropertyRequestsController" as CTRL
+participant "commissionType\n:CommissionType" as CTR
+
+autonumber 36
+
+activate CTRL
+	CTRL -> CTR : getCommissionType()
+	activate CTR
+		CTR --> CTRL : commissionTypeList
+	deactivate CTR
+deactivate CTRL
+
+
+@enduml

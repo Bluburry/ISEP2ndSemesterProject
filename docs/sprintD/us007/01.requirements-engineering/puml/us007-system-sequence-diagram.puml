@@ -1,0 +1,110 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Unregistered User" as ADM
+
+                    autonumber
+
+                    participant ":System" as UI
+
+
+                    activate ADM
+
+                        ADM -> UI : asks to register in the application
+
+
+                        activate UI
+
+
+
+
+
+                            UI -->ADM: asks for name
+
+                            ADM -> UI: sends data
+
+
+                            UI -->ADM: asks for e-mail
+
+                                    ADM -> UI: sends data
+
+
+
+                            UI -->ADM: asks for password
+
+                                    ADM -> UI: sends data
+
+
+
+                            UI -->ADM: asks for citizenNumber
+
+                                            ADM -> UI: sends data
+
+
+
+
+                            UI -->ADM: asks for tin
+
+                                            ADM -> UI: sends data
+
+
+
+                            UI -->ADM: asks for phone number
+
+                                     ADM -> UI: sends data
+
+
+
+
+                            UI -> ADM: asks if the unregistered user wants to give the new user location
+                            ADM -> UI:true/false
+
+                            group opt [true]
+                            UI -->ADM: asks for street
+
+                                                     ADM -> UI: sends data
+
+
+
+
+
+                                   UI -->ADM: asks for zipcode
+
+                                                            ADM -> UI: sends data
+
+
+
+
+                                   UI -->ADM: asks for state
+
+                                                            ADM -> UI: sends data
+
+
+
+                                    UI -->ADM: asks for city
+
+                                                             ADM -> UI: sends data
+
+
+
+                                   UI -->ADM: asks for district
+
+                                                            ADM -> UI: sends data
+
+
+
+                            end group
+
+
+        UI --> ADM: display operation
+
+      deactivate UI
+
+deactivate ADM
+
+@enduml

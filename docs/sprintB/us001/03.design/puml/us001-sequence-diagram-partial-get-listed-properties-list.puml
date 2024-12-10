@@ -1,0 +1,75 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+
+participant ":ListPropertiesController" as CTRL
+participant ":Repositories" as ORG
+participant "repositories\n:Repositories" as REPO
+participant "storeRepository\n:StoreRepository" as StoreRepository
+participant ":Store" as Store
+participant ":Advertisement" as Advertisement
+participant ":Property" as Property
+participant "list\n:List" as LIST
+
+autonumber 31
+-> CTRL : getListedProperties(keepSortMethod,keepBusinessType,keepPropertyType,keepNumberBedrooms)
+
+
+
+activate CTRL
+    group Get Listed Properties List
+
+        CTRL -> REPO : getStoreRepository()
+                activate REPO
+
+                    REPO --> CTRL: storeRepository
+        deactivate REPO
+
+        CTRL ->StoreRepository: getStoresList()
+                activate StoreRepository
+
+                    StoreRepository --> CTRL :storesList
+                deactivate StoreRepository
+
+
+
+                          CTRL -> LIST**: create()
+
+
+
+                                            loop for each store
+                                                          CTRL -> Store : getListedProperties(keepSortMethod,keepBusinessType,keepPropertyType,keepNumberBedrooms)
+                                                          activate Store
+
+                                                          Store -> LIST**: create()
+                                                          loop for each advertisement
+                                                          Store -> Advertisement : getAdsAndPropertyFilters(keepBusinessType,keepPropertyType,keepNumberBedrooms)
+                                                          opt true
+
+                                                          Advertisement -> Property: checkPropertyFilters(keepPropertyType,keepNumberBedrooms)
+                                                          activate Property
+
+                                                          Property --> Advertisement: true/false
+                                                          deactivate Property
+                                                          end
+                                                          Advertisement -->Store :true/false
+                                                          opt true
+                                                          Store->LIST: add(advertisement)
+                                                          end
+
+                                                          end
+                                                          Store --> CTRL : listedProperties
+                                                          deactivate Store
+                                                          CTRL -> LIST: add(listedProperties)
+                                            end
+
+                                  CTRL -> CTRL: sortPropertiesList(listedProperties,keepSortMethod)
+    end group
+    <-- CTRL: listedProperties
+
+deactivate CTRL
+
+
+@enduml

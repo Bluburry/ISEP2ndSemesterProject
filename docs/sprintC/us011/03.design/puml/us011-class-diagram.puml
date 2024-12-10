@@ -1,0 +1,128 @@
+@startuml
+'skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+'skinparam linetype orto
+
+skinparam classAttributeIconSize 0
+
+'left to right direction
+
+
+
+class Repositories {
+    - Repositories instance
+    - Repositories()
+    + Repositories getInstance()
+    + AdvertisementRepository getAdvertisementRepository()
+    + PersonRepository getPersonRepository()
+}
+
+class Person{
+- Email email;
+- String name;
+- int passport;
+-int tin;
+-int phoneNumber;
+- String street;
+- String zip;
+- String state;
+- String city;
+-String district;
+}
+class Offer{
+- Date date;
+    - OfferStatus status;
+- double offer;
+    - Email clientEmail;
+}
+
+class Employee{
+    - String role
+}
+
+class ListOffersController {
+
+        + ListOffersController()
+        + List<AdvertisementDTO> listedPropertiesWithOffers()
+        + OfferDTO acceptOffer(AdvertisementDTO ad,OfferDTO  offerDTO)
+        + OfferDTO declineOffer(AdvertisementDTO ad,OfferDTO  offerDTO)
+        + void sendEmailToUser(Person user,boolean offerDecision){
+}
+
+class ListOffersUI {
+
+        - List<AdvertisementDTO> advertisementDTOS;
+        + ListOffersUI()
+        + void displayListedProperties()
+        + void deleteAllOffers(AdvertisementDTO dto)
+        + void deleteOneOffer(AdvertisementDTO ad, OfferDTO offerDTO){}
+        + void run()
+}
+
+class Advertisement{
+    - Date date
+    - String commissionType
+    - Double commissionValue
+    +Advertisement(String commissionType,Double commissionValue,Date date)
+}
+
+interface Request{
+    Date date
+    int durationOfContract
+    double salePrice
+    double rentPrice
+}
+
+class AdvertisementRepository{
+    - List<Advertisement> advertisements;
+	+ List<Advertisement> getAdvertisementsByAgent(Employee employee)
+}
+
+class PersonRepository{
+    +List<Person> persons = new ArrayList<>();
+    + Person getPersonByEmail(String keepOwnerEmail)
+}
+
+enum OfferStatus{
+    status
+}
+
+
+class AdvertisementMapper{
++AdvertisementDTO toDTO(Advertisement ad)
++Advertisement fromDTOtoAD(AdvertisementDTO ad)
+}
+
+ListOffersController --> AdvertisementMapper
+
+
+Repositories --> Repositories : instance
+ListOffersUI .> ListOffersController: controller
+
+ListOffersController .> Repositories : repositories
+
+Repositories --> "1" PersonRepository
+Repositories --> "1" AdvertisementRepository
+
+ListOffersController ...> AdvertisementRepository:advertisementRepository
+ListOffersController ...> PersonRepository : personRepository
+
+AdvertisementRepository --> "*" Advertisement
+
+PersonRepository --> "*" Person
+
+Person <|-- Employee
+
+Advertisement --> "1" Request
+
+Advertisement --> "*" Offer
+
+Person "1" <-- "*" Offer
+Offer --> "1" OfferStatus
+Request --> "1"Employee
+Request --> "1"Person
+
+
+@enduml

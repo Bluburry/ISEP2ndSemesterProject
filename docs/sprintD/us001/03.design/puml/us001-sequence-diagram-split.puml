@@ -1,0 +1,101 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Unregistered User" as ADM
+participant ":ListPropertiesUI" as UI
+participant ":ListPropertiesController" as CTRL
+
+
+
+
+
+activate ADM
+
+    ADM -> UI : asks to list listed properties
+
+
+    activate UI
+
+        UI -> CTRL**: create
+
+
+
+        ADM <-- UI : asks if the user want to use filters (business type, number of bedrooms, property type)
+
+        ADM -> UI: send answer
+
+        group opt [answer = true]
+
+
+        UI -> CTRL : getBusinessTypeList
+
+        ref over CTRL
+                    Get Business Type List
+
+        end ref
+
+        autonumber 12
+
+        CTRL --> UI : businessTypeList
+
+        UI --> ADM : displays business types
+
+        ADM -> UI:selects business type
+
+        UI -> UI :keepBusinessType
+
+        UI -> CTRL : getPropertyTypeList
+
+        ref over CTRL
+                            Get Property Type List
+
+        end ref
+
+        autonumber 21
+        CTRL --> UI : propertyTypeList
+
+        UI --> ADM : displays property types
+
+        ADM -> UI:selects property type
+
+        UI -> UI :keepPropertyType
+
+        opt keepPropertyType != Land
+            UI --> ADM: asks number of bedrooms
+
+            ADM -> UI: type number of bedrooms
+
+            UI  ->  UI: keepNumberBedrooms
+        end
+
+        end
+
+        ADM <-- UI : displays sort methods
+
+        ADM -> UI : selects sort method
+
+        UI-> UI:keepSortMethod
+
+        UI -> CTRL : getListedProperties(keepSortMethod,keepBusinessType,keepPropertyType,keepNumberBedrooms)
+
+        ref over CTRL
+                            Get Listed Properties List
+
+        end ref
+
+        autonumber 47
+        CTRL --> UI : propertiesList
+
+        deactivate CTRL
+
+        UI --> ADM :  display listed properties
+    deactivate UI
+
+deactivate ADM
+
+@enduml

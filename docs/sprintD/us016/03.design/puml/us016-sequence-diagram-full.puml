@@ -1,0 +1,312 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Full (SD)
+autonumber
+
+'016 - Agent respond to a booking request for a visit.
+
+'hide footbox
+actor "Agent" as User
+participant ":RespondBookingRequestUI" as UI
+participant ":RespondBookingRequestController" as CTRL
+
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as repositories
+participant "userSession\n:UserSession" as userSession
+
+participant "personRepository\n:PersonRepository" as personRepository
+participant "advertisementMapper\n:AdvertisementMapper" as advertisementMapper
+participant "advertisementRepository\n:AdvertisementRepository" as advertisementRepository
+participant "advertisementCollection\n:AdvertisementCollection" as advertisementCollection
+participant "applicationSession\n:ApplicationSession" as applicationSession
+participant "sendEmailRespondBookingRequestGMAIL\n:SendEmailRespondBookingRequestGMAIL" as sendEmailRespondBookingRequestGMAIL
+participant "sendEmailRespondBookingRequestDEI\n:SendEmailRespondBookingRequestDEI" as sendEmailRespondBookingRequestDEI
+
+
+
+activate User
+
+    User -> UI : asks to chosse a Booking Request\n from a List
+        activate UI
+
+        UI -> CTRL** : create
+                activate CTRL
+
+                CTRL -> RepositorySingleton : getInstance()
+                activate RepositorySingleton
+
+                RepositorySingleton --> CTRL: repositories
+                deactivate RepositorySingleton
+
+                deactivate CTRL
+
+        UI -> CTRL: getAgentEmail()
+            activate CTRL
+
+            CTRL -> userSession : getAgentEmail()
+            activate userSession
+
+            userSession -> CTRL: agentEmail
+            deactivate userSession
+
+            CTRL -> UI: agentEmail
+            deactivate CTRL
+
+        UI -> UI: keepAgentEmail
+
+        UI -> CTRL: getAgentName(keepAgentEmail)
+            activate CTRL
+
+            CTRL -> repositories : getPersonRepository()
+            activate repositories
+
+            repositories -> CTRL: personRepository
+            deactivate repositories
+
+            CTRL -> personRepository : getAgentName(keepAgentEmail)
+            activate personRepository
+
+            personRepository -> CTRL : keepAgentName
+            deactivate personRepository
+
+            CTRL -> UI : keepAgentName
+            deactivate CTRL
+
+        UI -> UI: keepAgentName
+
+        UI -> CTRL: getAgentPhone(keepAgentEmail)
+            activate CTRL
+
+            CTRL -> personRepository : getAgentPhone(keepAgentEmail)
+            activate personRepository
+
+            personRepository -> CTRL : keepAgentPhone
+            deactivate personRepository
+
+            CTRL -> UI : keepAgentPhone
+            deactivate CTRL
+
+        UI -> UI: keepAgentPhone
+
+        UI -> CTRL :getAdsListAgent(keepAgentEmail)
+                activate CTRL
+
+            CTRL -> advertisementMapper : getAdsListAgent(keepAgentEmail)
+            activate advertisementMapper
+
+                advertisementMapper -> advertisementRepository : getAdvertisementList()
+                activate advertisementRepository
+
+                    advertisementRepository -> advertisementMapper : listAds
+                    deactivate advertisementRepository
+
+                advertisementMapper -> advertisementMapper : getAdsListAgent(keepAgentEmail,listAds)
+                advertisementMapper -> advertisementMapper : listAdsAgent
+                advertisementMapper -> advertisementMapper : createAdvertisementDTOList(listAdsAgent)
+
+                advertisementMapper -> CTRL : advAgentDTOList
+                deactivate advertisementMapper
+
+            CTRL -> UI : advAgentDTOList
+            deactivate CTRL
+
+        UI -> User: displayAdsAgentVisitList(advAgentDTOList)
+
+loop (for each ad)
+
+        UI -> User: displayAd(advAgentDTOList)
+
+end
+
+        UI -> User : ask To Choose One Advertisement()
+
+    User -> UI : selects an Advertisement
+
+        UI -> UI: keepAdvertismentDTO
+
+        UI -> CTRL: getAdFromDTO(keepAdvertisementDTO)
+            activate CTRL
+
+            CTRL -> advertisementMapper : AdToDTO(keepAdvertisementDTO)
+            activate advertisementMapper
+
+            advertisementMapper  -> CTRL : keepAdvertisement
+            deactivate advertisementMapper
+
+            CTRL -> advertisementRepository : getVisitsListFromAd(keepAdvertisement)
+            activate advertisementRepository
+
+            advertisementRepository  -> CTRL : visitsListFromAd
+            deactivate advertisementRepository
+
+            CTRL -> UI : visitsListFromAd
+            deactivate CTRL
+
+    loop (for each visit)
+
+        UI -> User: displayVisit(visitsListFromAd)
+
+    end
+
+        UI -> User : ask To Choose one Visit Request()
+        deactivate UI
+
+    User -> UI : selects a Visit Request
+        activate UI
+
+        UI  ->  UI: keepVisitRequest
+
+        UI -> User : Display Ad and Visit and ask for a response to \nVisit Request (keepAdvertismentDTO, keepVisitRequest)
+        deactivate UI
+
+    User -> UI : responds to Visit Request
+        activate UI
+
+        UI -> CTRL: getClientEmailFromVisit()
+        activate CTRL
+
+            CTRL -> advertisementRepository: getClientEmailFromVisit(keepVisitRequest)
+            activate advertisementRepository
+
+            advertisementRepository -> CTRL: keepClientEmail
+            deactivate advertisementRepository
+
+            CTRL -> UI: keepClientEmail
+            deactivate CTRL
+
+        UI -> UI: keepClientEmail
+
+    UI -> CTRL: getNameClientFromMail(keepClientEmail)
+        activate CTRL
+
+        CTRL -> personRepository: getNameClientFromMail(keepClientEmail)
+        activate personRepository
+
+            personRepository -> CTRL: keepClientName
+            deactivate personRepository
+
+            CTRL -> UI: keepClientName
+            deactivate CTRL
+
+         UI -> UI: keepClientName
+
+        UI -> CTRL: respondEmail(YES/NO)
+        activate CTRL
+
+        CTRL -> applicationSession: getEmailPlatform()
+        activate applicationSession
+
+        applicationSession -> CTRL : emailPlatform
+        deactivate applicationSession
+
+alt (EMAIL.FORMAT=gmail)
+
+    alt (NO)
+
+        CTRL -> sendEmailRespondBookingRequestGMAIL: respondEmailRejected(EMAIL.FORMAT, keepClientEmail, \n keepClientName, keepAdvertismentDTO, keepAgentEmail, \n keepAgentName, keepAgentPhone )
+        activate sendEmailRespondBookingRequestGMAIL
+
+        sendEmailRespondBookingRequestGMAIL -> CTRL: emailSendRejection
+        deactivate sendEmailRespondBookingRequestGMAIL
+
+        CTRL -> UI: emailSendRejection
+
+        UI -> User: send Email (emailSendRejection)
+
+        CTRL -> advertisementRepository: changeVisitStatus(keepVisitRequest)
+        activate advertisementRepository
+
+        advertisementRepository -> advertisementRepository: changeVisitStatus(keepVisitRequest)
+
+        advertisementRepository -> advertisementRepository: changeVisitStatus(REJECTED)
+
+
+        advertisementRepository -> CTRL: changeVisitStatus(REJECTED)
+        deactivate advertisementRepository
+
+    else (YES)
+
+        CTRL -> sendEmailRespondBookingRequestGMAIL: respondEmailAccepted(EMAIL.FORMAT, keepClientEmail, \n keepClientName, keepAdvertismentDTO, keepAgentEmail, \n keepAgentName, keepAgentPhone )
+        activate sendEmailRespondBookingRequestGMAIL
+
+        sendEmailRespondBookingRequestGMAIL -> CTRL: emailSendConfirmation
+        deactivate sendEmailRespondBookingRequestGMAIL
+
+        CTRL -> UI: emailSendConfirmation
+
+        UI -> User: send Email (emailSendConfirmation)
+
+        CTRL -> advertisementRepository: changeVisitStatus(keepVisitRequest)
+        activate advertisementRepository
+
+        advertisementRepository -> advertisementRepository: changeVisitStatus(keepVisitRequest)
+
+        advertisementRepository -> advertisementRepository: changeVisitStatus(ACCEPTED)
+
+        advertisementRepository -> CTRL: changeVisitStatus(ACCEPTED)
+        deactivate advertisementRepository
+
+        deactivate CTRL
+
+    end
+
+else (EMAIL.FORMAT=gmail)
+    alt (NO)
+
+        CTRL -> sendEmailRespondBookingRequestGMAIL: respondEmailRejected(EMAIL.FORMAT, keepClientEmail, \n keepClientName, keepAdvertismentDTO, keepAgentEmail, \n keepAgentName, keepAgentPhone )
+        activate sendEmailRespondBookingRequestGMAIL
+
+        sendEmailRespondBookingRequestGMAIL -> CTRL: emailSendRejection
+        deactivate sendEmailRespondBookingRequestGMAIL
+
+        CTRL -> UI: emailSendRejection
+
+        UI -> User: send Email (emailSendRejection)
+
+        CTRL -> advertisementRepository: changeVisitStatus(keepVisitRequest)
+        activate advertisementRepository
+
+        advertisementRepository -> advertisementRepository: changeVisitStatus(keepVisitRequest)
+
+        advertisementRepository -> advertisementRepository: changeVisitStatus(REJECTED)
+        deactivate advertisementRepository
+
+        advertisementRepository -> CTRL: changeVisitStatus(REJECTED)
+
+
+    else (YES)
+
+        CTRL -> sendEmailRespondBookingRequestDEI: respondEmailAccepted(EMAIL.FORMAT, keepClientEmail, \n keepClientName, keepAdvertismentDTO, keepAgentEmail, \n keepAgentName, keepAgentPhone )
+        activate sendEmailRespondBookingRequestDEI
+
+        sendEmailRespondBookingRequestDEI -> CTRL: emailSendConfirmation
+        deactivate sendEmailRespondBookingRequestDEI
+
+        CTRL -> UI: emailSendConfirmation
+
+        UI -> User: send Email (emailSendConfirmation)
+
+        CTRL -> advertisementRepository: changeVisitStatus(keepVisitRequest)
+        activate advertisementRepository
+
+        advertisementRepository -> advertisementRepository: changeVisitStatus(keepVisitRequest)
+
+        advertisementRepository -> advertisementRepository: changeVisitStatus(ACCEPTED)
+
+        advertisementRepository -> CTRL: changeVisitStatus(ACCEPTED)
+        deactivate advertisementRepository
+
+        deactivate CTRL
+
+    end
+
+end
+        UI -> User : displays operation success
+        deactivate UI
+
+deactivate User
+
+@enduml

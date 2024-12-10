@@ -1,0 +1,40 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+
+participant ":ListPropertiesController" as CTRL
+participant ":Repositories" as ORG
+participant "repositories\n:Repositories" as REPO
+participant "propertyTypeRepository\n:PropertyTypeRepository" as PropertyTypeRepository
+
+autonumber 16
+-> CTRL : getPropertyTypeList()
+
+
+activate CTRL
+    group Get Property Type List
+
+        CTRL -> REPO : getPropertyTypeRepository()
+        activate REPO
+
+        REPO --> CTRL: propertyTypeRepository
+        deactivate REPO
+
+        CTRL -> PropertyTypeRepository: getPropertyTypeList()
+        activate PropertyTypeRepository
+
+        PropertyTypeRepository --> CTRL: propertyTypeList
+        deactivate PropertyTypeRepository
+
+
+
+    end group
+
+    <-- CTRL: propertyTypeList
+
+deactivate CTRL
+
+
+@enduml

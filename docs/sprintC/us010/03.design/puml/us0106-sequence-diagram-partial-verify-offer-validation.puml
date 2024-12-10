@@ -1,0 +1,29 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram Parcial Verify Offer Validation (SSD)
+
+'hide footbox
+participant ":MakeOfferController" as CTRL
+
+participant "advertisementRepository\n:AdvertisementRepository" as advertisementRepository
+
+autonumber 30
+
+activate CTRL
+
+            CTRL -> advertisementRepository : verifyOfferValueLowerSalePrice\n (keepAdvertismentDTO, keeOfferValue, keepClientEmail)
+            activate advertisementRepository
+
+            advertisementRepository -> advertisementRepository: DTOtoAd(keepAdvertisementDTO)
+
+            advertisementRepository -> advertisementRepository: verififyClientOffer(keepAdvertisement,keeOfferValue, keepClientEmail)
+
+            advertisementRepository -> CTRL : verififyClientOffer()=true
+            deactivate advertisementRepository
+
+deactivate CTRL
+
+@enduml

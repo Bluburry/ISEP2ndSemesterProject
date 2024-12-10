@@ -1,0 +1,81 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Store Network Manager" as ADM
+participant ":DivideSetStoresUI" as UI
+participant ":DivideSetStoresController" as CTRL
+participant ":Repositories" as ORG
+participant "repositories\n:Repositories" as REPO
+participant "advertisementRepository\n:AdvertisementRepository" as advertisementRepository
+participant "AdvertisementCollection" as collection
+participant "BruteForceAlgorithm" as algorithm
+
+
+
+
+activate ADM
+
+    ADM -> UI : Divide the set of all stores into two subsets
+
+
+    activate UI
+
+        UI -> CTRL: create()
+        activate CTRL
+
+        CTRL -> ORG : getInstance()
+
+        activate ORG
+
+          ORG --> CTRL: repositories
+        deactivate ORG
+        CTRL->REPO:getAdvertisementRepository()
+        activate REPO
+        REPO-->CTRL:advertisementRepository
+        deactivate
+
+        deactivate
+        UI->CTRL:setOfStoresDivided()
+        activate CTRL
+        CTRL->advertisementRepository:getAdvertisements()
+
+        activate advertisementRepository
+
+        advertisementRepository--> CTRL:advertisementsList
+
+        deactivate
+        CTRL->collection:divideAdsByStore(advertisementsList)
+        activate collection
+        collection-->CTRL:listOfNumOfAdsByStore
+        deactivate
+
+        CTRL->algorithm:start(listOfNumOfAdsByStore)
+
+        activate algorithm
+        algorithm->algorithm:divide(listOfNumOfAdsByStore)
+        algorithm-->CTRL:pairOfPartitions
+        deactivate
+        CTRL-->UI:pairOfPartitions
+    deactivate
+
+    UI->CTRL:getTime
+    activate CTRL
+    CTRL->algorithm:getInTime()
+    activate algorithm
+    algorithm-->CTRL:time
+    deactivate
+    CTRL --> UI:time
+    deactivate
+
+        UI-->ADM:display the two subsets and the time taken
+
+    deactivate UI
+
+deactivate ADM
+
+@enduml

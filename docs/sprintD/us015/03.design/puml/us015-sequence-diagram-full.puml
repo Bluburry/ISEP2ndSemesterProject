@@ -1,0 +1,168 @@
+@startuml Sequence Diagram Full - List Booking Request
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Full - List Booking Request
+autonumber
+
+'hide footbox
+actor "Agent" as AG
+participant ":ListPropertyRequestsUI" as UI
+participant ":ListBookingRequestsController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant ":ApplicationSession" as _APP
+participant "appSession\n:ApplicationSession" as APP
+participant "currentSession\n:UserSession" as SESSAO
+participant "repositories\n:Repositories" as REPO
+participant "personRepository\n:PersonRepository" as PR
+participant "config\n:Config" as config
+participant "advertisementRepository\n:AdvertisementRepository" as AR
+participant "advertisement\n:Advertisement" as Advertisement
+participant "visit\n:Visit" as Visit
+
+activate AG
+
+    AG -> UI : asks to view property requests
+    activate UI
+        UI -> CTRL** : creates
+        
+		activate CTRL
+            CTRL -> RepositorySingleton : getInstance()
+            activate RepositorySingleton
+                RepositorySingleton --> CTRL : repositories
+            deactivate RepositorySingleton
+
+            CTRL -> CTRL : getAgentFromSession()
+
+                activate CTRL
+                    CTRL -> _APP : getInstance()
+                    activate _APP
+                        _APP -> CTRL: appSession
+                    deactivate _APP
+
+                    CTRL -> APP: getCurrentSession()
+                    activate APP
+                        APP --> CTRL: currentSession
+                    deactivate APP
+
+                    CTRL -> SESSAO: getUserEmail()
+                    activate SESSAO
+                        SESSAO --> CTRL: employeeEmail
+                    deactivate SESSAO
+
+                    CTRL -> REPO : getPersonRepository()
+                    activate REPO
+                        REPO --> CTRL : PersonRepository
+                    deactivate REPO
+                    CTRL -> PR : getPersonByEmail(agentEmail)
+                    activate PR
+                        PR --> CTRL : employee
+                    deactivate PR
+                CTRL --> CTRL : employee
+                deactivate CTRL
+
+            CTRL -> REPO : getAdvertisementRepository()
+            activate REPO
+                REPO --> CTRL : AdvertisementRepository
+            deactivate REPO
+
+            CTRL -> config : getSortingAlgorithm()
+            activate config
+                config --> CTRL : algorithm
+            deactivate config
+            
+        deactivate CTRL
+    
+        UI --> AG : requests start date for filtering
+    deactivate UI
+
+    AG -> UI : types requested data
+    activate UI
+        UI --> AG : requests end date for filtering
+    deactivate UI
+
+    AG -> UI : types requested data
+    activate UI
+
+    UI -> CTRL : getAdvertisements()
+        activate CTRL
+            CTRL -> AR : getAdvertisementsByAgent(employee)
+            activate AR
+                AR --> CTRL : advertismentList
+            deactivate AR
+            CTRL --> UI : advertismentList
+        deactivate CTRL
+    UI --> AG : displays advertisements assigned to the agent\nand asks to select one
+    deactivate UI
+    AG -> UI : selects one
+
+loop while intended
+    activate UI
+        UI -> CTRL : getVisitsList(advertisment, startYear,\nstartMonth, startDay, endYear, endMonth, endDay)
+        activate CTRL
+            CTRL -> AR : getAdVisitsByDate(advertisement, algorithm, startYear,\nstartMonth, startDay, endYear, endMonth, endDay)
+            activate AR
+                AR -> Advertisement : getVisitsByAlgorithm(algorithm, startYear,\nstartMonth, startDay, endYear, endMonth, endDay)
+                activate Advertisement
+                    Advertisement --> AR : filteredAndSortedVisitList
+                deactivate Advertisement
+                AR --> CTRL : filteredAndSortedVisitList
+            deactivate AR
+            CTRL --> UI : filteredAndSortedVisitList
+        deactivate CTRL
+        UI -> AG : displays booking requests\nand asks to select one
+    deactivate UI
+
+    AG -> UI : selects one
+    activate UI
+        UI --> AG : requests whether to reject or accept it
+    deactivate UI
+
+    AG -> UI : selects one
+    activate UI
+        UI -> CTRL : answerVisit(advertisement, visit, status)
+        activate CTRL
+            CTRL -> AR : respondToVisit(advertisement, visit, status)
+            activate AR
+                AR -> Advertisement : changeStatus(visit, status)
+                activate  Advertisement
+                    alt status = accept
+                        Advertisement -> Visit : acceptStatus()
+                        activate Visit
+                        deactivate Visit
+                    else status = reject
+                        Advertisement -> Visit : rejectStatus()
+                        activate Visit
+                        deactivate Visit
+                    end
+                deactivate Advertisement
+            deactivate AR
+        deactivate CTRL
+
+        UI --> AG : asks if he wishes to view more booking\nrequests for that advertisement\nor look at a new one
+    deactivate UI
+
+    AG -> UI : selects one
+    opt view other requests
+    activate UI
+    UI -> CTRL : getAdvertisements()
+        activate CTRL
+            CTRL -> AR : getAdvertisementList(employee)
+            activate AR
+                AR --> CTRL : advertismentList
+            deactivate AR
+            CTRL --> UI : advertismentList
+        deactivate CTRL
+    UI --> AG : displays advertisements assigned to the agent\nand asks to select one
+    deactivate UI
+    AG -> UI : selects one
+    activate UI
+
+    end
+    deactivate UI
+
+deactivate AG
+end
+
+@enduml

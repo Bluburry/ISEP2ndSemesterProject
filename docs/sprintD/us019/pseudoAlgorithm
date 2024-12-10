@@ -1,0 +1,39 @@
+procedure divide(list[0 to n]:pair<string,integer>)
+    firstList := []
+    secondList := []
+    n:=list.size()
+	nTotal := 2^n -1
+	for i:=1 to nTotal-1
+        first := []
+        second := []
+        n1:=0
+        n2:=0
+        numB:=toBinary(i)
+        for j:=0 to n-1
+            if j<=numB.length()-1 then
+                if numB.charAt(j)=='1' then first.add(list.get(j)) and n1:n1+list.get(j).getSecond()
+                else second.add(list.get(j)) and n2:=n2+list.get(j).getSecond()
+            else second.add(j) and n2:=n2+list.get(j).getSecond()
+            aux:=Math.abs(n1-n2);
+            if aux < diff then
+                diff:=aux
+                firstList:=first
+                secondList:=second
+
+    return new Pair<>(firstList,secondList)
+
+procedure toBinary(num:integer)
+        if num == 0 then return "0";
+        binary:=new StringBuilder();
+        while (num > 0)
+            remainder:= num % 2;
+            binaryNumber.append(remainder);
+            num /= 2;
+        return binaryNumber.toString()
+
+
+
+
+
+
+

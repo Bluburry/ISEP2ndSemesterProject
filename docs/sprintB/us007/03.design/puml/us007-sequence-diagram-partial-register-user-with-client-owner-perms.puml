@@ -1,0 +1,67 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+'hide footbox
+participant ":RegisterUserController" as CTRL
+participant "repositories\n:Repositories" as REPO
+participant "authenticationRepository\n:AuthenticationRepository" as AuthenticationRepository
+participant "personRepository\n:PersonRepository" as PersonRepository
+
+autonumber 28
+        -> CTRL : registerUserWithClientAndOwnerPerms(keepName,keepEmail,keepPassword,Roles\n,keepCitizenNumber,keepPhoneNumber,keepTin,keepStreet,keepZipCode,\nkeepStateUS,keepCity,keepDistrict,option)
+            activate CTRL
+
+        CTRL -> REPO: getAuthenticationRepository()
+
+        activate REPO
+
+        REPO --> CTRL: authenticationRepository
+
+        deactivate REPO
+
+        CTRL -> AuthenticationRepository : addUserWithRoles(keepName, keepEmail, keepPassword, Roles)
+
+            activate AuthenticationRepository
+
+        AuthenticationRepository --> CTRL: true/false
+
+
+
+        deactivate AuthenticationRepository
+
+
+        group opt [true]
+
+            CTRL -> REPO: getPersonRepository()
+
+            REPO --> CTRL : personRepository
+
+            group alt  [option=true]
+
+                        CTRL -> PersonRepository: addPerson(keepName,keepEmail,keepCitizenNumber,keepTin,keepPhoneNumber,keepStreet,keepZipCode,keepStateUS,keepCity,keepDistrict)
+
+                        activate PersonRepository
+
+                        PersonRepository --> CTRL:person
+
+                        deactivate PersonRepository
+
+                        else option=false
+
+                        CTRL -> PersonRepository: addPerson(keepName,keepEmail,keepCitizenNumber,keepTin,keepPhoneNumber)
+
+                                    activate PersonRepository
+
+                                    PersonRepository --> CTRL:person
+
+                                    deactivate PersonRepository
+
+                    end group
+        end group
+
+        <--CTRL:true/false
+                deactivate CTRL
+
+@enduml

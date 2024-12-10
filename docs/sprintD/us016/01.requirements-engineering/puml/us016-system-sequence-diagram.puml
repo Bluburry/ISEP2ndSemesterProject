@@ -1,0 +1,43 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD)
+
+autonumber
+
+'016 - Agent respond to a booking request for a visit.
+
+actor "Agent" as User
+participant ":System" as System
+
+activate User
+
+    User -> System : respond to a Booking Request
+        activate System
+
+	    System --> User : asks to chosse a Booking Request from a List
+        deactivate System
+
+    User -> System : selects Booking Request
+        activate System
+
+	    System --> User : asks to Respond (Accept/Reject)
+        deactivate System
+
+    User -> System : respond
+        activate System
+
+        System --> User : asks to confirm Email to Send
+        deactivate System
+
+    User -> System : confirms
+        activate System
+
+        System -> User : shows confirmation of Email sent
+        deactivate System
+
+ deactivate User
+
+@enduml

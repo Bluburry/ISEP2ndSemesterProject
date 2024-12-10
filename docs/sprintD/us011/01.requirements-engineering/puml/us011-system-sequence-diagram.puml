@@ -1,0 +1,35 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD)
+
+autonumber
+
+actor "Agent" as ADM
+participant ":System" as UI
+
+activate ADM
+
+ADM -> UI : asks to list purchase offers
+
+    activate UI
+
+        group loop [intended]
+
+        ADM <-- UI : shows all offers of his advertisements to choose
+
+        ADM -> UI: choose one offer
+
+        UI --> ADM: aks if he wants to accept it or decline it
+
+       ADM -> UI: accept/decline
+        end
+
+        UI --> ADM: Display operation success
+    deactivate UI
+
+deactivate ADM
+
+@enduml

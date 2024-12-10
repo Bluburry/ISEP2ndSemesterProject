@@ -1,0 +1,103 @@
+@startuml Sequence Diagram - List Property Request
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Partial - List Property Request
+autonumber
+
+'hide footbox
+actor "Agent" as AG
+participant ":ListPropertyRequestsUI" as UI
+participant ":ListPropertyRequestsController" as CTRL
+
+activate AG
+
+    AG -> UI : asks to view property requests
+    activate UI
+        UI -> CTRL** : creates
+        
+		activate CTRL
+		ref over CTRL
+			Get Repositories
+		end ref
+		CTRL --> UI
+		deactivate CTRL
+
+    loop while intended
+
+        UI -> CTRL : getRequestList()
+
+		activate CTRL
+			ref over CTRL
+				Get Request List
+			end ref
+
+			CTRL --> UI : requestsList
+		deactivate CTRL
+
+		UI --> AG : shows list of property requests assigned to the agent\nand asks to select one
+    deactivate UI
+
+	AG -> UI : selects one request
+	activate UI
+		UI --> AG : asks wether to accept or reject
+	deactivate UI
+
+	alt rejects request
+		AG -> UI : rejects request
+		activate UI
+			UI -> CTRL : removeRequest(request)
+
+			activate CTRL
+				ref over CTRL
+					Removes Request
+				end ref
+			CTRL --> UI
+			deactivate CTRL
+
+			UI --> AG : displays operation success
+		deactivate UI
+
+
+	else accepts request
+		AG -> UI : accepts request
+		activate UI
+			UI --> AG : requests comission value
+		deactivate UI
+	
+		AG -> UI : types requested data
+		activate UI
+			UI -> CTRL : getComissionType()
+
+			activate CTRL
+				ref over CTRL
+					Get Commission Types
+				end ref
+
+				CTRL --> UI : commissionTypeList
+			deactivate CTRL
+
+			UI --> AG : shows commission type list\nand asks to select one
+		deactivate UI
+
+		AG -> UI : selects commission type
+		activate UI
+			UI -> CTRL : approveRequest(request, commissionValue, commissionType)
+
+			activate CTRL
+				ref over CTRL
+					Create Advertisement
+				end ref
+
+				CTRL --> UI : advertisement
+			deactivate CTRL
+
+			UI --> AG : displays created advertisement
+		end
+	end
+
+
+deactivate AG
+
+@enduml

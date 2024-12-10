@@ -1,0 +1,144 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD)
+
+autonumber
+
+actor "Property Owner" as User
+participant ":System" as System
+
+activate User
+
+        User -> System : asks to create a new property
+    activate System
+
+        System --> User :ask for the required data (the citizen's card number, the tax number, the email address and the telephone number)
+    deactivate System
+
+        User -> System : types the required data (the citizen's card number, the tax number, the email address and the telephone number)
+    activate System
+
+    group opt
+
+    System --> User :ask for data (address)
+        deactivate System
+
+            User -> System : types the data (address)
+        activate System
+    end
+
+	    System --> User :initiate process (year, month, day), shows store category list and asks to select one
+    deactivate System
+
+        User -> System : selects store
+    activate System
+
+	    System --> User : shows agent category list and asks to select one
+    deactivate System
+
+        User -> System : selects agent
+    activate System
+
+	    System --> User : creates reference , requests data: shows property category list and asks to select one
+    deactivate System
+
+        User -> System : selects property type
+
+
+    alt property = House
+            System --> User : requests data: numberBedrooms, numberParking, basement, loft
+        deactivate System
+
+                User -> System : input data: numberBedrooms, numberParking, basement, loft
+        activate System
+
+            group opt
+                System --> User : requests data: numberBathrooms, availableEquipment, sunExposure
+                deactivate System
+
+                User -> System : input data: numberBathrooms, availableEquipment, sunExposure
+                activate System
+            end
+
+    else property = Apartment
+                System --> User : requests data: numberBedrooms, numberParking
+            deactivate System
+
+                    User -> System : input data: numberBedrooms, numberParking
+            activate System
+
+            group opt
+                    System --> User : requests data: numberBathrooms, availableEquipment
+                    deactivate System
+
+                    User -> System : input data: numberBathrooms, availableEquipment
+                    activate System
+            end
+
+    else property = Land
+                    System --> User : requests data: description
+                deactivate System
+
+                        User -> System : input data: description
+                activate System
+    end
+
+        System --> User : request data: area, distance from the city centre
+    deactivate System
+
+        User -> System : input data: area, distance from the city centre
+    activate System
+
+	    System --> User : request data: Type of Business
+    deactivate System
+
+        User -> System : selects a Type of Business
+    activate System
+
+    alt answer = Sale
+        System --> User : requests data: Sale Price
+    deactivate System
+
+        User -> System : input data: Sale Price
+        activate System
+
+
+    else answer = Rent
+                        System --> User : requests data: Rental Price, Duration of Contract
+                    deactivate System
+
+                            User -> System : input data: Rental Price, Duration of Contract
+                    activate System
+    end
+                System --> User : request photo
+        deactivate System
+
+    	        User -> System : inserts photo
+        activate System
+    group opt
+    loop
+            System --> User : request photo
+    deactivate System
+
+	        User -> System : inserts photo
+    activate System
+
+    end
+
+    end
+            System --> User : Displays all the data introduced by the user and ask for validation
+    deactivate System
+
+            User -> System : input validation
+    activate System
+
+    group opt [answer = True]
+            System --> User : displays operation success, sends document operation details and conclusion
+        deactivate System
+    end
+
+
+@enduml

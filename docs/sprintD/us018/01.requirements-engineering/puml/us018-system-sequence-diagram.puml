@@ -1,0 +1,31 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD)
+
+autonumber
+
+'US018 - Store Manager Analyses deals.
+
+actor "Store Manager" as User
+participant ":System" as System
+
+activate User
+
+        User -> System : Analyse Deals
+        activate System
+
+	    System --> User : asks to choose a method of analysis
+        deactivate System
+
+        User -> System : selects analysis type
+        activate System
+
+        System --> User : shows results
+        deactivate System
+
+deactivate User
+
+@enduml

@@ -1,0 +1,166 @@
+@startuml
+'skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+'skinparam linetype orto
+
+skinparam classAttributeIconSize 0
+
+'left to right direction
+
+class Store {
+        - String id
+        - String name
+        - String emailAddress
+        - int phoneNumber
+        +Store(String id,String name,String emailAddress,int phoneNumber)
+        + getListedProperties(BusinessType keepBusinessType,PropertyType keepPropertyType,int keepNumberBedrooms)
+}
+
+
+
+class PropertyType {
+    - String description
+
+    + PropertyType(String description)
+    +String getPropertyType()
+}
+
+class BusinessType {
+    - String description
+
+    +BusinessType(description))
+}
+
+class PropertyTypeRepository {
+    + getPropertyTypeList()
+}
+
+class BusinessTypeRepository {
+    + getBusinessTypeList()
+}
+
+class Repositories {
+    - Repositories instance
+    - Repositories()
+    + Repositories getInstance()
+    + PropertyTypeRepository getPropertyTypeRepository()
+    + BusinessTypeRepository getBusinessTypeRepository()
+    + StoreRepository getStoreRepository()
+}
+
+class ListPropertiesController {
+    + ListPropertiesController()
+    + List<BusinessType> getBusinessTypeList()
+    +  List<PropertyType> getPropertyTypeList()
+    + List<Advertisement> getListedProperties(keepSortMethod,keepBusinessType,keepPropertyType,keepNumberBedrooms)
+    + List<Advertisement> sortPropertiesList(List<Advertisement> listedProperties,String keepSortMethod)
+}
+
+class StoreRepository {
+    + getStoreList()
+}
+
+
+class ListPropertiesUI {
+    - String keepSortMethod
+    - BusinessType keepBusinessType
+    - PropertyType keepPropertyType
+    - int keepNumberBedrooms
+    + ListPropertiesUI()
+}
+
+class Advertisement{
+    - Date date
+    - String commissionType
+    - Double commissionValue
+    +Advertisement(String commissionType,Double commissionValue,Date date)
+}
+
+class Property{
+
+    -double areaProperty
+    -double distanceCityCenter
+    +Property(PropertyType type,double areaProperty,double distanceCityCenter)
+    + double getAreaProperty()
+    + double getDistanceCityCenter()
+    + void setAreaProperty(double areaProperty)
+    + void setDistanceCityCenter(double distanceCityCenter)
+}
+
+class Building{
+    -int numberBedrooms;
+    -int numberParking;
+    -int numberBathrooms;
+    -String availableEquipment;
+    +Building (PropertyType type,double areaProperty, double distanceCityCenter,int numberBedrooms,int numberParking)
+    +Building (PropertyType type,double areaProperty, double distanceCityCenter,int numberBedrooms,int numberParking,int numberBathrooms)
+    + Building (PropertyType type,double areaProperty, double distanceCityCenter,int numberBedrooms,int numberParking,String availableEquipment)
+    +Building (PropertyType type,double areaProperty, double distanceCityCenter,int numberBedrooms,int numberParking,int numberBathrooms,String availableEquipment)
+    +int getNumberBedrooms()
+    + int getNumberParking()
+    + int getNumberBathrooms()
+    + String getAvailableEquipment()
+    + void setNumberBedrooms(int numberBedrooms)
+    + void setNumberParking(int numberParking)
+    + void setNumberBathrooms(int numberBathrooms)
+    + void setAvailableEquipment(String availableEquipment)
+
+}
+
+class House{
+    -boolean basement;
+    -boolean habitableLoft;
+    -String availableEquipment;
+    +House (PropertyType type,double areaProperty, double distanceCityCenter,int numberBedrooms,int numberParking,boolean basement, boolean habitableLoft)
+    +House (PropertyType type,double areaProperty, double distanceCityCenter,int numberBedrooms,int numberParking,int numberBathrooms,boolean basement, boolean habitableLoft)
+    + House (PropertyType type,double areaProperty, double distanceCityCenter,int numberBedrooms,int numberParking,String availableEquipment,boolean basement, boolean habitableLoft)
+    +House (PropertyType type,double areaProperty, double distanceCityCenter,int numberBedrooms,int numberParking,int numberBathrooms,String availableEquipment,boolean basement, boolean habitableLoft)
+    + Boolean getBasement()
+    + Boolean getHabitableLoft()
+    + void setBasement(boolean basement)
+    + void setHabitableLoft(boolean habitableLoft)
+}
+
+class Request{
+    Date date
+    int durationOfContract
+    double salePrice
+    double rentPrice
+}
+
+
+Repositories --> Repositories : instance
+ListPropertiesUI .> ListPropertiesController: controller
+
+ListPropertiesController .> Repositories : repositories
+
+Repositories --> "1" PropertyTypeRepository
+Repositories --> "1" BusinessTypeRepository
+Repositories --> "1" StoreRepository
+
+ListPropertiesController ...> StoreRepository:storeRepository
+ListPropertiesController ...> BusinessTypeRepository : businessTypeRepository
+ListPropertiesController ...> PropertyTypeRepository : propertyTypeRepository
+
+BusinessTypeRepository --> "*" BusinessType
+PropertyTypeRepository --> "*" PropertyType
+StoreRepository --> "*" Store
+
+Store --> "*" Advertisement
+
+Advertisement --> "1" Request
+
+Request --> "1"Property
+
+Request --> "1" BusinessType
+
+Property <|-- Building
+
+Property --> "1"PropertyType
+
+Building <|-- House
+
+
+@enduml

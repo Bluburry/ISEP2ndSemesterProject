@@ -1,0 +1,171 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Agent" as ADM
+participant ": AcceptOrDeclineOffersUI" as UI
+participant ": AcceptOrDeclineOffersController" as CTRL
+participant ":Repositories" as ORG
+participant "repositories\n:Repositories" as REPO
+participant "advertisementRepository\n:AdvertisementRepository" as AdvertisementRepository
+participant "offerFeedbackRepository\n:OfferFeedbackRepository" as OfferFeedbackRepository
+participant ":AdvertisementMapper" as AdvertisementMapper
+participant ":OfferMapper" as offermapper
+participant ":AdvertisementDTO" as  AdvertisementDTO
+participant ":AdvertisementCollection" as collection
+
+activate ADM
+
+    ADM -> UI : asks to list offers
+
+
+    activate UI
+
+        UI -> CTRL: create()
+
+        activate CTRL
+
+
+
+
+        CTRL -> ORG : getInstance()
+        activate ORG
+
+          ORG --> CTRL: repositories
+        deactivate ORG
+
+        deactivate
+
+         UI->CTRL: listedPropertiesWithOffers()
+
+         activate CTRL
+         CTRL->REPO:advertisementRepository()
+         activate REPO
+         REPO-->CTRL:advertisementRepository
+         deactivate
+         CTRL->AdvertisementRepository:getAdvertisementsForAgent(agent)
+         activate AdvertisementRepository
+         AdvertisementRepository->CTRL:advertisementList
+         deactivate
+
+         CTRL->List**:create()
+
+         activate List
+
+         group loop [advertisement:advertisementList]
+            CTRL->AdvertisementMapper:toDTO(advertisement)
+            activate AdvertisementMapper
+            group loop [for each offer]
+                AdvertisementMapper -> offermapper:toDTO(offer)
+                activate offermapper
+                offermapper --> AdvertisementMapper:offerDTO
+                deactivate
+            end
+            AdvertisementMapper->AdvertisementDTO:create()
+            AdvertisementMapper--> CTRL:advertisementDTO
+            deactivate
+            CTRL->List:add(advertisementDTO)
+         end
+
+         List-->CTRL:advertisementDTOList
+         deactivate
+
+         CTRL -> collection:sortByDate(advertisementDTOList)
+         activate collection
+
+         group loop [advertisementDTO:advertisementDTOList]
+            collection -> collection : sortOffersByValue(offerList)
+         end
+         collection --> CTRL:advertisementDTOSortedList
+
+         deactivate
+
+
+         CTRL -->UI :advertisementDTOSortedList
+
+         group loop [intended]
+         UI-->ADM:display sorted list of advertisements information and asks to choose one
+
+
+         ADM -> UI: choose one offer
+         UI--> ADM:approve or reject
+
+         ADM -> UI:decision
+
+         alt    approve
+
+            UI -> CTRL:acceptOffer(advertisementDTO,offerDTO)
+                        CTRL -> AdvertisementMapper:fromDTOtoAD(advertisementDTO)
+                        activate AdvertisementMapper
+
+                        AdvertisementMapper --> CTRL: advertisement
+                        deactivate
+
+                        CTRL -> offermapper:fromDTOtoAD(offerDTO)
+                        activate offermapper
+
+                        offermapper --> CTRL: offerCTRL
+
+                        deactivate
+
+
+                        group loop [for each offer of advertisement]
+                            group alt [offer=offerCTRL]
+                                CTRL -> CTRL:sendEmailToUser(user,true)
+                                   CTRL-> AdvertisementRepository:acceptOffer(advertisement,offer)
+                                                           activate AdvertisementRepository
+
+                                                           AdvertisementRepository --> CTRL:advertisement
+                                                           deactivate
+                                else
+                                    CTRL -> CTRL:sendEmailtoUser(user,false)
+                                    CTRL-> AdvertisementRepository:declineOffer(advertisement,offer)
+                                                            activate AdvertisementRepository
+
+                                                            AdvertisementRepository --> CTRL:advertisement
+                                                            deactivate
+                            end
+
+                        end
+
+
+
+                        CTRL-->UI:offerDTO
+                        UI->UI:deleteAllOffers(advertisementDTO)
+
+         else reject
+            UI -> CTRL:declineOffer(advertisementDTO,offerDTO)
+            CTRL -> AdvertisementMapper:fromDTOtoAD(advertisementDTO)
+            activate AdvertisementMapper
+
+            AdvertisementMapper --> CTRL: advertisement
+            deactivate
+            CTRL -> offermapper:fromDTOtoAD(offerDTO)
+                                    activate offermapper
+
+                                    offermapper --> CTRL: offer
+
+                                    deactivate
+            CTRL -> CTRL:sendEmailToUser(user,false)
+            CTRL-> AdvertisementRepository:declineOffer(advertisement,offer)
+            activate AdvertisementRepository
+
+            AdvertisementRepository --> CTRL:advertisement
+            deactivate
+
+            CTRL-->UI:offerDTO
+            UI->UI:deleteOneOffer(advertisementDTO,offerDTO)
+
+
+
+         end
+
+         end
+         UI--> ADM: display operation success
+         deactivate
+
+@enduml

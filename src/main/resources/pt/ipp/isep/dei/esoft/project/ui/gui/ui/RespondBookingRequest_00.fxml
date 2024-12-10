@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #eef4f3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipp.isep.dei.esoft.project.ui.gui.ui.RespondBookingRequestControllerFX">
+   <left>
+      <AnchorPane prefHeight="703.0" prefWidth="388.0" style="-fx-background-color: #b4d4e4;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="249.0" fitWidth="251.0" layoutX="69.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../../../sem2Files/images/logo.PNG" />
+               </image></ImageView>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="57.0" layoutY="352.0" prefHeight="120.0" prefWidth="275.0" text="Welcome" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Caladea" size="54.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="650.0" prefHeight="17.0" prefWidth="352.0" text="software by 1DGH, G31, Martela Código" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="810.0" prefWidth="1282.0" style="-fx-background-color: #eef4f3;" BorderPane.alignment="CENTER">
+         <children>
+            <Group fx:id="firstPage" layoutX="61.0" layoutY="219.0">
+               <children>
+                  <Label layoutX="13.0" layoutY="16.0" text="Agent Name" textFill="#847c94">
+                     <font>
+                        <Font name="Book Antiqua" size="34.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="confirmButton" layoutX="13.0" layoutY="407.0" mnemonicParsing="false" onAction="#firstPageSwitch" prefHeight="53.0" prefWidth="261.0" text="CONFIRM" textFill="#847c94">
+                     <font>
+                        <Font name="Book Antiqua" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="cancelButton" cancelButton="true" layoutX="442.0" layoutY="407.0" mnemonicParsing="false" onAction="#close1" prefHeight="53.0" prefWidth="261.0" text="CANCEL" textFill="#847c94">
+                     <font>
+                        <Font name="Book Antiqua" size="24.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="15.0" layoutY="246.0" text="Agent Phone" textFill="#847c94">
+                     <font>
+                        <Font name="Book Antiqua" size="34.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="keepAgentNameLabel" layoutX="13.0" layoutY="68.0" prefHeight="50.0" prefWidth="650.0" style="-fx-background-color: #ffffff;" textFill="#847c94" underline="true">
+                     <font>
+                        <Font name="Book Antiqua" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="keepAgentEmailLabel" layoutX="13.0" layoutY="185.0" prefHeight="50.0" prefWidth="650.0" style="-fx-background-color: #ffffff;" textFill="#847c94" underline="true">
+                     <font>
+                        <Font name="Book Antiqua" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="keepAgentPhoneLabel1" layoutX="13.0" layoutY="299.0" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: #ffffff;" textFill="#847c94" underline="true">
+                     <font>
+                        <Font name="Book Antiqua" size="18.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="importButton" layoutX="15.0" layoutY="-49.0" mnemonicParsing="false" onAction="#onActionImportButton" prefHeight="53.0" prefWidth="228.0" text="IMPORT" textFill="#847c94">
+                     <font>
+                        <Font name="Book Antiqua" size="24.0" />
+                     </font>
+                  </Button>
+                  <Label alignment="CENTER" layoutX="-1.0" layoutY="-194.0" prefHeight="66.0" prefWidth="720.0" text="Respond to Booking Request" textFill="#847c94">
+                     <font>
+                        <Font name="Book Antiqua" size="48.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="15.0" layoutY="131.0" text="Agent Email" textFill="#847c94">
+                     <font>
+                        <Font name="Book Antiqua" size="34.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="5.0" layoutY="-128.0" prefHeight="66.0" prefWidth="720.0" text="Agent Login" textFill="#847c94">
+                     <font>
+                        <Font name="Book Antiqua" size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Group>
+            <Group fx:id="secondPage" disable="true" opacity="0.0">
+
+               <children>
+                  <Label alignment="CENTER" layoutX="57.0" layoutY="26.0" prefHeight="66.0" prefWidth="720.0" text="Respond to Booking Request" textFill="#847c94">
+                     <font>
+                        <Font name="Book Antiqua" size="48.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="50.0" layoutY="92.0" prefHeight="66.0" prefWidth="720.0" text="Choose Property" textFill="#847c94">
+                     <font>
+                        <Font name="Book Antiqua" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="confirmPropertyButton" layoutX="103.0" layoutY="650.0" onDragDetected="#secondPageSwitch" text="Choose Property Number" textFill="#847c94">
+                     <font>
+                        <Font name="Book Antiqua" size="34.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="chooseProperty01TextArea" editable="false" layoutX="108.0" layoutY="191.0" prefHeight="445.0" prefWidth="604.0" wrapText="true">
+                     <font>
+                        <Font name="Book Antiqua" size="18.0" />
+                     </font></TextArea>
+                  <TextField fx:id="keepAdVisitDTOChoiceTextField" layoutX="516.0" layoutY="650.0" prefHeight="50.0" prefWidth="58.0" />
+                  <Button fx:id="confirm1Button" layoutX="600.0" layoutY="650.0" mnemonicParsing="false" onAction="#secondPageSwitch" prefHeight="53.0" prefWidth="169.0" text="CONFIRM" textFill="#847c94">
+                     <font>
+                        <Font name="Book Antiqua" size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+
+            </Group>
+            <Group fx:id="thirdPage" disable="true" opacity="0.0">
+
+                           <children>
+                  <Label alignment="CENTER" layoutX="57.0" layoutY="26.0" prefHeight="66.0" prefWidth="720.0" text="Respond to Booking Request" textFill="#847c94">
+                     <font>
+                        <Font name="Book Antiqua" size="48.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="50.0" layoutY="92.0" prefHeight="66.0" prefWidth="720.0" text="Choose Visit From Property" textFill="#847c94">
+                     <font>
+                        <Font name="Book Antiqua" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="108.0" layoutY="661.0" text="Choose Visit Number" textFill="#847c94">
+                     <font>
+                        <Font name="Book Antiqua" size="34.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="displayPropertyVisitsTextArea" editable="false" layoutX="108.0" layoutY="191.0" prefHeight="313.0" prefWidth="604.0" wrapText="true">
+                     <font>
+                        <Font name="Book Antiqua" size="18.0" />
+                     </font>
+                  </TextArea>
+                  <TextField fx:id="keepVisitChoiceTextField" layoutX="517.0" layoutY="658.0" onInputMethodTextChanged="#secondPageSwitch" prefHeight="50.0" prefWidth="58.0" />
+                  <Label fx:id="checkNumberFormatValidationLabel" layoutX="108.0" layoutY="610.0" prefHeight="59.0" prefWidth="605.0" textFill="#c30e0e">
+                     <font>
+                        <Font name="Book Antiqua" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <children>
+                  <Button fx:id="confirm2Button" layoutX="600.0" layoutY="650.0" mnemonicParsing="false" onAction="#thirdPageSwitch" prefHeight="53.0" prefWidth="169.0" text="CONFIRM" textFill="#847c94">
+                     <font>
+                        <Font name="Book Antiqua" size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Group>
+
+
+         <Group fx:id="fourPage" disable="true" opacity="0.0">
+            <children>
+               <Label alignment="CENTER" layoutX="57.0" layoutY="26.0" prefHeight="66.0" prefWidth="720.0" text="Respond to Booking Request" textFill="#847c94">
+                  <font>
+                     <Font name="Book Antiqua" size="48.0" />
+                  </font>
+               </Label>
+               <Label alignment="CENTER" layoutX="50.0" layoutY="92.0" prefHeight="66.0" prefWidth="720.0" text="Confirm Visit to Property" textFill="#847c94">
+                  <font>
+                     <Font name="Book Antiqua" size="36.0" />
+                  </font>
+               </Label>
+               <TextArea fx:id="displayConfirmationTextArea" editable="false" layoutX="108.0" layoutY="191.0" prefHeight="313.0" prefWidth="604.0" wrapText="true">
+                  <font>
+                     <Font name="Book Antiqua" size="18.0" />
+                  </font>
+               </TextArea>
+               <Label fx:id="checkNumberFormatValidationLabel_" layoutX="108.0" layoutY="610.0" prefHeight="59.0" prefWidth="605.0" textFill="#c30e0e">
+                  <font>
+                     <Font name="Book Antiqua" size="14.0" />
+                  </font>
+               </Label>
+               <Button fx:id="cancelButton2" cancelButton="true" layoutX="287.0" layoutY="596.0" mnemonicParsing="false" onAction="#close1" prefHeight="53.0" prefWidth="261.0" text="FINISH" textFill="#847c94">
+                  <font>
+                     <Font name="Book Antiqua" size="24.0" />
+                  </font>
+               </Button>
+                  <Button fx:id="rejectedVisitButton" cancelButton="true" layoutX="440.0" layoutY="525.0" mnemonicParsing="false" onAction="#rejectVisit" prefHeight="53.0" prefWidth="261.0" text="REJECTED" textFill="#847c94">
+                     <font>
+                        <Font name="Book Antiqua" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="reportVisitButton" cancelButton="true" layoutX="120.0" layoutY="525.0" mnemonicParsing="false" onAction="#acceptedVisit" prefHeight="53.0" prefWidth="261.0" text="ACCEPTED" textFill="#847c94">
+                     <font>
+                        <Font name="Book Antiqua" size="24.0" />
+                     </font>
+                  </Button>
+            </children>
+         </Group>
+
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

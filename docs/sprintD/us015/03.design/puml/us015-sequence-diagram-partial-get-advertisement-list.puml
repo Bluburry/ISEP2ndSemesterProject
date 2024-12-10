@@ -1,0 +1,22 @@
+@startuml Sequence Diagram Partial - Get Advertisment List
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Partial - Get Advertisment List
+autonumber
+
+'hide footbox
+participant ":ListBookingRequestsController" as CTRL
+participant "advertisementRepository\n:AdvertisementRepository" as AR
+
+autonumber 25
+-> CTRL : getAdvertisements()
+activate CTRL
+	CTRL -> AR : getAdvertisementsByAgent(employee)
+	activate AR
+		AR --> CTRL : advertismentList
+	deactivate AR
+deactivate CTRL
+
+@enduml

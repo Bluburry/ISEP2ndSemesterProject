@@ -1,0 +1,101 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram Parcial Get AdvertismentDTOList Sorted By Date (SSD)
+
+'hide footbox
+
+participant ":ScheduleVisitController" as CTRL
+
+participant "repositories\n:Repositories" as repositories
+participant "advertisementCollection\n:AdvertisementCollection" as advertisementCollection
+participant "advertisementRepository\n:AdvertisementRepository" as advertisementRepository
+
+autonumber 24
+
+        activate CTRL
+
+            CTRL -> repositories : getAdvertisementRepository()
+            activate repositories
+
+            repositories -> CTRL: advertisementRepository
+            deactivate repositories
+
+
+            CTRL -> advertisementRepository : getAdvertismentDTOListSorted(keepPropertyTypeChoice, keepBusinessTypeChoice)
+            activate advertisementRepository
+
+                advertisementRepository -> advertisementRepository : getAdvertisementList()
+
+                advertisementRepository -> advertisementCollection : createAdvertisementDTOList(advertisementList)
+                deactivate advertisementRepository
+                activate advertisementCollection
+
+                advertisementCollection -> advertisementCollection : createAdvertisementDTOList()
+
+
+loop (for each object in advertisementList)
+
+                advertisementCollection -> advertisementCollection: Advertisement = get(i)
+                advertisementCollection -> advertisementCollection: getDataFromAdvertisement(propertyType,businessType)
+
+    alt (propertyType = keepPropertyTypeChoice \n&& propertyType = keepPropertyTypeChoice)
+        alt propertyType= HOUSE
+
+                advertisementCollection -> advertisementCollection: getDataFromAdvertisement(propertyType, \narea cms. Distance Kms,\n location(street, zipcode, stateUS, city, district), \nnumberBedrooms, numberParking, \n,numberBathrooms, \navailableEquipment, basement (YES/NO),\n habitable loft (YES/NO), Sun Exposure Type choice, photos)
+
+            alt businessType= SALE
+
+                advertisementCollection -> advertisementCollection: getDataFromAdvertisement(salePrice)
+
+            else businessType= LEASE
+
+                advertisementCollection -> advertisementCollection: getDataFromAdvertisement(rentPrice, ContractDuration)
+
+            end
+
+        else propertyType= APARTMENT
+
+                advertisementCollection -> advertisementCollection: getDataFromAdvertisement(propertyType, \narea cms. Distance Kms,\n location(street, zipcode, stateUS, city, district), \nnumberBedrooms, numberParking, photo,numberBathrooms, \navailableEquipment, photos)
+
+            alt businessType= SALE
+
+                advertisementCollection -> advertisementCollection: getDataFromAdvertisement(salePrice)
+
+            else businessType= LEASE
+
+                advertisementCollection -> advertisementCollection: getDataFromAdvertisement(rentPrice, ContractDuration)
+
+            end
+
+        else propertyType = LAND
+
+                advertisementCollection -> advertisementCollection: getDataFromAdvertisement(propertyType, \narea cms. Distance Kms,\n location(street, zipcode, stateUS, city, district), photo, photos)
+
+            alt businessType= SALE
+
+                advertisementCollection -> advertisementCollection: getDataFromAdvertisement(salePrice)
+
+            else businessType= LEASE
+
+                advertisementCollection -> advertisementCollection: getDataFromAdvertisement(rentPrice, ContractDuration)
+
+            end
+
+        end
+
+    end
+end
+                advertisementCollection -> advertisementCollection : Advertisement to AdvertisementDTO (Data)),\n add to AdvertisementDTOList
+
+                advertisementCollection -> advertisementCollection : sort AdvertisementDTOList by Date
+
+                advertisementCollection -> CTRL : AdvertisementDTOListSortedByDate
+                deactivate advertisementCollection
+
+
+        deactivate CTRL
+
+@enduml

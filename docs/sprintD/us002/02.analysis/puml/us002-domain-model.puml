@@ -1,0 +1,123 @@
+@startuml Domain Model - Create Sale Announcement
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+class "Agent" as Employee
+
+class Person {
+	email
+	name
+	citizenID
+	tin
+	phoneNumber
+}
+
+class Employee {
+    role
+}
+
+enum PropertyType {
+    designation
+}
+
+class Property <<Interface>> {
+    area
+    distance
+    photographs
+}
+
+class Location <<Interface>> {
+    street
+    zip
+    state
+    city
+    district
+}
+
+class Land
+
+class Apartment {
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+}
+
+class House {
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+    basement
+    loft
+}
+
+enum BusinessType {
+    description
+}
+
+enum SunExposure {
+    description
+}
+
+class Request <<Interface>> {
+    date
+    price
+}
+
+class RequestLease {
+    durationOfContract
+}
+
+class RequestSale
+
+enum CommissionType {
+    designation
+}
+
+class Advertisement {
+    date
+    commissionValue
+}
+
+class SMS {
+    AgenName
+    AgentPhoneNumber
+    ClientPhoneNumber
+    PropertyInfo
+}
+
+Employee "1" -- "*" Advertisement : creates >
+Advertisement "1" -- "1" Request : has >
+Advertisement "1" -- "1" CommissionType : has >
+
+Person "1" -- "*" Request : makes >
+Person "1" -- "*" Property : owns >
+Employee "1" -- "*" Request : assigned to >
+Employee "1" -- "*" SMS : sends >
+
+Request "1" -- "1" BusinessType : has >
+Request "1" -- "1" Property : has >
+
+Request <.. RequestLease
+Request <.. RequestSale
+
+Property <.. Land
+Property <.. Apartment
+Property <.. House
+
+Location <.. Land
+Location <.. Apartment
+Location <.. House
+
+Property "1" -- "1" PropertyType : has >
+
+House "1" -- "1" SunExposure : has >
+
+@enduml

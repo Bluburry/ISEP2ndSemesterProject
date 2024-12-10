@@ -1,0 +1,172 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Unregistered User" as ADM
+participant ":ListPropertiesUI" as UI
+participant ":ListPropertiesController" as CTRL
+participant ":Repositories" as ORG
+participant "repositories\n:Repositories" as REPO
+participant "businessTypeRepository\n:BusinessTypeRepository" as BusinessTypeRepository
+participant "propertyTypeRepository\n:PropertyTypeRepository" as PropertyTypeRepository
+participant "storeRepository\n:StoreRepository" as StoreRepository
+participant ":Store" as Store
+participant ":Advertisement" as Advertisement
+participant ":Property" as Property
+participant "list\n:List" as LIST
+
+
+
+
+
+activate ADM
+
+    ADM -> UI : asks to list listed properties
+
+
+    activate UI
+
+        UI -> CTRL**: create()
+
+        UI->UI: run()
+
+        CTRL -> ORG : getInstance()
+        activate CTRL
+        activate ORG
+
+          ORG --> CTRL: repositories
+        deactivate ORG
+
+        ADM <-- UI : asks if the user want to use filters (business type, number of bedrooms, property type)
+
+        ADM -> UI: send answer
+
+        group opt [answer = true]
+
+
+        UI -> CTRL : getBusinessTypeList
+        CTRL -> REPO : getBusinessTypeRepository()
+        activate REPO
+
+            REPO --> CTRL: businessTypeRepository
+        deactivate REPO
+
+        CTRL -> BusinessTypeRepository: getBusinessTypeList()
+        activate BusinessTypeRepository
+
+            BusinessTypeRepository --> CTRL: businessTypeList
+        deactivate BusinessTypeRepository
+
+
+        CTRL --> UI : businessTypeList
+
+        UI --> ADM : displays business types
+
+        ADM -> UI:selects business type
+
+        UI -> UI :keepBusinessType
+
+        UI -> CTRL : getPropertyTypeList
+
+        CTRL -> REPO : getPropertyTypeRepository()
+        activate REPO
+
+            REPO --> CTRL: propertyTypeRepository
+        deactivate REPO
+
+        CTRL -> PropertyTypeRepository: getPropertyTypeList()
+        activate PropertyTypeRepository
+
+                 PropertyTypeRepository --> CTRL: propertyTypeList
+        deactivate PropertyTypeRepository
+
+        CTRL --> UI : propertyTypeList
+
+        UI --> ADM : displays property types
+
+        ADM -> UI:selects property type
+
+        UI -> UI :keepPropertyType
+
+        opt keepPropertyType != Land
+            UI --> ADM: asks number of bedrooms
+
+            ADM -> UI: type number of bedrooms
+
+            UI  ->  UI: keepNumberBedrooms
+        end
+
+        end
+
+        ADM <-- UI : displays sort methods
+
+        ADM -> UI : selects sort method
+
+        UI-> UI:keepSortMethod
+
+        UI -> CTRL : getListedProperties(keepSortMethod,keepBusinessType,keepPropertyType,keepNumberBedrooms)
+
+        CTRL -> REPO : getStoreRepository()
+        activate REPO
+
+            REPO --> CTRL: storeRepository
+        deactivate REPO
+
+        CTRL ->StoreRepository: getStoresList()
+        activate StoreRepository
+
+            StoreRepository --> CTRL :storesList
+        deactivate StoreRepository
+
+        CTRL -> LIST**: create()
+
+
+
+                  loop for each store
+                                CTRL -> Store : getListedProperties(keepBusinessType,keepPropertyType,keepNumberBedrooms)
+                                activate Store
+
+                                Store -> LIST**: create()
+                                loop for each advertisement
+                                Store -> Advertisement : getAdsAndPropertyFilters(keepBusinessType,keepPropertyType,keepNumberBedrooms)
+                                opt true
+
+                                Advertisement -> Property: checkPropertyFilters(keepPropertyType,keepNumberBedrooms)
+                                activate Property
+
+                                Property --> Advertisement: true/false
+                                deactivate Property
+                                end
+                                Advertisement -->Store :true/false
+                                opt true
+                                Store->LIST: add(advertisement)
+                                end
+
+                                end
+                                Store --> CTRL : listedProperties
+                                deactivate Store
+                                CTRL -> LIST: add(listedProperties)
+                  end
+
+        CTRL -> CTRL: sortPropertiesList(listedProperties,keepSortMethod)
+
+
+        CTRL --> UI : listedProperties
+
+
+
+
+
+
+        deactivate CTRL
+
+        UI --> ADM :  display listed properties
+    deactivate UI
+
+deactivate ADM
+
+@enduml

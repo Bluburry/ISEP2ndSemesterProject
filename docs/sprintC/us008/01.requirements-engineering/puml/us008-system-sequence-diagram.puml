@@ -1,0 +1,33 @@
+@startuml System Sequence Diagram (SSD) - List property request
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - List property request
+
+autonumber
+
+actor "Agent" as Agent
+participant ":System" as System
+
+activate Agent
+
+    Agent -> System : asks to list property requests
+    loop while intended
+        activate System
+            System --> Agent : lists property requests assigned to the agent
+        deactivate System
+
+        Agent -> System : selects one
+        activate System
+            System --> Agent : asks whether the agent wants to accept or deny
+        deactivate System
+
+        Agent -> System : selects one
+        activate System
+            System --> Agent : displays operation success
+        deactivate System
+    end
+
+deactivate Agent
+@enduml

@@ -1,0 +1,161 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "System administrator" as ADM
+participant ":RegisterEmployeeUI" as UI
+participant ":RegisterEmployeeController" as CTRL
+participant ":Repositories" as RepSingleton
+participant "repositories\n:Repositories" as REPS
+participant "storeRepository:\nStoreRepository" as storeRepository
+participant "personRepository:\nPersonRepository" as personRepository
+participant "authenticationRepository:\nAuthenticationRepository" as authenticationRepository
+
+activate ADM
+
+        ADM -> UI : asks to register a new employee
+
+        activate UI
+
+            UI -> CTRL** : create
+            activate CTRL
+'            UI --> ADM : requests data (reference, description,  informal \n description, technical description, duration, cost)
+            'create CTRL
+
+            CTRL -> RepSingleton : getInstance()
+            activate RepSingleton
+
+            RepSingleton --> CTRL: repositories
+            deactivate RepSingleton
+            deactivate CTRL
+
+            UI --> ADM : requests data for the employee
+            deactivate UI
+
+
+            ADM -> UI : types requested data (name, password, citizen's card number,\n tax number, e-mail, telephone number)
+            activate UI
+
+            UI --> ADM: requests data for the employee's address
+            deactivate UI
+
+            ADM -> UI: sends data (street, zipcode, state, city, district)
+            activate UI
+
+                    UI -> CTRL : getUserRoleList()
+                    activate CTRL
+
+
+                        CTRL -> REPS : getAuthenticationRepository()
+                        activate REPS
+
+                            REPS --> CTRL: authenticationRepository
+                        deactivate REPS
+
+                        CTRL -> authenticationRepository : getUserRoleList()
+                        activate authenticationRepository
+
+                            authenticationRepository --> CTRL : userRoleList
+                        deactivate authenticationRepository
+
+                        CTRL --> UI : userRoleList
+                    deactivate CTRL
+
+                UI --> ADM : shows user roles and asks to select one
+            deactivate UI
+
+                ADM -> UI : selects an user role
+            activate UI
+
+            UI -> CTRL : getStoreList()
+            activate CTRL
+
+                CTRL -> REPS : getStoreRepository()
+                activate REPS
+
+                    REPS --> CTRL: storeRepository
+                deactivate REPS
+
+                CTRL -> storeRepository : getStoreList()
+                activate storeRepository
+
+                    storeRepository --> CTRL : storeList
+                deactivate storeRepository
+
+                CTRL --> UI : storeList
+            deactivate CTRL
+
+            alt role = store network manager
+                UI --> ADM : shows store list and asks to select the\nstores that are part of the network
+                deactivate UI
+
+                ADM -> UI : selects the stores
+                activate UI
+            else role != store network manager
+                UI --> ADM : shows store list and asks to select one
+                deactivate UI
+
+                ADM -> UI : selects a store
+                activate UI
+            end
+
+    UI --> ADM : shows selected user role, store/stores and requested data
+    deactivate UI
+
+    ADM -> UI : submits data
+    activate UI
+
+        UI -> CTRL : createEmployee(name, password, citizenNum, tin, email, phoneNum, storeID, street, zipCode, stateUS, city, district, userRole)
+        activate CTRL
+
+                CTRL -> authenticationRepository: existsUser(email)
+                activate authenticationRepository
+
+                    authenticationRepository --> CTRL : true/false
+                    deactivate authenticationRepository
+
+                    alt true
+                        CTRL -> authenticationRepository : addUserWithRole(name, email, password, userRole)
+                        activate authenticationRepository
+
+                        authenticationRepository --> CTRL : true/false
+                        deactivate authenticationRepository
+
+                        CTRL -> REPS : getPersonRepository()
+                        activate REPS
+
+                        REPS --> CTRL : personRepository()
+                        deactivate REPS
+
+                        CTRL -> personRepository : addEmployeeWithLocation(email, name, citizenNum, tin, phoneNum, street, zipCode, stateUS, city, district, userRole)
+                        activate personRepository
+
+                        personRepository --> CTRL : employee
+                        deactivate personRepository
+
+                        CTRL -> storeRepository : addEmployeeToStore(employee, storeID)
+                        activate storeRepository
+
+                        storeRepository --> CTRL : true/false
+                        deactivate storeRepository
+                    end
+
+                CTRL --> UI : true/false
+                deactivate CTRL
+
+            'register employee controller -> authRepository (adicionar agency)
+            'register employee controller -> authRepository (case of user), update roles
+            'check agency, update agency
+            'register employee controller -> personRepository create person with citizennum
+            'tin
+
+            UI --> ADM: displays operation success
+    deactivate UI
+
+deactivate ADM
+
+@enduml

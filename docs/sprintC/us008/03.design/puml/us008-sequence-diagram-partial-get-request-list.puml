@@ -1,0 +1,43 @@
+@startuml Sequence Diagram - List Property Request
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Full - List Property Request
+autonumber
+
+'hide footbox
+participant ":ListPropertyRequestsController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant ":ApplicationSession" as _APP
+participant "appSession\n:ApplicationSession" as APP
+participant "currentSession\n:UserSession" as SESSAO
+participant "repositories\n:Repositories" as PLAT
+participant "personRepository\n:PersonRepository" as PersonRepository
+participant "requestRepository\n:RequestRepository" as RequestRepository
+
+autonumber 6
+
+activate CTRL
+
+	opt doesn't have agent info yet
+		CTRL -> CTRL : getAgentFromSession()
+
+			ref over CTRL
+				Get Agent Info
+			end ref
+
+autonumber 17
+		CTRL --> CTRL : employee
+	end
+	CTRL -> PLAT : getRequestRepository()
+	activate PLAT
+		PLAT --> CTRL : RequestRepository
+	deactivate PLAT
+	CTRL -> RequestRepository : getRequestsByAgent(agent)
+	activate RequestRepository
+		RequestRepository --> CTRL : requestsList
+	deactivate RequestRepository
+deactivate CTRL
+
+@enduml

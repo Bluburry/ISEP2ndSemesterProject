@@ -1,0 +1,86 @@
+@startuml System Sequence Diagram (SSD) - Create sale announcement
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Create sale announcement
+
+autonumber
+
+actor "Agent" as Agent
+participant ":System" as System
+
+activate Agent
+
+    Agent -> System : asks to publish sale announcement\n(create new sale announcement)
+    activate System
+        System --> Agent : requests owner information (email)
+    deactivate System
+
+    Agent -> System : types requested data
+    activate System 
+        System --> Agent : request property information\n(area, distance from city center,\nstate, city, district, street, zip code)
+    deactivate System
+
+    Agent -> System : submits requested data
+    activate System
+        System --> Agent : lists business type (sale or lease)
+    deactivate System
+
+    Agent -> System : submits requested data
+    activate System 
+        alt agreement = sale
+            System --> Agent : requests price
+        else agreement = lease
+            System --> Agent : requests rent and lease duration
+        end
+    deactivate System
+
+    Agent -> System : submits requested data
+    activate System 
+        System --> Agent : lists possible types of property\nand request that one is selected
+    deactivate System
+
+    Agent -> System : submits requested data
+    alt property = house or apartment
+        activate System 
+            System --> Agent : requests specific data related to selection\n(number of bedrooms, number of parking spaces)
+        deactivate System
+
+        Agent -> System : submits requested data
+        activate System 
+        opt
+                System --> Agent : request optional information\n(number of bathrooms, available equipment)
+            deactivate System
+
+            Agent -> System : sends requested data
+            activate System 
+        end
+        alt property = house
+            opt
+                    System --> Agent : request additional characteristics\n(existing basement, inhabitable loft, sun exposure)
+                deactivate System
+                Agent -> System : submits requested data
+                activate System 
+            end
+        end
+    end
+
+    loop [for at least 1 photograph]
+            System --> Agent : requests photographs to append
+        deactivate System
+        Agent -> System : submits requested information
+        activate System 
+    end
+    deactivate System
+
+    activate System
+        System --> Agent : requests comission information
+    deactivate System
+
+    Agent -> System : submits requested information
+    activate System 
+        System --> Agent : display operation success
+    deactivate System
+
+@enduml

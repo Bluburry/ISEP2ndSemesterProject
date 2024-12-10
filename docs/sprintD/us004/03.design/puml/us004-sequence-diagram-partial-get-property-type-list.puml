@@ -1,0 +1,29 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram Parcial Get Property Type List (SSD)
+
+
+participant ":SubmitPropertyController" as CTRL
+
+participant "repositories\n:Repositories" as repositories
+participant "propertyTypeRepository\n:PropertyTypeRepository" as propertyTypeRepository
+
+
+autonumber 5
+
+            CTRL  ->  repositories : getPropertyTypesRepository()
+                activate repositories
+
+                repositories --> CTRL: propertyTypesRepository()
+                deactivate repositories
+
+            CTRL -> propertyTypeRepository : getPropertyTypesList()
+                activate propertyTypeRepository
+
+                propertyTypeRepository --> CTRL : PropertyTypesList
+                deactivate propertyTypeRepository
+
+@enduml

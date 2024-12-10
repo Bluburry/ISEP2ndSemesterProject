@@ -1,0 +1,29 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram Parcial Create New Apartment (SSD)
+
+'hide footbox
+
+participant ":SubmitPropertyController" as CTRL
+
+participant "repositories\n:Repositories" as repositories
+participant "propertyRepository\n:PropertyRepository" as propertyRepository
+
+autonumber 56
+
+            CTRL -> repositories : getPropertyRepository()
+            activate repositories
+
+                repositories --> CTRL: PropertyRepository
+                deactivate repositories
+
+            CTRL -> propertyRepository: newApartmentProperty (propertyType, \narea cms. Distance Kms,\n location(street, zipcode, stateUS, city, district), \nnumberBedrooms, numberParking, photo,numberBathrooms, \navailableEquipment, photos)
+            activate propertyRepository
+
+                propertyRepository -> CTRL: newApartmentProperty
+                deactivate propertyRepository
+
+@enduml

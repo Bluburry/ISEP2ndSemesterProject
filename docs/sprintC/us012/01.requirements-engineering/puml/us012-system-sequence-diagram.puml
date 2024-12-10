@@ -1,0 +1,27 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD)
+
+autonumber
+
+actor "System administrator" as Employee
+participant ":System" as System
+
+activate Employee
+
+        Employee -> System : asks to import information.
+    activate System
+
+        System --> Employee : requests file to fetch the data from (file location))
+    deactivate System
+
+        Employee -> System : types the file location
+    activate System
+
+        System --> Employee: gets the information and displays operation success
+    deactivate System
+
+@enduml

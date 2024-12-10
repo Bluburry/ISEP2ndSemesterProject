@@ -1,0 +1,113 @@
+@startuml Sequence Diagram (SD) - Create sale announcement
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Agent" as AG
+participant ":CreateSaleAnnouncementUI" as UI
+participant ":CreateSaleAnnouncementController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as PLAT
+participant ":ApplicationSession" as _APP
+participant "appSession\n:ApplicationSession" as APP
+participant "currentSession\n:UserSession" as SESSAO
+participant "personRepository\n:PersonRepository" as PR
+participant "propertyRepository\n:PropertyRepository" as PropertyRepository
+participant "requestRepository\n:RequestRepository" as RequestRepository
+participant "advertisementRepository\n:AdvertisementRepository" as AdvertisementRepository
+participant "businessType\n:BusinessType" as BTR
+participant "propertyType\n:PropertyType" as PTR
+participant "sunExposure\n:SunExposure" as SER
+participant "commissionType\n:CommissionType" as CTR
+participant "property\n:Property" as Property
+participant "building\n:Building" as Building
+participant "house\n:House" as House
+participant "request\n:Request" as Request
+participant "advertisement\n:Advertisement" as Advertisement
+participant "sms\n:SMS" as SMS
+
+
+autonumber 66
+-> CTRL : createAdvertisement(owner, propertyType,\nbusinessType, commissionValue, commissionInfo,\nnumBedrooms, numParkingSpaces, numBathrooms,\navailableEquipment, state, city, district, street, zip,\nbasement, loft, sunExposure, photographs)
+activate CTRL
+
+	CTRL -> CTRL : getAgentFromSession()
+	activate CTRL
+
+		CTRL -> SESSAO: getUser()
+		activate SESSAO
+			SESSAO --> CTRL: employeeEmail
+		deactivate SESSAO
+
+		CTRL -> PR : getPersonByEmail(email)
+		activate PR
+			PR --> CTRL : employee
+		deactivate PR
+
+		CTRL --> CTRL : employee
+	deactivate CTRL
+
+	alt propertyType = land
+		CTRL -> PropertyRepository : createProperty(area, distance, propertyType,\nstate, city, district, street, zip,\nphotographs)
+		activate PropertyRepository
+			PropertyRepository -> Property** : createProperty(area, distance, propertyType,\nstate, city, district, street, zip,\nphotographs)
+			activate Property
+				Property --> CTRL
+			deactivate Property
+		PropertyRepository --> CTRL : property
+		deactivate PropertyRepository
+
+	else propertyType = apartment
+		CTRL -> PropertyRepository : createBuilding(area, distance, propertyType,\nrentalPrice, leaseDuration,\nnumBathrooms, numParkingSpaces,\nnumBedrooms, availableEquipment,\nstate, city, district, street, zip,\nphotographs)
+		activate PropertyRepository
+			PropertyRepository -> Building** : createBuilding(area, distance, propertyType,\nrentalPrice, leaseDuration,\nnumBathrooms, numParkingSpaces,\nnumBedrooms, availableEquipment,\nstate, city, district, street, zip,\nphotographs)
+			activate Building
+				Building --> CTRL
+			deactivate Building
+		PropertyRepository --> CTRL : property
+		deactivate PropertyRepository
+
+	else propertyType = house
+		CTRL -> PropertyRepository : createHouse(area, distance, propertyType, salePrice\nnumBathrooms, numParkingSpaces,\nnumBedrooms, availableEquipment,\nbasement, loft, sunExposure,\nstate, city, district, street, zip,\nphotographs)
+		activate PropertyRepository
+			PropertyRepository -> House** : createHouse(area, distance, propertyType, salePrice\nnumBathrooms, numParkingSpaces,\nnumBedrooms, availableEquipment,\nbasement, loft, sunExposure,\nstate, city, district, street, zip,\nphotographs)
+			activate House
+				House --> CTRL
+			deactivate House
+		PropertyRepository --> CTRL : property
+		deactivate PropertyRepository
+	end
+
+	CTRL -> RequestRepository : createRequest(property,\nbusinessType, salePrice, rentalPrice,\ndurationOfContract, employee, person)
+	activate RequestRepository
+		RequestRepository -> Request** : createRequest(property,\nemployee, person)
+		activate Request
+			Request --> RequestRepository : request
+		deactivate Request
+		RequestRepository --> CTRL : request
+	deactivate RequestRepository
+
+	CTRL -> AdvertisementRepository : createAdvertisement(request,\ncommissionType, commissionValue)
+	activate AdvertisementRepository
+		AdvertisementRepository -> Advertisement** : createAdvertisement(request,\ncommissionType, commissionValue)
+		activate Advertisement
+			Advertisement --> AdvertisementRepository : advertisement
+		deactivate Advertisement
+		AdvertisementRepository --> CTRL : advertisement
+	deactivate AdvertisementRepository
+
+	CTRL -> PropertyRepository : getPropertyID(property)
+	activate PropertyRepository
+		PropertyRepository --> CTRL : propertyID
+	deactivate PropertyRepository
+
+	CTRL -> SMS : notifyPropertyListing(agentName, agentPhoneNumber, personPhoneNumber, advertisement, propertyID)
+	activate SMS
+	deactivate SMS
+	
+deactivate CTRL
+
+@enduml

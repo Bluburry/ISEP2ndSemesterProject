@@ -1,0 +1,33 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD)
+
+autonumber
+
+actor "System administrator" as Employee
+participant ":System" as System
+
+activate Employee
+
+        Employee -> System : asks to see all deals that were made.
+    activate System
+
+        System --> Employee : asks to choose which algorithm will be used.
+    deactivate System
+
+        Employee -> System : selects the algorithm.
+    activate System
+
+        System --> Employee: asks to choose which order the information will be displayed.
+    deactivate System
+
+        Employee -> System: selects the order.
+    activate System
+
+        System --> Employee: displays the information.
+    deactivate System
+
+@enduml

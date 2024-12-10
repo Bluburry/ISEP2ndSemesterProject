@@ -1,0 +1,38 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+participant ":RegisterEmployeeUI" as UI
+participant ":RegisterEmployeeController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as REPS
+participant "authenticationRepository:\nAuthenticationRepository" as authenticationRep
+
+autonumber 17
+    -> UI : types requested data (name, password, citizen's card number,\n tax number, address, e-mail, telephone number)
+    activate UI
+
+        UI -> CTRL : getUserRoleList()
+        activate CTRL
+
+        CTRL -> REPS : getAuthenticationRepository()
+        activate REPS
+
+        REPS --> CTRL: authenticationRepository
+        deactivate REPS
+
+        CTRL -> authenticationRep : getUserRoleList()
+        activate authenticationRep
+
+        authenticationRep --> CTRL : userRoleList
+        deactivate authenticationRep
+
+        CTRL --> UI : userRoleList
+        deactivate CTRL
+
+    <-- UI : shows user role list
+    deactivate UI
+
+
+@enduml

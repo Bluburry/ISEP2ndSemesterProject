@@ -1,0 +1,21 @@
+@startuml Sequence Diagram (SD) - Create sale announcement
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+participant ":CreateSaleAnnouncementController" as CTRL
+participant "businessType\n:BusinessType" as BTR
+
+autonumber 27
+-> CTRL : getBusinessTypes()
+activate CTRL
+	CTRL -> BTR : getBusinessTypes()
+	activate BTR
+		BTR --> CTRL: businessTypeList
+	deactivate BTR
+deactivate CTRL
+
+@enduml

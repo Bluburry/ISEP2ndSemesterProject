@@ -1,0 +1,45 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+
+participant ":RegisterEmployeeController" as CTRL
+participant "repositories\n:Repositories" as REPS
+participant "personRepository:\nPersonRepository" as personRep
+participant "authenticationRepository:\nAuthenticationRepository" as authenticationRep
+
+autonumber 32
+
+        activate CTRL
+        CTRL -> authenticationRep : addUserWithRole(name, email, pwd, roleId)
+        activate authenticationRep
+
+        authenticationRep --> CTRL : true/false
+        deactivate authenticationRep
+
+        CTRL -> REPS : getPersonRepository()
+        activate REPS
+
+        REPS --> CTRL : personRepository()
+        deactivate REPS
+
+        CTRL -> personRep : addEmployeeWithLocation(email, name, citizenNum, tin, phoneNum, street, zipCode, stateUS, city, district, role)
+        activate personRep
+
+        personRep --> CTRL : true/false
+        deactivate personRep
+
+        CTRL -> authenticationRep : addEmployeeToStore(employee, storeID)
+        activate authenticationRep
+
+        authenticationRep --> CTRL : true/false
+        deactivate authenticationRep
+
+deactivate CTRL
+
+
+@enduml

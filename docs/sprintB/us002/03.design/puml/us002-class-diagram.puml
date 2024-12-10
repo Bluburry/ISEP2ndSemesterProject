@@ -1,0 +1,309 @@
+@startuml
+
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+
+skinparam classAttributeIconSize 0
+
+class CreateSaleAnnouncementUI {
+    - boolean basement
+    - boolean loft
+    - int numBedrooms
+    - int numParkingSpaces
+    - int numBathrooms
+    - int citizenID
+    - int tin
+    - int phoneNumber
+    - int durationOfContract
+    - double area
+    - double distance
+    - double salePrice
+    - double rentalPrice
+    - double commissionValue
+    - String email
+    - String name
+    - String state
+    - String city
+    - String district
+    - String street
+    - String zip
+    - String availableEquipment
+    - String businessType
+    - String commissionType
+    - List<String> photographs
+    - List<BusinessType> businessTypes
+    - List<SunExposure> sunExposures
+    - Date date
+    - Location location
+    - Property property
+    - PropertyType propertyType
+    - BusinessType businessType
+    - SunExposure sunExposure
+    - Employee employee
+    - Person person
+    - Request request
+    - run()
+    - getOwnerInfo()
+    - getBasicPropertyInfo()
+    - getSpecificPropertyInfo()
+    - createAdvertisment()
+    + CreateSaleAnnouncementUI()
+}
+
+class CreateSaleAnnouncementController {
+    + CreateSaleAnnouncementController()
+    + getOwner() : Person
+    + getBusinessTypeList() : List<BusinessType>
+    + getPropertyTypeList() : List<PropertyType>
+    + getSunExposureLocation() : List<getSunExposureLocation>
+    + getAgentFromSession() : Employee
+    + createProperty(String state, String city, String district, 
+    String street, String zip, double area, double distance,
+    String propertyType, List<String> photograph) : Property
+    + createBuilding(String state, String city, String district,
+    String street, String zip, double area, double distance,
+    String propertyType, List photograph,
+    int numBedrooms, int numparkingSpaces,
+    int numBathrooms, boolean availableEquipment) : Property
+    + createHouse(String state, String city, String district,
+    String street, String zip, double area, double distance,
+    String propertyType, List photograph,
+    int numBedrooms, int numparkingSpaces,
+    int numBathrooms, boolean availableEquipment,
+    boolean basement, boolean loft, String sunExposure) : Property
+    + createRequest(Property property,
+    String businessType, double salePrice,
+    double rentalPrice, int durationOfContract,
+    Employee employee, Person person) : Request
+    + createAdvertisment(Person owner, Request request,
+    String commissionType, double commissionValue,
+    String state, String city, String district,
+    String street, String zip, double area, double distance,
+    String propertyType, List photograph,
+    int numBedrooms, int numparkingSpaces,
+    int numBathrooms, boolean availableEquipment,
+    boolean basement, boolean loft, String sunExposure) : Advertisement
+}
+
+class ApplicationSession {
+    + static getInstance()
+    + getCurrentSession()
+}
+
+class UserSession {
+    + getUser()
+}
+
+class Repositories {
+    - Repositories instance
+    - Repositories()
+    + Repositories getInstance()
+    + getPersonRepository() : PersonRepository
+    + getBusinessTypeRepository() : BusinessTypeRepository
+    + getPropertyTypeRepository() : PropertyTypeRepository
+    + getSunExposureRepository() : SunExposureRepository
+    + getPropertyRepository() : PropertyRepository
+    + getRequestRepository() : RequestRepository
+    + getAdvertisementRepository() : AdvertisementRepository
+}
+
+class Person {
+    - String email
+    - String name
+    - int citizenID
+    - int tin
+    - int phoneNumber
+    + Person(String email, int citizenID,
+    int tin, int phoneNumber, String name)
+    + getPerson(int citizenID) : person
+}
+
+class PersonRepository {
+    - List<Person> personList
+    + getPerson(int citizenID) : List<person>
+}
+
+class Employee {
+    - String role
+}
+
+class Location {
+    - String state
+    - String city
+    - String district
+    - String street
+    - String zip
+}
+
+class Property {
+    - location location
+    - double area
+    - double distance
+    - String propertyType
+    - List<String> photograph
+    + Property(String state, String city, String district, 
+    String street, String zip, double area, double distance,
+    String propertyType, List<String> photograph)
+}
+
+class PropertyType {
+    - String description
+    + getPropertyType() : String
+}
+
+class PropertyTypeRepository {
+    - List<PropertyType> propertyTypeList
+    + getPropertyTypeList() : List<PropertyType>
+}
+
+class PropertyRepository {
+    - List<Property> propertyList
+    + createProperty(String state, String city, String district, 
+    String street, String zip, double area, double distance,
+    String propertyType, List<String> photograph) : Property
+    + createBuilding(String state, String city, String district,
+    String street, String zip, double area, double distance,
+    String propertyType, List photograph,
+    int numBedrooms, int numparkingSpaces,
+    int numBathrooms, boolean availableEquipment) : Property
+    + createHouse(String state, String city, String district,
+    String street, String zip, double area, double distance,
+    String propertyType, List photograph,
+    int numBedrooms, int numparkingSpaces,
+    int numBathrooms, boolean availableEquipment,
+    boolean basement, boolean loft, String sunExposure) : Property
+}
+
+class Building {
+    - int numBedrooms
+    - int numParkingSpaces
+    - int numBathrooms
+    - String availableEquipment
+    + Building(String state, String city, String district,
+    String street, String zip, double area, double distance,
+    String propertyType, List photograph,
+    int numBedrooms, int numparkingSpaces,
+    int numBathrooms, boolean availableEquipment)
+}
+
+class House {
+    - boolean basement
+    - boolean loft
+    - SunExposure sunExposure
+    + House(String state, String city, String district,
+    String street, String zip, double area, double distance,
+    String propertyType, List photograph,
+    int numBedrooms, int numparkingSpaces,
+    int numBathrooms, boolean availableEquipment,
+    boolean basement, boolean loft, String sunExposure)
+}
+
+class SunExposure {
+    - String description
+    + getSunExposure() : String
+}
+
+class SunExposureRepository {
+    - List<SunExposure> sunExposureList
+    + getSunExposureList() : List<SunExposure>
+}
+
+class Request {
+    - double salePrice
+    - double rentalPrice
+    - int durationOfContract
+    - Date date
+    - BusinessType businessType
+    - Property property
+    - Employee employee
+    - Person person
+    + Request(Property property,
+    String businessType, double salePrice,
+    double rentalPrice, int durationOfContract,
+    Employee employee, Person person)
+}
+
+class RequestRepository {
+    - List<Request> requestList
+    + createRequest(Property property,
+    String businessType, double salePrice,
+    double rentalPrice, int durationOfContract,
+    Employee employee, Person person)
+}
+
+class BusinessType {
+    - String description
+    + getBusinessType() : String
+}
+
+class BusinessTypeRepository {
+    - List<BusinessType>
+    + getBusinessTypeList() : List<BusinessType>
+}
+
+class Advertisement {
+    - Request request
+    - Date date
+    - String commissionType
+    - double commissionValue
+    + Advertisement(Request request,
+    String commissionType, double commissionValue)
+}
+
+class AdvertisementRepository {
+    - List advertisementList
+    + createAdvertisement(Request request,
+    String commissionType, double commissionValue)
+}
+
+ApplicationSession --> "1" UserSession
+
+CreateSaleAnnouncementUI .> CreateSaleAnnouncementController : controller
+
+CreateSaleAnnouncementController .> Repositories : repositories
+CreateSaleAnnouncementController ...> ApplicationSession
+CreateSaleAnnouncementController ...> UserRepository : userRepository
+CreateSaleAnnouncementController ...> PersonRepository : personRepository
+CreateSaleAnnouncementController ...> BusinessTypeRepository : businessTypeRepository
+CreateSaleAnnouncementController ...> PropertyTypeRepository : propertyTypeRepository
+CreateSaleAnnouncementController ...> SunExposureRepository : sunExposureRepository
+CreateSaleAnnouncementController ...> PropertyRepository : propertyRepository
+CreateSaleAnnouncementController ...> RequestRepository : requestRepository
+CreateSaleAnnouncementController ...> AdvertisementRepository : advertisementRepository
+
+Property <|-- Building : extends
+Building <|-- House : extends
+Location <-- Property : contains
+
+Repositories --> Repositories : instance
+Repositories --> "1" UserRepository
+Repositories --> "1" PersonRepository
+Repositories --> "1" BusinessTypeRepository
+Repositories --> "1" PropertyTypeRepository
+Repositories --> "1" SunExposureRepository
+Repositories --> "1" PropertyRepository
+Repositories --> "1" RequestRepository
+Repositories --> "1" AdvertisementRepository
+
+UserRepository --> "*" User
+PersonRepository --> "*" Person
+BusinessTypeRepository --> "*" BusinessType
+PropertyTypeRepository --> "*" PropertyType
+SunExposureRepository --> "*" SunExposure
+PropertyRepository --> "*" Property
+RequestRepository --> "*" Request
+AdvertisementRepository --> "*" Advertisement
+
+Request --> "1" Property
+Request --> "1" Person
+Request --> "1" Employee
+
+Advertisement --> "1" Request
+
+Advertisement -> Employee: createdBy
+Request -> Employee : createdBy
+Person ---> Property : owns
+
+
+@enduml

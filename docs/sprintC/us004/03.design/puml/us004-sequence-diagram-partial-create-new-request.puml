@@ -1,0 +1,60 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram Parcial Create New Apartment (SSD)
+
+'hide footbox
+participant ":SubmiPropertyController" as CTRL
+
+participant "repositories\n:Repositories" as repositories
+
+participant "requestRepository\n:RequestRepository" as requestRepository
+participant "application\n:Application" as application
+participant "userSession\n:UserSession" as userSession
+
+autonumber 101
+
+        CTRL -> repositories : getRequestRepository()
+            activate repositories
+
+            repositories --> CTRL: requestRepository
+            deactivate repositories
+
+        CTRL -> application: getPersonEmail()
+            activate application
+
+            application -> userSession: getPersonEmail()
+            activate userSession
+
+                userSession -> application: UserEmail
+                deactivate userSession
+
+            application -> CTRL: UserEmail
+            deactivate application
+
+        CTRL -> CTRL: keepUserEmail
+
+alt businessType = Sale
+
+
+        CTRL -> requestRepository: newRequest(requestID, newProperty,agent\n, personEmail, salePrice)
+                activate requestRepository
+
+            requestRepository -> CTRL : newRequest
+            deactivate requestRepository
+
+
+ else businessType = Rent
+
+        CTRL -> requestRepository: newRequest(requestID, newProperty,agent\n, personEmail, rentPrice, DurationContract)
+                activate requestRepository
+
+            requestRepository -> CTRL : newRequest
+            deactivate requestRepository
+
+
+
+end
+@enduml

@@ -1,0 +1,49 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD)
+
+autonumber
+
+'Client place an order to purchase the property.
+
+actor "Client" as User
+participant ":System" as System
+
+activate User
+
+    User -> System : asks to Make Offer of a property
+        activate System
+
+	    System --> User : asks to chosse a Property Type
+        deactivate System
+
+    User -> System : selects a Property Type
+        activate System
+
+	    System --> User : asks to chosse a Business Type
+        deactivate System
+
+    User -> System : selects a Business Type
+        activate System
+
+    System --> User : asks to chosse a Advertisement
+    deactivate System
+
+    User -> System : selects the Advertisement
+        activate System
+
+        System --> User : requests data: amount to offer
+        deactivate System
+        
+    User -> System : input data: amount to offer
+        activate System
+
+        System -> User : shows confimation of offer made
+        deactivate System
+
+ deactivate User
+
+@enduml

@@ -1,0 +1,119 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+'left to right direction
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+'title Domain Model
+
+'class Platform {
+'  -description
+'}
+
+class Owner {
+    email
+    name
+    numberCitizen
+    tin
+    phoneNumber
+}
+
+class Property {
+    areaProperty
+    distanceCityCenter
+    conditionProperty
+    photos
+    propertyCode
+}
+
+class House{
+    basement
+    loft
+    sunExposure
+}
+
+class PropertyType{
+    designation
+}
+
+class Building{
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+}
+
+class Location {
+    street
+    zipCode
+    stateUS
+    city
+    district
+}
+class Advertisement {
+    status
+    idAdvertisement
+    commission
+    date
+}
+
+class AdvertisementSale {
+    salePrice
+}
+
+class AdvertisementLease {
+    durationOfContract
+    rentalPrice
+
+}
+
+class AdvertisementType {
+    designation
+}
+
+class Agent {
+}
+
+class Store{
+    idCodStore
+    nameStore
+    emailStore
+    contactStore
+}
+
+
+Owner "1" -- "1..*" Property: owns >
+
+House --|> Building
+
+Building --|> Property
+
+Property "1" -- "1" Location: owns >
+
+Owner "1" -- "1" Location: owns >
+
+PropertyType "1" -- "*" Property: contains <
+
+Owner "1" - "*" Advertisement: asks to create >
+
+Advertisement <|-- AdvertisementSale
+
+Advertisement <|-- AdvertisementLease
+
+Advertisement "*" -- "1" AdvertisementType: contains >
+
+Owner "1" -- "1..*" Agent: choses >
+
+Owner "1" -- "1" Store: choses >
+
+Store"1" -- "1"Location: owns >
+
+Store "1" -- "*" Agent: works <
+
+@enduml

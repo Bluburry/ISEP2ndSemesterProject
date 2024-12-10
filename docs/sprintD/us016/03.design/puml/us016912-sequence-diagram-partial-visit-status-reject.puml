@@ -1,0 +1,31 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram Parcial Get Acess to Repositorys List (SSD)
+
+autonumber
+
+'hide footbox
+participant ":RespondBookingRequestController" as CTRL
+
+participant "advertisementRepository\n:AdvertisementRepository" as advertisementRepository
+
+autonumber 65
+
+    activate CTRL
+
+        CTRL -> advertisementRepository: changeVisitStatus(keepVisitRequest)
+        activate advertisementRepository
+
+            advertisementRepository -> advertisementRepository: changeVisitStatus(keepVisitRequest)
+
+            advertisementRepository -> advertisementRepository: changeVisitStatus(REJECTED)
+
+            advertisementRepository -> CTRL: changeVisitStatus(REJECTED)
+            deactivate advertisementRepository
+
+    deactivate CTRL
+
+@enduml

@@ -1,0 +1,421 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Full (SD)
+autonumber
+
+'hide footbox
+actor "Property Owner" as User
+participant ":SubmitPropertyUI" as UI
+participant ":SubmitPropertyController" as CTRL
+
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as repositories
+
+' SUBMIT PROPERTY
+participant "propertyRepository\n:PropertyRepository" as propertyRepository
+participant "propertyTypeRepository\n:PropertyTypeRepository" as propertyTypeRepository
+participant "businessTypeRepository\n:BusinessTypeRepository" as BusinessTypeRepository
+participant "sunExposureTypeRepository\n:SunExposureTypeRepository" as sunExposureTypeRepository
+
+' CHOOSE A AGENT
+participant "storeRepository\n:StoreRepository" as storeRepository
+
+' CREATE A REQUEST
+participant "requestRepository\n:RequestRepository" as requestRepository
+participant "application\n:Application" as application
+participant "userSession\n:UserSession" as userSession
+
+
+
+activate User
+
+    User -> UI : asks to submit new property
+        activate UI
+
+          UI -> CTRL** : create
+                activate CTRL
+
+                CTRL -> RepositorySingleton : getInstance()
+                activate RepositorySingleton
+
+                RepositorySingleton --> CTRL: repositories
+                deactivate RepositorySingleton
+
+                deactivate CTRL
+
+'UI tem acesso a todos os repositorios
+
+' SUBMIT PROPERTY
+'   User : Chooose Property Type
+
+        UI  ->  CTRL : listAndChoosePropertyType()
+            activate CTRL
+
+            CTRL  ->  repositories : getPropertyTypesRepository()
+                activate repositories
+
+                repositories --> CTRL: propertyTypesRepository
+                deactivate repositories
+
+            CTRL -> propertyTypeRepository : getPropertyTypesList()
+                activate propertyTypeRepository
+
+                propertyTypeRepository --> CTRL : propertyTypesList
+                deactivate propertyTypeRepository
+
+            CTRL --> UI : propertyTypesList
+                deactivate CTRL
+
+
+            UI --> User : shows propertyType list\n and asks to select one
+            deactivate UI
+
+    User -> UI : selects a Property Type
+            activate UI
+
+            UI  ->  UI: keepPropertyType
+
+'   User : types general data
+
+        UI -> User : ask data (date,\n area , distance ,\n location(street, zipcode, stateUS, city, district))
+        deactivate UI
+
+    User -> UI : types asked data (date,\n area , distance \n location(street, zipcode, stateUS, city, district))
+        activate UI
+
+        UI -> UI : keep data (date,\n area , distance \n location(street, zipcode, stateUS, city, district))
+
+'   User : types data according to Property Type
+
+alt propertyType = House or Apartment
+
+    UI -> User : ask data (numberBedrooms, numberParking)
+            deactivate UI
+
+    User -> UI : types asked data (numberBedrooms, numberParking)
+            activate UI
+
+            UI  ->  UI : keep data (numberBedrooms, numberParking)
+
+    group opt
+
+            UI -> User : ask data (numberBathrooms, \navailableEquipment)
+                deactivate UI
+
+        User -> UI : types asked data (numberBathrooms, \navailableEquipment)
+                activate UI
+
+            UI  ->  UI: keep data (numberBathrooms, \navailableEquipment)
+
+    end
+
+
+else propertyType = House
+
+        UI -> User : ask existence basement (YES/NO)
+        deactivate UI
+
+    User -> UI : types answer existence basement (YES/NO)
+           activate UI
+
+        UI  ->  UI : keep data (basement (YES/NO))
+
+        UI -> User : ask is habitable loft (YES/NO)
+        deactivate UI
+
+    User -> UI : types answer habitable loft (YES/NO)
+           activate UI
+
+            UI  ->  UI : keep data (habitable loft (YES/NO))
+
+    group opt
+
+        UI  ->  CTRL : listAndChoseSunExposureType()
+            activate CTRL
+
+            CTRL  ->  repositories : getSunExposureTypeRepository()
+                activate repositories
+
+                repositories --> CTRL: sunExposureTypeRepository
+                deactivate repositories
+
+            CTRL -> sunExposureTypeRepository : getSunExposureTypeList()
+                activate sunExposureTypeRepository
+
+                sunExposureTypeRepository --> CTRL : sunExposureTypeList
+                deactivate sunExposureTypeRepository
+
+            CTRL --> UI : sunExposureTypeList
+                deactivate CTRL
+
+        UI --> User : shows sunExposureTypeList list\n and asks to select one
+            deactivate UI
+
+    User -> UI : selects a Sun Exposure Type
+            activate UI
+
+        UI  ->  UI: keepSunExposureType
+
+    end
+
+end
+
+'   User : delivers photo (necessary) and more photos (optional)
+
+        UI -> User: request data (photo)
+        deactivate UI
+
+    User -> UI : input asked data (photo)
+        activate UI
+
+        UI  ->  UI: keep data (photo)
+
+    opt
+
+        loop
+
+            UI -> User: request data (photos)
+            deactivate UI
+
+        User -> UI : input asked data (photos)
+                    activate UI
+
+            UI  ->  UI: keep data (photos)
+
+        end
+
+    end
+
+'   User : Validation of the input
+
+        UI -> User: Display property conditions and ask for validation (YES/NO)
+         deactivate UI
+
+     User -> UI: input: validation (YES/NO)
+         activate UI
+
+ alt validation = YES
+
+' AFTER VALIDATION CREATE NEW PROPERTY
+
+alt propertyType = House
+
+        UI -> CTRL :  createNewHouseProperty(propertyType,\narea , distance ,\n location(street, zipcode, stateUS, city, district), \nnumberBedrooms, numberParking, \nbasement, loft, photo,numberBathrooms, \navailableEquipment, basement (YES/NO),\n habitable loft (YES/NO), Sun Exposure Type choice, photos)
+            activate CTRL
+
+            CTRL -> repositories : getPropertyRepository()
+            activate repositories
+
+                repositories --> CTRL: PropertyRepository
+                deactivate repositories
+
+            CTRL -> propertyRepository: newHouseProperty (propertyType,\narea , distance ,\n location(street, zipcode, stateUS, city, district), \nnumberBedrooms, numberParking, \nbasement, loft, photo,numberBathrooms, \navailableEquipment, basement (YES/NO),\n habitable loft (YES/NO), Sun Exposure Type choice, photos)
+            activate propertyRepository
+
+'here include all atributs even if they are null
+
+                propertyRepository -> CTRL: newHouseProperty
+                deactivate propertyRepository
+
+            CTRL -> UI : newHouseProperty
+            deactivate CTRL
+
+        UI -> UI : newAllProperty = newHouseProperty
+
+
+else propertyType = apartment
+
+        UI -> CTRL :  createNewApartmentProperty(propertyType,\narea , distance ,\n location(street, zipcode, stateUS, city, district), \nnumberBedrooms, numberParking, photo,numberBathrooms, \navailableEquipment, photos)
+            activate CTRL
+
+            CTRL -> repositories : getPropertyRepository()
+            activate repositories
+
+                repositories --> CTRL: PropertyRepository
+                deactivate repositories
+
+
+            CTRL -> propertyRepository: newApartmentProperty (propertyType, \narea , distance ,\n location(street, zipcode, stateUS, city, district), \nnumberBedrooms, numberParking, photo,numberBathrooms, \navailableEquipment, photos)
+            activate propertyRepository
+
+                propertyRepository -> CTRL: newApartmentProperty
+                deactivate propertyRepository
+
+            CTRL -> UI : newApartmentProperty
+            deactivate CTRL
+
+        UI -> UI : newAllProperty = newApartmentProperty
+
+else propertyType = land
+
+        UI -> CTRL :  createNewProperty(propertyType,\narea , distance ,\n location(street, zipcode, stateUS, city, district), photo, photos)
+            activate CTRL
+
+            CTRL -> repositories : getPropertyRepository()
+            activate repositories
+
+                repositories --> CTRL: PropertyRepository
+                deactivate repositories
+
+            CTRL -> propertyRepository: newProperty (propertyType, \narea , distance ,\n location(street, zipcode, stateUS, city, district), photo)
+            activate propertyRepository
+
+                propertyRepository -> CTRL: newProperty
+                deactivate propertyRepository
+
+            CTRL -> UI : newProperty
+            deactivate CTRL
+
+        UI -> UI : newAllProperty = newProperty
+
+end
+
+        UI -> User : displays operation success
+
+ end
+
+        UI -> UI: Keep newAllProperty
+
+
+' SELECT BUSINESS TYPE (RENT/SALE)
+
+        UI -> CTRL : listAndChooseBusinessType()
+            activate CTRL
+
+            CTRL -> repositories : getBusinessTypeRepository()
+            activate repositories
+
+                repositories --> CTRL: BusinessTypeRepository
+                deactivate repositories
+
+            CTRL -> BusinessTypeRepository: getBusinessTypeList()
+            activate BusinessTypeRepository
+
+                BusinessTypeRepository -> CTRL: businessTypeList
+                deactivate BusinessTypeRepository
+
+            CTRL ->  UI: businessTypeList
+            deactivate CTRL
+
+        UI --> User : shows businessTypeList\n and asks to select one
+        deactivate UI
+
+    User -> UI : selects a Business Type
+    activate UI
+
+        UI -> UI: KeepBusinessType
+
+alt businessType = Sale
+
+        UI -> User : ask data (salePrice)
+        deactivate UI
+
+    User -> UI : types asked data (salePrice)
+    activate UI
+
+        UI  ->  UI: keepSalePrice
+
+else businessType = Rent
+
+        UI -> User : ask data (rentalPrice, DurationContract)
+        deactivate UI
+
+    User -> UI : types asked data (rentalPrice, DurationContract)
+    activate UI
+
+        UI  ->  UI: keepRentalPrice, keepDurationContract)
+
+end
+' CHOOSE A AGENT FROM LIST
+
+        UI  ->  CTRL : getAgentList()
+                activate CTRL
+
+            CTRL  ->  repositories : getStoreRepository()
+                activate repositories
+
+                repositories --> CTRL: StoreRepository
+                deactivate repositories
+
+            CTRL -> storeRepository: getAgentList()
+                activate storeRepository
+
+                storeRepository --> CTRL : agentList
+                deactivate storeRepository
+
+            CTRL --> UI : agentList
+                deactivate CTRL
+
+        UI --> User : shows Agent List list\n and asks to select one
+
+
+    User -> UI : selects Agent Choice
+
+    UI  ->  UI: keepAgent
+
+' CREATE A REQUEST
+
+         UI -> User: Display Request Conditions\n (newProperty,agent, salePrice,rentPrice, DurationContract)\n and ask for validation (YES/NO)
+         deactivate UI
+
+     User -> UI: input: validation (YES/NO)
+         activate UI
+
+ alt validation = YES
+
+        UI -> CTRL: createNewRequest(newAllProperty,agent\n, salePrice, rentPrice, DurationContract)
+        activate CTRL
+
+        CTRL -> repositories : getRequestRepository()
+            activate repositories
+
+            repositories --> CTRL: requestRepository
+            deactivate repositories
+
+        CTRL -> application: getPersonEmail()
+            activate application
+
+            application -> userSession: getPersonEmail()
+            activate userSession
+
+                userSession -> application: userEmail
+                deactivate userSession
+
+            application -> CTRL: personEmail
+            deactivate application
+
+        CTRL -> CTRL: KeepUserEmail
+
+alt businessType = Sale
+
+
+        CTRL -> requestRepository: newRequest(newAllProperty,agent\n, personEmail, salePrice)
+                activate requestRepository
+
+            requestRepository -> CTRL : newRequest
+            deactivate requestRepository
+
+
+ else businessType = Rent
+
+        CTRL -> requestRepository: newRequest(newAllProperty,agent\n, personEmail, rentPrice, DurationContract)
+                activate requestRepository
+
+            requestRepository -> CTRL : newRequest
+            deactivate requestRepository
+
+
+
+end
+
+        UI -> User : displays operation success
+        deactivate UI
+ end
+
+deactivate User
+
+
+@enduml

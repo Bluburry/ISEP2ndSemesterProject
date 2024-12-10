@@ -1,0 +1,26 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram Parcial Get Client Email (SSD)
+
+'hide footbox
+
+participant ":MakeOfferController" as CTRL
+
+participant "userSession\n:UserSession" as userSession
+
+autonumber 56
+            activate CTRL
+
+
+            CTRL -> userSession : getClientEmail()
+            activate userSession
+
+            userSession -> CTRL: clientEmail
+            deactivate userSession
+
+            deactivate CTRL
+
+@enduml

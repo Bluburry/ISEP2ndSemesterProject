@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="454px" preserveAspectRatio="none" style="width:610px;height:454px;background:#FFFFFF;" version="1.1" viewBox="0 0 610 454" width="610px" zoomAndPan="magnify"><defs/><g><rect fill="none" height="27.6094" id="_title" style="stroke:none;stroke-width:1.0;" width="337" x="135.75" y="10"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="327" x="140.75" y="29.5332">Sequence Diagram Full - List Property Request</text><rect fill="#FFFFFF" height="278.9063" style="stroke:#181818;stroke-width:1.0;" width="10" x="123" y="103.8281"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="402" y="291.6797"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="530" y="352.3828"/><rect fill="none" height="151.5" style="stroke:#000000;stroke-width:1.5;" width="290" x="10" y="110.8281"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="128" x2="128" y1="93.8281" y2="400.7344"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="299.5" x2="299.5" y1="93.8281" y2="400.7344"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="406.5" x2="406.5" y1="93.8281" y2="400.7344"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="534.5" x2="534.5" y1="93.8281" y2="400.7344"/><rect fill="#E3E3E3" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="216" x="20" y="61.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="202" x="27" y="82.752">:ListPropertyRequestsController</text><rect fill="#E3E3E3" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="216" x="20" y="399.7344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="202" x="27" y="421.2676">:ListPropertyRequestsController</text><rect fill="#E3E3E3" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="97" x="251.5" y="61.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="258.5" y="82.752">:Repositories</text><rect fill="#E3E3E3" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="97" x="251.5" y="399.7344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="258.5" y="421.2676">:Repositories</text><rect fill="#E3E3E3" height="49.2188" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="97" x="358.5" y="43.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="370" y="65.1426">repositories</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="365.5" y="82.752">:Repositories</text><rect fill="#E3E3E3" height="49.2188" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="97" x="358.5" y="399.7344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="370" y="421.2676">repositories</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="365.5" y="438.877">:Repositories</text><rect fill="#E3E3E3" height="49.2188" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="139" x="465.5" y="43.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="116" x="477" y="65.1426">requestRepository</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="125" x="472.5" y="82.752">:RequestRepository</text><rect fill="#E3E3E3" height="49.2188" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="139" x="465.5" y="399.7344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="116" x="477" y="421.2676">requestRepository</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="125" x="472.5" y="438.877">:RequestRepository</text><rect fill="#FFFFFF" height="278.9063" style="stroke:#181818;stroke-width:1.0;" width="10" x="123" y="103.8281"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="402" y="291.6797"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="530" y="352.3828"/><path d="M10,110.8281 L75,110.8281 L75,119.1797 L65,129.1797 L10,129.1797 L10,110.8281 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="151.5" style="stroke:#000000;stroke-width:1.5;" width="290" x="10" y="110.8281"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="20" x="25" y="125.3232">opt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="157" x="90" y="124.2471">[doesn't have agent info yet]</text><line style="stroke:#181818;stroke-width:1.0;" x1="133" x2="175" y1="151.5313" y2="151.5313"/><line style="stroke:#181818;stroke-width:1.0;" x1="175" x2="175" y1="151.5313" y2="164.5313"/><line style="stroke:#181818;stroke-width:1.0;" x1="134" x2="175" y1="164.5313" y2="164.5313"/><polygon fill="#181818" points="144,160.5313,134,164.5313,144,168.5313,140,164.5313" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="140" y="146.6748">6</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="137" x="151" y="146.6748">getAgentFromSession()</text><rect fill="none" height="41.4453" style="stroke:#000000;stroke-width:1.5;" width="222" x="17" y="172.5313"/><path d="M17,172.5313 L79,172.5313 L79,180.5313 L69,190.5313 L17,190.5313 L17,172.5313 " fill="#EEEEEE" style="stroke:#000000;stroke-width:2.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="17" x="30" y="188.0264">ref</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="76" x="90" y="206.9883">Get Agent Info</text><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="133" x2="175" y1="241.3281" y2="241.3281"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="175" x2="175" y1="241.3281" y2="254.3281"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="134" x2="175" y1="254.3281" y2="254.3281"/><polygon fill="#181818" points="144,250.3281,134,254.3281,144,258.3281,140,254.3281" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="140" y="236.4717">17</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="56" x="158" y="236.4717">employee</text><polygon fill="#181818" points="390,287.6797,400,291.6797,390,295.6797,394,291.6797" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="133" x2="396" y1="291.6797" y2="291.6797"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="140" y="286.8232">18</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="136" x="158" y="286.8232">getRequestRepository()</text><polygon fill="#181818" points="144,318.0313,134,322.0313,144,326.0313,140,322.0313" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="138" x2="406" y1="322.0313" y2="322.0313"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="150" y="317.1748">19</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="110" x="168" y="317.1748">RequestRepository</text><polygon fill="#181818" points="518,348.3828,528,352.3828,518,356.3828,522,352.3828" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="133" x2="524" y1="352.3828" y2="352.3828"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="140" y="347.5264">20</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="163" x="158" y="347.5264">getRequestsByAgent(agent)</text><polygon fill="#181818" points="139,378.7344,129,382.7344,139,386.7344,135,382.7344" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="133" x2="534" y1="382.7344" y2="382.7344"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="145" y="377.8779">21</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="71" x="163" y="377.8779">requestsList</text><!--MD5=[6e339849a0512018c1f669efc97a0897]
+@startuml Sequence Diagram - List Property Request
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Full - List Property Request
+autonumber
+
+'hide footbox
+participant ":ListPropertyRequestsController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as PLAT
+participant "requestRepository\n:RequestRepository" as RequestRepository
+
+autonumber 6
+
+activate CTRL
+
+	opt doesn't have agent info yet
+		CTRL -> CTRL : getAgentFromSession()
+
+			ref over CTRL
+				Get Agent Info
+			end ref
+
+autonumber 17
+		CTRL - -> CTRL : employee
+	end
+	CTRL -> PLAT : getRequestRepository()
+	activate PLAT
+		PLAT - -> CTRL : RequestRepository
+	deactivate PLAT
+	CTRL -> RequestRepository : getRequestsByAgent(agent)
+	activate RequestRepository
+		RequestRepository - -> CTRL : requestsList
+	deactivate RequestRepository
+deactivate CTRL
+
+@enduml
+
+@startuml Sequence Diagram - List Property Request
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Full - List Property Request
+autonumber
+
+participant ":ListPropertyRequestsController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as PLAT
+participant "requestRepository\n:RequestRepository" as RequestRepository
+
+autonumber 6
+
+activate CTRL
+
+	opt doesn't have agent info yet
+		CTRL -> CTRL : getAgentFromSession()
+
+			ref over CTRL
+				Get Agent Info
+			end ref
+
+autonumber 17
+		CTRL - -> CTRL : employee
+	end
+	CTRL -> PLAT : getRequestRepository()
+	activate PLAT
+		PLAT - -> CTRL : RequestRepository
+	deactivate PLAT
+	CTRL -> RequestRepository : getRequestsByAgent(agent)
+	activate RequestRepository
+		RequestRepository - -> CTRL : requestsList
+	deactivate RequestRepository
+deactivate CTRL
+
+@enduml
+
+PlantUML version 1.2022.7(Mon Aug 22 18:01:30 WEST 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: GB
+--></g></svg>

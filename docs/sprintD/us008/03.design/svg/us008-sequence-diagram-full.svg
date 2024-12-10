@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="2059px" preserveAspectRatio="none" style="width:2485px;height:2059px;background:#FFFFFF;" version="1.1" viewBox="0 0 2485 2059" width="2485px" zoomAndPan="magnify"><defs/><g><rect fill="none" height="26.0986" id="_title" style="stroke:none;stroke-width:1.0;" width="337" x="1075.5" y="10"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="327" x="1080.5" y="28.1318">Sequence Diagram Full - List Property Request</text><rect fill="#FFFFFF" height="1840.9199" style="stroke:#181818;stroke-width:1.0;" width="10" x="46.5" y="128.1973"/><rect fill="#FFFFFF" height="775.8169" style="stroke:#181818;stroke-width:1.0;" width="10" x="404.5" y="149.146"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="404.5" y="953.9116"/><rect fill="#FFFFFF" height="144.7437" style="stroke:#181818;stroke-width:1.0;" width="10" x="404.5" y="1035.7578"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="404.5" y="1224.0991"/><rect fill="#FFFFFF" height="159.6924" style="stroke:#181818;stroke-width:1.0;" width="10" x="404.5" y="1281.9966"/><rect fill="#FFFFFF" height="499.4795" style="stroke:#181818;stroke-width:1.0;" width="10" x="404.5" y="1470.6377"/><rect fill="#FFFFFF" height="60.0474" style="stroke:#181818;stroke-width:1.0;" width="10" x="811.5" y="188.0947"/><rect fill="#FFFFFF" height="580.0259" style="stroke:#181818;stroke-width:1.0;" width="10" x="811.5" y="301.0396"/><rect fill="#FFFFFF" height="329.436" style="stroke:#181818;stroke-width:1.0;" width="10" x="816.5" y="361.937"/><rect fill="#FFFFFF" height="86.8462" style="stroke:#181818;stroke-width:1.0;" width="10" x="811.5" y="1064.7065"/><rect fill="#FFFFFF" height="86.8462" style="stroke:#181818;stroke-width:1.0;" width="10" x="811.5" y="1310.9453"/><rect fill="#FFFFFF" height="418.582" style="stroke:#181818;stroke-width:1.0;" width="10" x="811.5" y="1499.5864"/><rect fill="#FFFFFF" height="97.8462" style="stroke:#181818;stroke-width:1.0;" width="10" x="816.5" y="1536.5352"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="993.5" y="219.1934"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="1120.5" y="395.8857"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="1267.5" y="453.7832"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="1400.5" y="511.6807"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="1513.5" y="569.5781"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="1513.5" y="758.2705"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="1513.5" y="1694.2788"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="1637.5" y="627.4756"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="1782.5" y="823.168"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="1782.5" y="1093.6553"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="1782.5" y="1570.4839"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="1925" y="1339.894"/><rect fill="#FFFFFF" height="115.0947" style="stroke:#181818;stroke-width:1.0;" width="10" x="2086" y="1774.125"/><rect fill="#FFFFFF" height="32.2485" style="stroke:#181818;stroke-width:1.0;" width="10" x="2400" y="1828.0225"/><rect fill="none" height="1698.9751" style="stroke:#000000;stroke-width:1.5;" width="2469" x="10" y="263.1421"/><rect fill="none" height="390.3335" style="stroke:#000000;stroke-width:1.5;" width="1019.5" x="698.5" y="316.0396"/><rect fill="none" height="74.8462" style="stroke:#000000;stroke-width:1.5;" width="878.5" x="698.5" y="720.373"/><rect fill="none" height="957.2568" style="stroke:#000000;stroke-width:1.5;" width="2449" x="20" y="997.8604"/><rect fill="none" height="74.8462" style="stroke:#000000;stroke-width:1.5;" width="878.5" x="698.5" y="1656.3813"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="51" x2="51" y1="118.1973" y2="1979.1172"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="409.5" x2="409.5" y1="118.1973" y2="1979.1172"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="816.5" x2="816.5" y1="187.6953" y2="1979.1172"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="998" x2="998" y1="118.1973" y2="1979.1172"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1125" x2="1125" y1="118.1973" y2="1979.1172"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1272" x2="1272" y1="118.1973" y2="1979.1172"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1405" x2="1405" y1="118.1973" y2="1979.1172"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1518" x2="1518" y1="118.1973" y2="1979.1172"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1642" x2="1642" y1="118.1973" y2="1979.1172"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1787" x2="1787" y1="118.1973" y2="1979.1172"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1930" x2="1930" y1="118.1973" y2="1979.1172"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="2091" x2="2091" y1="118.1973" y2="1979.1172"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="2405" x2="2405" y1="1820.7236" y2="1979.1172"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="30" y="115.2305">Agent</text><ellipse cx="51.5" cy="50.5986" fill="#E3E3E3" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M51.5,58.5986 L51.5,85.5986 M38.5,66.5986 L64.5,66.5986 M51.5,85.5986 L38.5,100.5986 M51.5,85.5986 L64.5,100.5986 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="30" y="1991.249">Agent</text><ellipse cx="51.5" cy="2002.7158" fill="#E3E3E3" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M51.5,2010.7158 L51.5,2037.7158 M38.5,2018.7158 L64.5,2018.7158 M51.5,2037.7158 L38.5,2052.7158 M51.5,2037.7158 L64.5,2052.7158 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><rect fill="#E3E3E3" height="30.0986" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="166" x="326.5" y="87.0986"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="152" x="333.5" y="107.2305">:ListPropertyRequestsUI</text><rect fill="#E3E3E3" height="30.0986" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="166" x="326.5" y="1978.1172"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="152" x="333.5" y="1998.249">:ListPropertyRequestsUI</text><rect fill="#E3E3E3" height="30.0986" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="216" x="708.5" y="1978.1172"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="202" x="715.5" y="1998.249">:ListPropertyRequestsController</text><rect fill="#E3E3E3" height="30.0986" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="97" x="950" y="87.0986"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="957" y="107.2305">:Repositories</text><rect fill="#E3E3E3" height="30.0986" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="97" x="950" y="1978.1172"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="957" y="1998.249">:Repositories</text><rect fill="#E3E3E3" height="30.0986" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="137" x="1057" y="87.0986"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123" x="1064" y="107.2305">:ApplicationSession</text><rect fill="#E3E3E3" height="30.0986" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="137" x="1057" y="1978.1172"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123" x="1064" y="1998.249">:ApplicationSession</text><rect fill="#E3E3E3" height="46.1973" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="137" x="1204" y="71"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="1235.5" y="91.1318">appSession</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123" x="1211" y="107.2305">:ApplicationSession</text><rect fill="#E3E3E3" height="46.1973" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="137" x="1204" y="1978.1172"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="1235.5" y="1998.249">appSession</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123" x="1211" y="2014.3477">:ApplicationSession</text><rect fill="#E3E3E3" height="46.1973" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="109" x="1351" y="71"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="95" x="1358" y="91.1318">currentSession</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="1364" y="107.2305">:UserSession</text><rect fill="#E3E3E3" height="46.1973" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="109" x="1351" y="1978.1172"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="95" x="1358" y="1998.249">currentSession</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="1364" y="2014.3477">:UserSession</text><rect fill="#E3E3E3" height="46.1973" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="97" x="1470" y="71"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="1481.5" y="91.1318">repositories</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="1477" y="107.2305">:Repositories</text><rect fill="#E3E3E3" height="46.1973" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="97" x="1470" y="1978.1172"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="1481.5" y="1998.249">repositories</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="1477" y="2014.3477">:Repositories</text><rect fill="#E3E3E3" height="46.1973" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="131" x="1577" y="71"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="112" x="1586.5" y="91.1318">personRepository</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="117" x="1584" y="107.2305">:PersonRepository</text><rect fill="#E3E3E3" height="46.1973" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="131" x="1577" y="1978.1172"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="112" x="1586.5" y="1998.249">personRepository</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="117" x="1584" y="2014.3477">:PersonRepository</text><rect fill="#E3E3E3" height="46.1973" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="139" x="1718" y="71"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="116" x="1729.5" y="91.1318">requestRepository</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="125" x="1725" y="107.2305">:RequestRepository</text><rect fill="#E3E3E3" height="46.1973" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="139" x="1718" y="1978.1172"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="116" x="1729.5" y="1998.249">requestRepository</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="125" x="1725" y="2014.3477">:RequestRepository</text><rect fill="#E3E3E3" height="46.1973" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="126" x="1867" y="71"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105" x="1877.5" y="91.1318">commissionType</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="112" x="1874" y="107.2305">:CommissionType</text><rect fill="#E3E3E3" height="46.1973" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="126" x="1867" y="1978.1172"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105" x="1877.5" y="1998.249">commissionType</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="112" x="1874" y="2014.3477">:CommissionType</text><rect fill="#E3E3E3" height="46.1973" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="176" x="2003" y="71"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157" x="2012.5" y="91.1318">advertisementRepository</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="162" x="2010" y="107.2305">:AdvertisementRepository</text><rect fill="#E3E3E3" height="46.1973" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="176" x="2003" y="1978.1172"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157" x="2012.5" y="1998.249">advertisementRepository</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="162" x="2010" y="2014.3477">:AdvertisementRepository</text><rect fill="#E3E3E3" height="46.1973" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="108" x="2351" y="1978.1172"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="89" x="2360.5" y="1998.249">advertisement</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="94" x="2358" y="2014.3477">:Advertisement</text><rect fill="#FFFFFF" height="1840.9199" style="stroke:#181818;stroke-width:1.0;" width="10" x="46.5" y="128.1973"/><rect fill="#FFFFFF" height="775.8169" style="stroke:#181818;stroke-width:1.0;" width="10" x="404.5" y="149.146"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="404.5" y="953.9116"/><rect fill="#FFFFFF" height="144.7437" style="stroke:#181818;stroke-width:1.0;" width="10" x="404.5" y="1035.7578"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="404.5" y="1224.0991"/><rect fill="#FFFFFF" height="159.6924" style="stroke:#181818;stroke-width:1.0;" width="10" x="404.5" y="1281.9966"/><rect fill="#FFFFFF" height="499.4795" style="stroke:#181818;stroke-width:1.0;" width="10" x="404.5" y="1470.6377"/><rect fill="#FFFFFF" height="60.0474" style="stroke:#181818;stroke-width:1.0;" width="10" x="811.5" y="188.0947"/><rect fill="#FFFFFF" height="580.0259" style="stroke:#181818;stroke-width:1.0;" width="10" x="811.5" y="301.0396"/><rect fill="#FFFFFF" height="329.436" style="stroke:#181818;stroke-width:1.0;" width="10" x="816.5" y="361.937"/><rect fill="#FFFFFF" height="86.8462" style="stroke:#181818;stroke-width:1.0;" width="10" x="811.5" y="1064.7065"/><rect fill="#FFFFFF" height="86.8462" style="stroke:#181818;stroke-width:1.0;" width="10" x="811.5" y="1310.9453"/><rect fill="#FFFFFF" height="418.582" style="stroke:#181818;stroke-width:1.0;" width="10" x="811.5" y="1499.5864"/><rect fill="#FFFFFF" height="97.8462" style="stroke:#181818;stroke-width:1.0;" width="10" x="816.5" y="1536.5352"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="993.5" y="219.1934"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="1120.5" y="395.8857"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="1267.5" y="453.7832"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="1400.5" y="511.6807"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="1513.5" y="569.5781"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="1513.5" y="758.2705"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="1513.5" y="1694.2788"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="1637.5" y="627.4756"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="1782.5" y="823.168"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="1782.5" y="1093.6553"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="1782.5" y="1570.4839"/><rect fill="#FFFFFF" height="28.9487" style="stroke:#181818;stroke-width:1.0;" width="10" x="1925" y="1339.894"/><rect fill="#FFFFFF" height="115.0947" style="stroke:#181818;stroke-width:1.0;" width="10" x="2086" y="1774.125"/><rect fill="#FFFFFF" height="32.2485" style="stroke:#181818;stroke-width:1.0;" width="10" x="2400" y="1828.0225"/><polygon fill="#181818" points="392.5,145.146,402.5,149.146,392.5,153.146,396.5,149.146" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="56.5" x2="398.5" y1="149.146" y2="149.146"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="63.5" y="144.3911">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="176" x="74.5" y="144.3911">asks to view property requests</text><polygon fill="#181818" points="696.5,174.0947,706.5,178.0947,696.5,182.0947,700.5,178.0947" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="414.5" x2="702.5" y1="178.0947" y2="178.0947"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="421.5" y="173.3398">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="43" x="432.5" y="173.3398">creates</text><rect fill="#E3E3E3" height="30.0986" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="216" x="708.5" y="157.146"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="202" x="715.5" y="177.2778">:ListPropertyRequestsController</text><polygon fill="#181818" points="981.5,215.1934,991.5,219.1934,981.5,223.1934,985.5,219.1934" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="821.5" x2="987.5" y1="219.1934" y2="219.1934"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="828.5" y="214.4385">3</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="75" x="839.5" y="214.4385">getInstance()</text><polygon fill="#181818" points="827.5,244.1421,817.5,248.1421,827.5,252.1421,823.5,248.1421" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="821.5" x2="997.5" y1="248.1421" y2="248.1421"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="833.5" y="243.3872">4</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="67" x="844.5" y="243.3872">repositories</text><path d="M10,263.1421 L83,263.1421 L83,270.0908 L73,280.0908 L10,280.0908 L10,263.1421 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="1698.9751" style="stroke:#000000;stroke-width:1.5;" width="2469" x="10" y="263.1421"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="28" x="25" y="276.3359">loop</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="90" x="98" y="275.46">[while intended]</text><polygon fill="#181818" points="799.5,297.0396,809.5,301.0396,799.5,305.0396,803.5,301.0396" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="414.5" x2="805.5" y1="301.0396" y2="301.0396"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="421.5" y="296.2847">5</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="95" x="432.5" y="296.2847">getRequestList()</text><path d="M698.5,316.0396 L759.5,316.0396 L759.5,322.9883 L749.5,332.9883 L698.5,332.9883 L698.5,316.0396 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="390.3335" style="stroke:#000000;stroke-width:1.5;" width="1019.5" x="698.5" y="316.0396"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="16" x="713.5" y="329.2334">alt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="71" x="774.5" y="328.3574">[agent = null]</text><line style="stroke:#181818;stroke-width:1.0;" x1="821.5" x2="868.5" y1="348.937" y2="348.937"/><line style="stroke:#181818;stroke-width:1.0;" x1="868.5" x2="868.5" y1="348.937" y2="361.937"/><line style="stroke:#181818;stroke-width:1.0;" x1="827.5" x2="868.5" y1="361.937" y2="361.937"/><polygon fill="#181818" points="837.5,357.937,827.5,361.937,837.5,365.937,833.5,361.937" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="833.5" y="344.1821">6</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="137" x="844.5" y="344.1821">getAgentFromSession()</text><polygon fill="#181818" points="1108.5,391.8857,1118.5,395.8857,1108.5,399.8857,1112.5,395.8857" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="826.5" x2="1114.5" y1="395.8857" y2="395.8857"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="833.5" y="391.1309">7</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="75" x="844.5" y="391.1309">getInstance()</text><polygon fill="#181818" points="837.5,420.8345,827.5,424.8345,837.5,428.8345,833.5,424.8345" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="831.5" x2="1124.5" y1="424.8345" y2="424.8345"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="843.5" y="420.0796">8</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="68" x="854.5" y="420.0796">appSession</text><polygon fill="#181818" points="1255.5,449.7832,1265.5,453.7832,1255.5,457.7832,1259.5,453.7832" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="826.5" x2="1261.5" y1="453.7832" y2="453.7832"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="833.5" y="449.0283">9</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="115" x="844.5" y="449.0283">getCurrentSession()</text><polygon fill="#181818" points="837.5,478.7319,827.5,482.7319,837.5,486.7319,833.5,482.7319" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="831.5" x2="1271.5" y1="482.7319" y2="482.7319"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="843.5" y="477.9771">10</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="87" x="861.5" y="477.9771">currentSession</text><polygon fill="#181818" points="1388.5,507.6807,1398.5,511.6807,1388.5,515.6807,1392.5,511.6807" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="826.5" x2="1394.5" y1="511.6807" y2="511.6807"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="833.5" y="506.9258">11</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="86" x="851.5" y="506.9258">getUserEmail()</text><polygon fill="#181818" points="837.5,536.6294,827.5,540.6294,837.5,544.6294,833.5,540.6294" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="831.5" x2="1404.5" y1="540.6294" y2="540.6294"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="843.5" y="535.8745">12</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="89" x="861.5" y="535.8745">employeeEmail</text><polygon fill="#181818" points="1501.5,565.5781,1511.5,569.5781,1501.5,573.5781,1505.5,569.5781" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="826.5" x2="1507.5" y1="569.5781" y2="569.5781"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="833.5" y="564.8232">13</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="129" x="851.5" y="564.8232">getPersonRepository()</text><polygon fill="#181818" points="837.5,594.5269,827.5,598.5269,837.5,602.5269,833.5,598.5269" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="831.5" x2="1517.5" y1="598.5269" y2="598.5269"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="843.5" y="593.772">14</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="103" x="861.5" y="593.772">PersonRepository</text><polygon fill="#181818" points="1625.5,623.4756,1635.5,627.4756,1625.5,631.4756,1629.5,627.4756" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="826.5" x2="1631.5" y1="627.4756" y2="627.4756"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="833.5" y="622.7207">15</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="181" x="851.5" y="622.7207">getPersonByEmail(agentEmail)</text><polygon fill="#181818" points="837.5,652.4243,827.5,656.4243,837.5,660.4243,833.5,656.4243" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="831.5" x2="1641.5" y1="656.4243" y2="656.4243"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="843.5" y="651.6694">16</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="56" x="861.5" y="651.6694">employee</text><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="826.5" x2="868.5" y1="690.373" y2="690.373"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="868.5" x2="868.5" y1="690.373" y2="703.373"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="821.5" x2="868.5" y1="703.373" y2="703.373"/><polygon fill="#181818" points="831.5,699.373,821.5,703.373,831.5,707.373,827.5,703.373" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="833.5" y="685.6182">17</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="56" x="851.5" y="685.6182">employee</text><path d="M698.5,720.373 L759.5,720.373 L759.5,727.3218 L749.5,737.3218 L698.5,737.3218 L698.5,720.373 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="74.8462" style="stroke:#000000;stroke-width:1.5;" width="878.5" x="698.5" y="720.373"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="16" x="713.5" y="733.5669">alt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="144" x="774.5" y="732.6909">[requestRepository = null]</text><polygon fill="#181818" points="1501.5,754.2705,1511.5,758.2705,1501.5,762.2705,1505.5,758.2705" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="821.5" x2="1507.5" y1="758.2705" y2="758.2705"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="828.5" y="753.5156">18</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="136" x="846.5" y="753.5156">getRequestRepository()</text><polygon fill="#181818" points="832.5,783.2192,822.5,787.2192,832.5,791.2192,828.5,787.2192" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="826.5" x2="1517.5" y1="787.2192" y2="787.2192"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="838.5" y="782.4644">19</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="110" x="856.5" y="782.4644">RequestRepository</text><polygon fill="#181818" points="1770.5,819.168,1780.5,823.168,1770.5,827.168,1774.5,823.168" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="821.5" x2="1776.5" y1="823.168" y2="823.168"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="828.5" y="818.4131">20</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="163" x="846.5" y="818.4131">getRequestsByAgent(agent)</text><polygon fill="#181818" points="832.5,848.1167,822.5,852.1167,832.5,856.1167,828.5,852.1167" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="826.5" x2="1786.5" y1="852.1167" y2="852.1167"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="838.5" y="847.3618">21</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="71" x="856.5" y="847.3618">requestsList</text><polygon fill="#181818" points="425.5,877.0654,415.5,881.0654,425.5,885.0654,421.5,881.0654" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="419.5" x2="815.5" y1="881.0654" y2="881.0654"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="431.5" y="876.3105">22</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="114" x="449.5" y="876.3105">filteredRequestsList</text><polygon fill="#181818" points="67.5,920.9629,57.5,924.9629,67.5,928.9629,63.5,924.9629" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="61.5" x2="408.5" y1="924.9629" y2="924.9629"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="73.5" y="912.7336">23</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="306" x="91.5" y="905.2593">shows list of property requests assigned to the agent</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="132" x="91.5" y="920.208">and asks to select one</text><polygon fill="#181818" points="392.5,949.9116,402.5,953.9116,392.5,957.9116,396.5,953.9116" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="56.5" x2="398.5" y1="953.9116" y2="953.9116"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="63.5" y="949.1567">24</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="114" x="81.5" y="949.1567">selects one request</text><polygon fill="#181818" points="67.5,978.8604,57.5,982.8604,67.5,986.8604,63.5,982.8604" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="61.5" x2="408.5" y1="982.8604" y2="982.8604"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="73.5" y="978.1055">25</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="179" x="91.5" y="978.1055">asks wether to accept or reject</text><path d="M20,997.8604 L81,997.8604 L81,1004.8091 L71,1014.8091 L20,1014.8091 L20,997.8604 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="957.2568" style="stroke:#000000;stroke-width:1.5;" width="2449" x="20" y="997.8604"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="16" x="35" y="1011.0542">alt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="94" x="96" y="1010.1782">[rejects request]</text><polygon fill="#181818" points="392.5,1031.7578,402.5,1035.7578,392.5,1039.7578,396.5,1035.7578" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="56.5" x2="398.5" y1="1035.7578" y2="1035.7578"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="63.5" y="1031.0029">26</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="86" x="81.5" y="1031.0029">rejects request</text><polygon fill="#181818" points="799.5,1060.7065,809.5,1064.7065,799.5,1068.7065,803.5,1064.7065" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="414.5" x2="805.5" y1="1064.7065" y2="1064.7065"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="421.5" y="1059.9517">27</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="140" x="439.5" y="1059.9517">removeRequest(request)</text><polygon fill="#181818" points="1770.5,1089.6553,1780.5,1093.6553,1770.5,1097.6553,1774.5,1093.6553" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="821.5" x2="1776.5" y1="1093.6553" y2="1093.6553"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="828.5" y="1088.9004">28</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="140" x="846.5" y="1088.9004">removeRequest(request)</text><polygon fill="#181818" points="832.5,1118.604,822.5,1122.604,832.5,1126.604,828.5,1122.604" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="826.5" x2="1786.5" y1="1122.604" y2="1122.604"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="838.5" y="1117.8491">29</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="856.5" y="1117.8491"> </text><polygon fill="#181818" points="425.5,1147.5527,415.5,1151.5527,425.5,1155.5527,421.5,1151.5527" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="419.5" x2="815.5" y1="1151.5527" y2="1151.5527"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="431.5" y="1146.7979">30</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="449.5" y="1146.7979"> </text><polygon fill="#181818" points="67.5,1176.5015,57.5,1180.5015,67.5,1184.5015,63.5,1180.5015" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="61.5" x2="408.5" y1="1180.5015" y2="1180.5015"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="73.5" y="1175.7466">31</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="158" x="91.5" y="1175.7466">displays operation success</text><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="20" x2="2469" y1="1189.5015" y2="1189.5015"/><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="98" x="25" y="1199.8193">[accepts request]</text><polygon fill="#181818" points="392.5,1220.0991,402.5,1224.0991,392.5,1228.0991,396.5,1224.0991" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="56.5" x2="398.5" y1="1224.0991" y2="1224.0991"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="63.5" y="1219.3442">32</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="93" x="81.5" y="1219.3442">accepts request</text><polygon fill="#181818" points="67.5,1249.0479,57.5,1253.0479,67.5,1257.0479,63.5,1253.0479" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="61.5" x2="408.5" y1="1253.0479" y2="1253.0479"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="73.5" y="1248.293">33</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="146" x="91.5" y="1248.293">requests comission value</text><polygon fill="#181818" points="392.5,1277.9966,402.5,1281.9966,392.5,1285.9966,396.5,1281.9966" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="56.5" x2="398.5" y1="1281.9966" y2="1281.9966"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="63.5" y="1277.2417">34</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="122" x="81.5" y="1277.2417">types requested data</text><polygon fill="#181818" points="799.5,1306.9453,809.5,1310.9453,799.5,1314.9453,803.5,1310.9453" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="414.5" x2="805.5" y1="1310.9453" y2="1310.9453"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="421.5" y="1306.1904">35</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="115" x="439.5" y="1306.1904">getComissionType()</text><polygon fill="#181818" points="1913,1335.894,1923,1339.894,1913,1343.894,1917,1339.894" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="821.5" x2="1919" y1="1339.894" y2="1339.894"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="828.5" y="1335.1392">36</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="126" x="846.5" y="1335.1392">getCommissionType()</text><polygon fill="#181818" points="832.5,1364.8428,822.5,1368.8428,832.5,1372.8428,828.5,1368.8428" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="826.5" x2="1929" y1="1368.8428" y2="1368.8428"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="838.5" y="1364.0879">37</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="119" x="856.5" y="1364.0879">commissionTypeList</text><polygon fill="#181818" points="425.5,1393.7915,415.5,1397.7915,425.5,1401.7915,421.5,1397.7915" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="419.5" x2="815.5" y1="1397.7915" y2="1397.7915"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="431.5" y="1393.0366">38</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="119" x="449.5" y="1393.0366">commissionTypeList</text><polygon fill="#181818" points="67.5,1437.689,57.5,1441.689,67.5,1445.689,63.5,1441.689" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="61.5" x2="408.5" y1="1441.689" y2="1441.689"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="73.5" y="1429.4597">39</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="161" x="91.5" y="1421.9854">shows commission type list</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="132" x="91.5" y="1436.9341">and asks to select one</text><polygon fill="#181818" points="392.5,1466.6377,402.5,1470.6377,392.5,1474.6377,396.5,1470.6377" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="56.5" x2="398.5" y1="1470.6377" y2="1470.6377"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="63.5" y="1465.8828">40</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="145" x="81.5" y="1465.8828">selects commission type</text><polygon fill="#181818" points="799.5,1495.5864,809.5,1499.5864,799.5,1503.5864,803.5,1499.5864" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="414.5" x2="805.5" y1="1499.5864" y2="1499.5864"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="421.5" y="1494.8315">41</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="360" x="439.5" y="1494.8315">approveRequest(request, commissionValue, commissionType)</text><line style="stroke:#181818;stroke-width:1.0;" x1="821.5" x2="868.5" y1="1523.5352" y2="1523.5352"/><line style="stroke:#181818;stroke-width:1.0;" x1="868.5" x2="868.5" y1="1523.5352" y2="1536.5352"/><line style="stroke:#181818;stroke-width:1.0;" x1="827.5" x2="868.5" y1="1536.5352" y2="1536.5352"/><polygon fill="#181818" points="837.5,1532.5352,827.5,1536.5352,837.5,1540.5352,833.5,1536.5352" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="833.5" y="1518.7803">42</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="140" x="851.5" y="1518.7803">removeRequest(request)</text><polygon fill="#181818" points="1770.5,1566.4839,1780.5,1570.4839,1770.5,1574.4839,1774.5,1570.4839" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="826.5" x2="1776.5" y1="1570.4839" y2="1570.4839"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="833.5" y="1565.729">43</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="140" x="851.5" y="1565.729">removeRequest(request)</text><polygon fill="#181818" points="837.5,1595.4326,827.5,1599.4326,837.5,1603.4326,833.5,1599.4326" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="831.5" x2="1786.5" y1="1599.4326" y2="1599.4326"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="843.5" y="1594.6777">44</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="861.5" y="1594.6777"> </text><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="826.5" x2="868.5" y1="1633.3813" y2="1633.3813"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="868.5" x2="868.5" y1="1633.3813" y2="1646.3813"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="821.5" x2="868.5" y1="1646.3813" y2="1646.3813"/><polygon fill="#181818" points="831.5,1642.3813,821.5,1646.3813,831.5,1650.3813,827.5,1646.3813" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="833.5" y="1628.6265">45</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="851.5" y="1628.6265"> </text><path d="M698.5,1656.3813 L759.5,1656.3813 L759.5,1663.3301 L749.5,1673.3301 L698.5,1673.3301 L698.5,1656.3813 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="74.8462" style="stroke:#000000;stroke-width:1.5;" width="878.5" x="698.5" y="1656.3813"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="16" x="713.5" y="1669.5752">alt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="181" x="774.5" y="1668.6992">[advertisementRepository = null]</text><polygon fill="#181818" points="1501.5,1690.2788,1511.5,1694.2788,1501.5,1698.2788,1505.5,1694.2788" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="821.5" x2="1507.5" y1="1694.2788" y2="1694.2788"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="828.5" y="1689.5239">46</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="170" x="846.5" y="1689.5239">getAdvertisementRepository()</text><polygon fill="#181818" points="832.5,1719.2275,822.5,1723.2275,832.5,1727.2275,828.5,1723.2275" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="826.5" x2="1517.5" y1="1723.2275" y2="1723.2275"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="838.5" y="1718.4727">47</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="144" x="856.5" y="1718.4727">AdvertisementRepository</text><polygon fill="#181818" points="2074,1770.125,2084,1774.125,2074,1778.125,2078,1774.125" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="821.5" x2="2080" y1="1774.125" y2="1774.125"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="828.5" y="1761.8958">48</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="169" x="846.5" y="1754.4214">createAdvertisement(request,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="213" x="846.5" y="1769.3701">commissionType, commissionValue)</text><polygon fill="#181818" points="2339,1814.0225,2349,1818.0225,2339,1822.0225,2343,1818.0225" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="2096" x2="2345" y1="1818.0225" y2="1818.0225"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="2103" y="1805.7932">49</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="169" x="2121" y="1798.3188">createAdvertisement(request,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="213" x="2121" y="1813.2676">commissionType, commissionValue)</text><rect fill="#E3E3E3" height="46.1973" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="108" x="2351" y="1782.125"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="89" x="2360.5" y="1802.2568">advertisement</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="94" x="2358" y="1818.3555">:Advertisement</text><polygon fill="#181818" points="2107,1856.271,2097,1860.271,2107,1864.271,2103,1860.271" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="2101" x2="2404" y1="1860.271" y2="1860.271"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="2113" y="1855.5161">50</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="80" x="2131" y="1855.5161">advertisement</text><polygon fill="#181818" points="832.5,1885.2197,822.5,1889.2197,832.5,1893.2197,828.5,1889.2197" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="826.5" x2="2090" y1="1889.2197" y2="1889.2197"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="838.5" y="1884.4648">51</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="80" x="856.5" y="1884.4648">advertisement</text><polygon fill="#181818" points="425.5,1914.1685,415.5,1918.1685,425.5,1922.1685,421.5,1918.1685" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="419.5" x2="815.5" y1="1918.1685" y2="1918.1685"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="431.5" y="1913.4136">52</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="80" x="449.5" y="1913.4136">advertisement</text><polygon fill="#181818" points="67.5,1943.1172,57.5,1947.1172,67.5,1951.1172,63.5,1947.1172" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="61.5" x2="403.5" y1="1947.1172" y2="1947.1172"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="73.5" y="1942.3623">53</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="179" x="91.5" y="1942.3623">displays created advertisement</text><!--MD5=[cd1b93bb1b59564525b3774e3bf878fb]
+@startuml Sequence Diagram Full - List Property Request
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Full - List Property Request
+autonumber
+
+'hide footbox
+actor "Agent" as AG
+participant ":ListPropertyRequestsUI" as UI
+participant ":ListPropertyRequestsController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant ":ApplicationSession" as _APP
+participant "appSession\n:ApplicationSession" as APP
+participant "currentSession\n:UserSession" as SESSAO
+participant "repositories\n:Repositories" as PLAT
+participant "personRepository\n:PersonRepository" as PersonRepository
+participant "requestRepository\n:RequestRepository" as RequestRepository
+participant "commissionType\n:CommissionType" as CTR
+participant "advertisementRepository\n:AdvertisementRepository" as AdvertisementRepository
+participant "advertisement\n:Advertisement" as Advertisement
+
+activate AG
+
+    AG -> UI : asks to view property requests
+    activate UI
+        UI -> CTRL** : creates
+        
+		activate CTRL
+            CTRL -> RepositorySingleton : getInstance()
+            activate RepositorySingleton
+                RepositorySingleton - -> CTRL : repositories
+            deactivate RepositorySingleton
+        deactivate CTRL
+
+    loop while intended
+
+        UI -> CTRL : getRequestList()
+
+		activate CTRL
+
+		alt agent = null
+		CTRL -> CTRL : getAgentFromSession()
+
+			activate CTRL
+				CTRL -> _APP : getInstance()
+				activate _APP
+					_APP -> CTRL: appSession
+				deactivate _APP
+
+				CTRL -> APP: getCurrentSession()
+				activate APP
+					APP - -> CTRL: currentSession
+				deactivate APP
+
+				CTRL -> SESSAO: getUserEmail()
+				activate SESSAO
+					SESSAO - -> CTRL: employeeEmail
+				deactivate SESSAO
+
+				CTRL -> PLAT : getPersonRepository()
+				activate PLAT
+					PLAT - -> CTRL : PersonRepository
+				deactivate PLAT
+				CTRL -> PersonRepository : getPersonByEmail(agentEmail)
+				activate PersonRepository
+					PersonRepository - -> CTRL : employee
+				deactivate PersonRepository
+
+				CTRL - -> CTRL : employee
+			deactivate CTRL
+		end
+
+		alt requestRepository = null
+			CTRL -> PLAT : getRequestRepository()
+			activate PLAT
+				PLAT - -> CTRL : RequestRepository
+			deactivate PLAT
+		end
+		CTRL -> RequestRepository : getRequestsByAgent(agent)
+		activate RequestRepository
+			RequestRepository - -> CTRL : requestsList
+		deactivate RequestRepository
+
+		CTRL - -> UI : filteredRequestsList
+		deactivate CTRL
+
+		UI - -> AG : shows list of property requests assigned to the agent\nand asks to select one
+    deactivate UI
+
+	AG -> UI : selects one request
+	activate UI
+		UI - -> AG : asks wether to accept or reject
+	deactivate UI
+
+	alt rejects request
+		AG -> UI : rejects request
+		activate UI
+			UI -> CTRL : removeRequest(request)
+			activate CTRL
+				CTRL -> RequestRepository : removeRequest(request)
+				activate RequestRepository
+					RequestRepository - -> CTRL : 
+				deactivate RequestRepository
+				CTRL - -> UI
+			deactivate CTRL
+			UI - -> AG : displays operation success
+		deactivate UI
+
+
+	else accepts request
+		AG -> UI : accepts request
+		activate UI
+			UI - -> AG : requests comission value
+		deactivate UI
+	
+		AG -> UI : types requested data
+		activate UI
+			UI -> CTRL : getComissionType()
+			
+			activate CTRL
+				CTRL -> CTR : getCommissionType()
+				activate CTR
+					CTR - -> CTRL : commissionTypeList
+				deactivate CTR
+				CTRL - -> UI : commissionTypeList
+			deactivate CTRL
+
+			UI - -> AG : shows commission type list\nand asks to select one
+		deactivate UI
+
+		AG -> UI : selects commission type
+		activate UI
+			UI -> CTRL : approveRequest(request, commissionValue, commissionType)
+			
+			activate CTRL
+				CTRL -> CTRL : removeRequest(request)
+				activate CTRL
+					CTRL -> RequestRepository : removeRequest(request)
+					activate RequestRepository
+						RequestRepository - -> CTRL : 
+					deactivate RequestRepository
+					CTRL - -> CTRL
+				deactivate CTRL
+
+				alt advertisementRepository = null
+					CTRL -> PLAT : getAdvertisementRepository()
+					activate PLAT
+						PLAT - -> CTRL : AdvertisementRepository
+					deactivate PLAT
+				end
+
+				CTRL -> AdvertisementRepository : createAdvertisement(request,\ncommissionType, commissionValue)
+				activate AdvertisementRepository
+					AdvertisementRepository -> Advertisement** : createAdvertisement(request,\ncommissionType, commissionValue)
+					activate Advertisement
+						Advertisement - -> AdvertisementRepository : advertisement
+					deactivate Advertisement
+					AdvertisementRepository - -> CTRL : advertisement
+				deactivate AdvertisementRepository
+
+				CTRL - -> UI : advertisement
+			deactivate CTRL
+
+			UI - -> AG : displays created advertisement
+		end
+	end
+
+
+deactivate AG
+
+@enduml
+
+@startuml Sequence Diagram Full - List Property Request
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Full - List Property Request
+autonumber
+
+actor "Agent" as AG
+participant ":ListPropertyRequestsUI" as UI
+participant ":ListPropertyRequestsController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant ":ApplicationSession" as _APP
+participant "appSession\n:ApplicationSession" as APP
+participant "currentSession\n:UserSession" as SESSAO
+participant "repositories\n:Repositories" as PLAT
+participant "personRepository\n:PersonRepository" as PersonRepository
+participant "requestRepository\n:RequestRepository" as RequestRepository
+participant "commissionType\n:CommissionType" as CTR
+participant "advertisementRepository\n:AdvertisementRepository" as AdvertisementRepository
+participant "advertisement\n:Advertisement" as Advertisement
+
+activate AG
+
+    AG -> UI : asks to view property requests
+    activate UI
+        UI -> CTRL** : creates
+        
+		activate CTRL
+            CTRL -> RepositorySingleton : getInstance()
+            activate RepositorySingleton
+                RepositorySingleton - -> CTRL : repositories
+            deactivate RepositorySingleton
+        deactivate CTRL
+
+    loop while intended
+
+        UI -> CTRL : getRequestList()
+
+		activate CTRL
+
+		alt agent = null
+		CTRL -> CTRL : getAgentFromSession()
+
+			activate CTRL
+				CTRL -> _APP : getInstance()
+				activate _APP
+					_APP -> CTRL: appSession
+				deactivate _APP
+
+				CTRL -> APP: getCurrentSession()
+				activate APP
+					APP - -> CTRL: currentSession
+				deactivate APP
+
+				CTRL -> SESSAO: getUserEmail()
+				activate SESSAO
+					SESSAO - -> CTRL: employeeEmail
+				deactivate SESSAO
+
+				CTRL -> PLAT : getPersonRepository()
+				activate PLAT
+					PLAT - -> CTRL : PersonRepository
+				deactivate PLAT
+				CTRL -> PersonRepository : getPersonByEmail(agentEmail)
+				activate PersonRepository
+					PersonRepository - -> CTRL : employee
+				deactivate PersonRepository
+
+				CTRL - -> CTRL : employee
+			deactivate CTRL
+		end
+
+		alt requestRepository = null
+			CTRL -> PLAT : getRequestRepository()
+			activate PLAT
+				PLAT - -> CTRL : RequestRepository
+			deactivate PLAT
+		end
+		CTRL -> RequestRepository : getRequestsByAgent(agent)
+		activate RequestRepository
+			RequestRepository - -> CTRL : requestsList
+		deactivate RequestRepository
+
+		CTRL - -> UI : filteredRequestsList
+		deactivate CTRL
+
+		UI - -> AG : shows list of property requests assigned to the agent\nand asks to select one
+    deactivate UI
+
+	AG -> UI : selects one request
+	activate UI
+		UI - -> AG : asks wether to accept or reject
+	deactivate UI
+
+	alt rejects request
+		AG -> UI : rejects request
+		activate UI
+			UI -> CTRL : removeRequest(request)
+			activate CTRL
+				CTRL -> RequestRepository : removeRequest(request)
+				activate RequestRepository
+					RequestRepository - -> CTRL : 
+				deactivate RequestRepository
+				CTRL - -> UI
+			deactivate CTRL
+			UI - -> AG : displays operation success
+		deactivate UI
+
+
+	else accepts request
+		AG -> UI : accepts request
+		activate UI
+			UI - -> AG : requests comission value
+		deactivate UI
+	
+		AG -> UI : types requested data
+		activate UI
+			UI -> CTRL : getComissionType()
+			
+			activate CTRL
+				CTRL -> CTR : getCommissionType()
+				activate CTR
+					CTR - -> CTRL : commissionTypeList
+				deactivate CTR
+				CTRL - -> UI : commissionTypeList
+			deactivate CTRL
+
+			UI - -> AG : shows commission type list\nand asks to select one
+		deactivate UI
+
+		AG -> UI : selects commission type
+		activate UI
+			UI -> CTRL : approveRequest(request, commissionValue, commissionType)
+			
+			activate CTRL
+				CTRL -> CTRL : removeRequest(request)
+				activate CTRL
+					CTRL -> RequestRepository : removeRequest(request)
+					activate RequestRepository
+						RequestRepository - -> CTRL : 
+					deactivate RequestRepository
+					CTRL - -> CTRL
+				deactivate CTRL
+
+				alt advertisementRepository = null
+					CTRL -> PLAT : getAdvertisementRepository()
+					activate PLAT
+						PLAT - -> CTRL : AdvertisementRepository
+					deactivate PLAT
+				end
+
+				CTRL -> AdvertisementRepository : createAdvertisement(request,\ncommissionType, commissionValue)
+				activate AdvertisementRepository
+					AdvertisementRepository -> Advertisement** : createAdvertisement(request,\ncommissionType, commissionValue)
+					activate Advertisement
+						Advertisement - -> AdvertisementRepository : advertisement
+					deactivate Advertisement
+					AdvertisementRepository - -> CTRL : advertisement
+				deactivate AdvertisementRepository
+
+				CTRL - -> UI : advertisement
+			deactivate CTRL
+
+			UI - -> AG : displays created advertisement
+		end
+	end
+
+
+deactivate AG
+
+@enduml
+
+PlantUML version 1.2022.7(Mon Aug 22 18:01:30 WEST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

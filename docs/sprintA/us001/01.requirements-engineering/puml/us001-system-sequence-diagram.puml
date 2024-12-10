@@ -1,0 +1,42 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD)
+
+autonumber
+
+actor "Unregistered User" as User
+participant ":System" as System
+
+activate User
+
+        User -> System : asks to list listed properties
+    activate System
+
+        System --> User : asks wants to select business type, number of bedrooms, property type
+    deactivate System
+
+        User -> System : send answer
+    activate System
+
+    group opt [answer = true]
+
+         System --> User : requests business type, number of bedrooms, property type
+            deactivate System
+
+                User -> System : choose business type, number of bedrooms, property type
+            activate System
+    end
+
+        System --> User : requests sort type
+        deactivate System
+
+        User -> System : choose sort type
+    activate System
+
+        System --> User : shows listed properties
+    deactivate System
+
+@enduml

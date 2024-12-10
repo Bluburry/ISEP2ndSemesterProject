@@ -1,0 +1,39 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram Parcial Get Acess to Repositorys List (SSD)
+
+autonumber
+
+'hide footbox
+participant ":RespondBookingRequestController" as CTRL
+
+participant "advertisementMapper\n:AdvertisementMapper" as advertisementMapper
+
+participant "advertisementRepository\n:AdvertisementRepository" as advertisementRepository
+
+autonumber 23
+
+            activate CTRL
+
+            CTRL -> advertisementMapper : getAdsListAgent(keepAgentEmail)
+            activate advertisementMapper
+
+                advertisementMapper -> advertisementRepository : getAdvertisementList()
+                activate advertisementRepository
+
+                    advertisementRepository -> advertisementMapper : listAds
+                    deactivate advertisementRepository
+
+                advertisementMapper -> advertisementMapper : getAdsListAgent(keepAgentEmail,listAds)
+                advertisementMapper -> advertisementMapper : listAdsAgent
+                advertisementMapper -> advertisementMapper : createAdvertisementDTOList(listAdsAgent)
+
+                advertisementMapper -> CTRL : advAgentDTOList
+                deactivate advertisementMapper
+
+            deactivate CTRL
+
+@enduml

@@ -1,0 +1,110 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Organization Employee" as ADM
+participant ":RegisterEmployeeUI" as UI
+participant ":RegisterEmployeeController" as CTRL
+participant "authenticationRepository:\nAuthenticationRepository" as authenticationRep
+
+activate ADM
+
+        ADM -> UI : asks to register a new employee
+
+        activate UI
+
+            UI -> CTRL** : create
+            activate CTRL
+'            UI --> ADM : requests data (reference, description,  informal \n description, technical description, duration, cost)
+            'create CTRL
+            ref over CTRL
+                Get repositories
+            end ref
+
+            UI --> ADM : requests data for the employee
+            deactivate UI
+            deactivate CTRL
+
+            ADM -> UI : types requested data (name, password, citizen's card number,\n tax number, e-mail, telephone number)
+            activate UI
+
+            UI --> ADM : requests data for the employee's location
+            deactivate UI
+
+            ADM -> UI: sends data (street, zipcode, state, city, district)
+            activate UI
+
+                    UI -> CTRL : getUserRoleList()
+                    activate CTRL
+
+                        ref over CTRL
+                            Get user role list
+                        end ref
+
+                        CTRL --> UI : userRoleList
+                    deactivate CTRL
+
+                UI --> ADM : shows user roles and asks to select one
+            deactivate UI
+
+                ADM -> UI : selects an user role
+            activate UI
+
+            UI -> CTRL : getStoreList()
+            activate CTRL
+
+            ref over CTRL
+                Get store list
+            end ref
+
+            CTRL --> UI : storeList
+            deactivate CTRL
+
+            alt role = store network manager
+                UI --> ADM : shows store list and asks to select the\nstores that are part of the network
+                deactivate UI
+
+                ADM -> UI : selects the agencies
+                activate UI
+            else role != store network manager
+                UI --> ADM : shows store list and asks to select one
+                deactivate UI
+
+                ADM -> UI : selects a store
+                activate UI
+            end
+
+        UI --> ADM : shows selected user role, store/stores and requested data
+    deactivate UI
+
+    ADM -> UI : submits data
+    activate UI
+
+        UI -> CTRL : createEmployee(name, password, citizenNum, tin, email, phoneNum, storeID, street, zipCode, stateUS, city, district, userRole)
+        activate CTRL
+
+                CTRL -> authenticationRep: userExists(email)
+                activate authenticationRep
+
+                    authenticationRep --> CTRL : returns information
+                    deactivate authenticationRep
+
+                    opt true
+                        ref over CTRL
+                            Create user
+                        end ref
+                    end
+
+                CTRL --> UI : true/false
+                deactivate CTRL
+
+            UI --> ADM: displays operation success
+    deactivate UI
+
+deactivate ADM
+
+@enduml

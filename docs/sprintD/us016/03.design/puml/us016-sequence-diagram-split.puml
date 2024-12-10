@@ -1,0 +1,203 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+
+actor "Agent" as User
+participant ":RespondBookingRequestUI" as UI
+participant ":RespondBookingRequestController" as CTRL
+
+activate User
+
+    User -> UI : asks to chosse a Booking Request\n from a List
+        activate UI
+
+        UI -> CTRL** : create
+            activate CTRL
+        ref over CTRL
+            Get Repositories
+        end ref
+            CTRL --> UI:
+
+            deactivate CTRL
+
+        UI -> CTRL: getAgentEmail()
+            activate CTRL
+        ref over CTRL
+            Get Agent Email
+        end ref
+            CTRL -> UI: agentEmail
+            deactivate CTRL
+
+        UI -> UI: keepAgentEmail
+
+        UI -> CTRL: getAgentName(keepAgentEmail)
+            activate CTRL
+        ref over CTRL
+            Get Agent Name
+        end ref
+            CTRL -> UI : keepAgentName
+            deactivate CTRL
+
+        UI -> UI: keepAgentName
+
+        UI -> CTRL: getAgentPhone(keepAgentEmail)
+            activate CTRL
+        ref over CTRL
+            Get Agent Phone
+        end ref
+            CTRL -> UI : keepAgentPhone
+            deactivate CTRL
+
+        UI -> UI: keepAgentPhone
+
+        UI -> CTRL :getAdsListAgent(keepAgentEmail)
+                activate CTRL
+        ref over CTRL
+            Get Agent Ads List
+        end ref
+            CTRL -> UI : advAgentDTOList
+            deactivate CTRL
+
+        UI -> User: displayAdsAgentVisitList(advAgentDTOList)
+
+loop (for each ad)
+
+        UI -> User: displayAd(advAgentDTOList)
+
+end
+        UI -> User : ask To Choose One Advertisement()
+
+    User -> UI : selects a Advertisement
+
+        UI -> UI: keepAdvertismentDTO
+
+        UI -> CTRL: getAdFromDTO(keepAdvertisementDTO)
+            activate CTRL
+        ref over CTRL
+            Get List Visits From Ad
+        end ref
+            CTRL -> UI : visitsListFromAd
+            deactivate CTRL
+
+    loop (for each visit)
+
+        UI -> User: displayVisit(visitsListFromAd)
+
+    end
+
+        UI -> User : ask To Choose one Visit Request()
+        deactivate UI
+
+    User -> UI : selects a Visit Request
+        activate UI
+
+        UI  ->  UI: keepVisitRequest
+
+        UI -> User : Display Ad and Visit and ask for a response \nto Visit Request (keepAdvertismentDTO, keepVisitRequest)
+        deactivate UI
+
+    User -> UI : responds to Visit Request
+        activate UI
+
+        UI -> CTRL: getClientEmailFromVisit()
+        activate CTRL
+        ref over CTRL
+            Get Client Email From Visit
+        end ref
+            CTRL -> UI : keepClientEmail
+            deactivate CTRL
+
+        UI -> UI: keepClientEmail
+
+        UI -> CTRL: getNameClientFromMail(keepClientEmail)
+            activate CTRL
+        ref over CTRL
+            Get Client Name From Email
+        end ref
+            CTRL -> UI: keepClientName
+            deactivate CTRL
+
+        UI -> UI: keepClientName
+
+        UI -> CTRL: respondEmail(YES/NO)
+        activate CTRL
+        ref over CTRL
+            Get Email Platform
+        end ref
+
+alt (EMAIL.FORMAT=GMAIL)
+
+    alt (NO)
+        ref over CTRL
+            Respond Booking Request GMAIL Rejected
+        end ref
+
+        CTRL -> UI: emailSendRejection
+
+    UI -> User: send Email (emailSendRejection)
+
+        ref over CTRL
+            Change Visit Status Rejected
+        end ref
+
+    else (YES)
+        ref over CTRL
+            Respond Booking Request GMAIL Accepted
+        end ref
+
+        CTRL -> UI: emailSendConfirmation
+
+    UI -> User: send Email (emailSendConfirmation)
+
+        ref over CTRL
+            Change Visit Status Accepted
+        end ref
+
+    end
+
+else (EMAIL.FORMAT=DEI)
+
+    alt (NO)
+        ref over CTRL
+            Respond Booking Request DEI Rejected
+        end ref
+
+        CTRL -> UI: emailSendRejection
+
+    UI -> User: send Email (emailSendRejection)
+
+        ref over CTRL
+            Change Visit Status Rejected
+        end ref
+
+    else (YES)
+        ref over CTRL
+            Respond Booking Request DEI Accepted
+        end ref
+
+        CTRL -> UI: emailSendConfirmation
+
+    UI -> User: send Email (emailSendConfirmation)
+
+        ref over CTRL
+            Change Visit Status Accepted
+        end ref
+
+        deactivate CTRL
+
+    end
+
+end
+
+        UI -> User : displays operation success
+        deactivate UI
+
+
+deactivate User
+
+@enduml

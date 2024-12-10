@@ -1,0 +1,27 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram Parcial Get Acess to Repositorys List (SSD)
+
+autonumber
+
+'hide footbox
+participant ":RespondBookingRequestController" as CTRL
+
+participant "applicationSession\n:ApplicationSession" as applicationSession
+
+autonumber 59
+
+    activate CTRL
+
+            CTRL -> applicationSession: getEmailPlatform()
+            activate applicationSession
+
+                applicationSession -> CTRL : emailPlatform
+                deactivate applicationSession
+
+    deactivate CTRL
+
+@enduml

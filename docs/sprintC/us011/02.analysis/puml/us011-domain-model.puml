@@ -1,0 +1,100 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+'left to right direction
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+class Person{
+}
+
+class Offer{
+    offer
+}
+
+class Advertisement {
+    date
+    commissionType
+    commissionValue
+}
+
+
+
+class Property <<Interface>>{
+    photos
+    areaProperty
+    distanceCityCenter
+}
+
+class House {
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+    basement
+    loft
+    sunExposure
+}
+
+class Apartment{
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+}
+class Land{}
+
+class Request<<Interface>>{
+    date
+}
+
+class RequestSale{
+salePrice
+}
+class RequestLease{
+    rentalPrice
+    durationOfContract
+}
+
+
+class Person{
+    emailAddress
+    passport
+    tin
+    phoneNumber
+    name
+}
+class Employee{
+
+}
+
+Request <|.. RequestSale
+Request <|.. RequestLease
+
+Person <|-- Employee
+
+Person "1" -- "*" Offer:makes >
+
+Request "1" -- "1" Advertisement
+
+Advertisement "1" -- "*" Offer
+
+Request "1" -- "1" Property
+Request "*" -- "1" Employee
+
+
+Person "1" -- "*" Request
+
+Employee "1" -- "*" Request
+
+Property <|.. Land
+Property <|.. Apartment
+Property <|.. House
+
+
+@enduml

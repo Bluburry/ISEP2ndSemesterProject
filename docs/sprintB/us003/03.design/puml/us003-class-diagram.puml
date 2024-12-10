@@ -1,0 +1,77 @@
+@startuml
+'skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+'skinparam linetype orto
+
+skinparam classAttributeIconSize 0
+
+'left to right direction
+class RegisterEmployeeUI {
+    +create RegisterEmployeeController
+}
+
+class RegisterEmployeeController {
+    + getInstance()
+    + getUserRoleList()
+    + getStoreList()
+    + createEmployee(name, citizenNum, tin, email, phoneNum, storeID, street, zipCode, stateUS, city, district, userRole)
+}
+
+class Repositories {
+    - Repositories()
+    + getInstance() : Repositories
+    + getStoreRepository()
+    + getAuthenticationRepository()
+    + getPersonRepository()
+}
+
+class AuthenticationRepository{
+    + AuthFacade authenticationFacade
+    + existsUser(email)
+}
+
+class StoreRepository{
+    + addEmployeeToStore(employee, storeID)
+}
+
+class Store{
+    - String prefix
+    - int numStores
+    - String name
+    - String emailAddress
+    - int phoneNumber
+    - String idStore
+}
+
+class PersonRepository{
+    + addEmployeeWithLocation(email, name, citizenNum, tin, phoneNum, street, zipCode, stateUS, city, district, userRole)}
+}
+
+class Person{
+    -int: numberCitizen
+    -int: tin
+    -int: phoneNumber
+    -String: name
+}
+
+class Employee{
+    -String: role
+}
+
+Repositories -> Repositories : instance
+RegisterEmployeeController .> Repositories : repositories
+
+RegisterEmployeeUI .> RegisterEmployeeController
+
+
+Repositories --> "1" StoreRepository
+Repositories --> "1" AuthenticationRepository
+Repositories --> "1" PersonRepository
+
+StoreRepository --> "*" Store
+PersonRepository --> "*" Person
+
+Person --> "*" Employee
+@enduml

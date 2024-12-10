@@ -1,0 +1,282 @@
+@startuml Class Diagram - List Booking Request
+
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+
+skinparam classAttributeIconSize 0
+
+class ListBookingRequestsUI {
+	- Employee agent
+	- Advertisement ad
+    - Visit visit
+	- List<Advertisement> adList
+	- List<Visit> visitList
+	+ CreateListBookingRequestsUI()
+}
+
+class ListBookingRequestsController {
+    + CreateListBookingRequestsController()
+    + getAgentFromSession() : Employee
+	+ getAdvertisements() : List<Advertisement>
+    + getVisitsList() : List<Visit>
+    + answerVisit(advertisement, visit, status)
+}
+
+class ApplicationSession {
+    + static getInstance()
+    + getCurrentSession()
+}
+
+class UserSession {
+    + getUser()
+}
+
+class Repositories {
+    - Repositories instance
+    - Repositories()
+    + Repositories : getInstance()
+    + getPersonRepository() : PersonRepository
+    + getAdvertisementRepository() : AdvertisementRepository
+}
+
+class Person {
+    - String email
+    - String name
+    - double citizenID
+    - double tin
+    - double phoneNumber
+}
+
+class Employee {
+    - String role
+}
+
+enum SunExposure {
+    - String description
+    + getSunExposure() : String
+}
+
+interface Location {
+    + getStreet() : String
+    + getZip() : String
+    + getState() : String
+    + getCity() : String
+    + getDistrict() : String
+    + getLocation() : String
+    + setStreet(String street)
+    + setZip(String zip)
+    + setState(String state)
+    + setCity(String city)
+    + setDistrict(String district)
+    + setLocation(String street, String zip,\nString state, String city, String district)
+    + validateZip(String zip)
+    + validateLocation(String zip, String street,\nString state, String city, String district)
+    + locationToString() : String
+    
+}
+
+interface Property {
+	+ getArea() : double
+	+ getDistance() : double
+	+ getPropertyType() : String
+	+ getPhotographs() : List<String>
+	+ validatePropertyArguments(PropertyType propertyType,\ndouble area, double distance, List<String> photographs)
+	+ validPropertyType(PropertyType propertyType) : boolean
+	+ validatePhotos(List<String> photographs) : boolean
+}
+
+class Land {
+    - String state
+    - String city
+    - String district
+    - String street
+    - String zip
+    - double area
+    - double distance
+    - List<String> photographs
+}
+
+class Apartment {
+    - String state
+    - String city
+    - String district
+    - String street
+    - String zip
+    - double area
+    - double distance
+    - List<String> photographs
+    - int numberBedrooms
+    - int numberBathrooms
+    - int numberParking
+    - String availableEquipment
+}
+
+class House {
+    - String state
+    - String city
+    - String district
+    - String street
+    - String zip
+    - double area
+    - double distance
+    - List<String> photographs
+    - int numberBedrooms
+    - int numberBathrooms
+    - int numberParking
+    - String availableEquipment
+    - boolean basement
+    - boolean loft
+    - SunExposure sunExposure
+}
+
+enum BusinessType {
+    - String description
+    + getBusinessType() : String
+}
+
+interface Request {
+    + getProperty() : Property
+    + getBusinessType() : String
+    + getOwner() : Person
+    + getAgent() : Employee
+    + getDate() : Date
+    + validateRequest(Property property, BusinessType businessType,\nPerson owner, Employee agent, double... args) : boolean
+    + confirmBusinessType(BusinessType businessType): boolean
+}
+
+class RequestSale {
+    - double salePrice
+    - Date date
+    - BusinessType businessType
+    - Property property
+    - Employee employee
+    - Person person
+}
+
+class RequestLease {
+    - double rentalPrice
+    - int durationOfContract
+    - Date date
+    - BusinessType businessType
+    - Property property
+    - Employee employee
+    - Person person
+}
+
+enum CommissionType {
+    - String description
+    + getCommissionType() : String
+}
+
+class Advertisement {
+    - Request request
+    - Date date
+    - CommissionType commissionType
+    - double commissionValue
+    - List<Visit> visits
+    - List<Offer> offers
+    + getVisitsByAlgorithm(String algorithm, int beginYear,int beginMonth,\nint beginDay, int endYear, int endMonth, int endDay) : List<Visit>
+}
+
+class Visit {
+    - int year;
+    - int month;
+    - int day;
+    - int hour;
+    - VisitStatus status;
+    - Email clientEmail;
+    + acceptStatus()
+    + rejectStatus()
+}
+
+enum VisitStatus {
+    - String description
+    + getVisitStatus() : String
+}
+
+class Offer {
+    - Date date
+    - OfferStatus status
+    - double offer
+    - Email clientEmail
+}
+
+class OfferStatus {
+    - String description
+    + getOfferStatus() : String
+}
+
+class PersonRepository {
+    - List <Person> personList
+    + getPersonByEmail(String email) : Person
+}
+
+class AdvertisementRepository {
+    - List<Advertisement> advertisementList
+    + getAdvertisementsByAgent(employee) : List<Advertisement>
+    + getAdVisitsByDate(advertisement, algorithm, startYear, startMonth,\nstartDay, endYear, endMonth, endDay) : List<Visit>
+    + respondToVisit(advertisement, visit, status)
+}
+
+class Config {
+    - Config instance
+    - String company_designation
+	- String sorting_algorithm
+	- String email_format
+    + Config : getInstance()
+    + getSortingAlgorithm() : String
+}
+
+ApplicationSession --> "1" UserSession
+
+ListBookingRequestsUI .> ListBookingRequestsController : controller
+
+ListBookingRequestsController .> Repositories : repositories
+ListBookingRequestsController ...> ApplicationSession
+ListBookingRequestsController ...> PersonRepository : personRepository
+ListBookingRequestsController ...> AdvertisementRepository : advertisementRepository
+ListBookingRequestsController ...> Config : sortingAlgorithm
+
+Config --> Config : instance
+
+Repositories --> Repositories : instance
+Repositories --> "1" PersonRepository
+Repositories --> "1" RequestRepository
+Repositories --> "1" AdvertisementRepository
+
+AdvertisementRepository --> "*" Advertisement
+
+Person <|-- Employee
+
+Location <|.. Land
+Location <|.. Apartment
+Location <|.. House
+
+Property <|.. Land
+Property <|.. Apartment
+Property <|.. House
+
+Request <|.. RequestLease
+Request <|.. RequestSale
+
+House --> "0..1" SunExposure
+
+Request --> "1" BusinessType
+Request --> "1" Property
+
+Advertisement --> "1" Request
+Advertisement --> "1" CommissionType
+Advertisement --> "*" Visit
+Advertisement --> "*" Offer
+
+Visit --> "1" VisitStatus
+Offer --> "1" OfferStatus
+
+
+Advertisement <- Employee: creates
+Employee -> Request : approves
+Request -> Person : created by
+
+
+@enduml

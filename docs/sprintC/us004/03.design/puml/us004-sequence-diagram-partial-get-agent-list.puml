@@ -1,0 +1,29 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram Parcial Get Agent List (SSD)
+
+'hide footbox
+participant ":SubmitPropertyController" as CTRL
+
+participant "repositories\n:Repositories" as repositories
+participant "storeRepository\n:StoreRepository" as storeRepository
+
+autonumber 90
+
+        CTRL  ->  repositories : getStoreRepository()
+            activate repositories
+
+            repositories --> CTRL: StoreRepository
+            deactivate repositories
+
+        CTRL -> storeRepository: getAgentList()
+            activate storeRepository
+
+            storeRepository --> CTRL : agentList
+            deactivate storeRepository
+
+
+@enduml

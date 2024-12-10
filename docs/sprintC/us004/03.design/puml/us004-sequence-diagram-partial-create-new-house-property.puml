@@ -1,0 +1,30 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram Parcial Create Request (SSD)
+
+'hide footbox
+
+participant "repositories\n:Repositories" as repositories
+participant ":SubmitPropertyController" as CTRL
+
+participant "repositories\n:Repositories" as repositories
+participant "propertyRepository\n:PropertyRepository" as propertyRepository
+
+autonumber 47
+
+            CTRL -> repositories : getPropertyRepository()
+            activate repositories
+
+                repositories --> CTRL: PropertyRepository
+                deactivate repositories
+
+            CTRL -> propertyRepository: newHouseProperty (propertyType, \narea cms. Distance Kms,\n location(street, zipcode, stateUS, city, district), \nnumberBedrooms, numberParking, \nbasement, loft, photo,numberBathrooms, \navailableEquipment, basement (YES/NO),\n habitable loft (YES/NO), Sun Exposure Type choice, photos)
+            activate propertyRepository
+
+                propertyRepository -> CTRL: newHouseProperty
+                deactivate propertyRepository
+
+@enduml

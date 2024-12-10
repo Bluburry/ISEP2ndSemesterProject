@@ -1,0 +1,300 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "System administrator" as ADM
+participant ":FileImportUI" as UI
+participant ":FileImportController" as CTRL
+participant ":Repositories" as RepSingleton
+participant "FileDataCollection"
+participant "repositories\n:Repositories" as REPS
+'participant "authenticationRepository\n:AuthenticationRepository" as authenticationRepository
+participant "personRepository\n:PersonRepository" as personRepository
+participant "storeRepository\n:StoreRepository" as storeRepository
+participant "propertyRepository\n:PropertyRepository" as propertyRepository
+participant "requestRepository\n:RequestRepository" as requestRepository
+participant "advertisementRepository\n:AdvertisementRepository" as advertisementRepository
+'participant "User"
+participant "Person"
+participant "Store"
+participant "Land"
+participant "Apartment"
+participant "House"
+
+activate ADM
+
+        ADM -> UI : asks to import information
+        activate UI
+
+            UI -> CTRL** : create
+            activate CTRL
+'            UI --> ADM : requests data (reference, description,  informal \n description, technical description, duration, cost)
+            'create CTRL
+
+            CTRL -> RepSingleton : getInstance()
+            activate RepSingleton
+
+            RepSingleton --> CTRL: repositories
+            deactivate RepSingleton
+            deactivate CTRL
+
+            UI --> ADM : requests file location
+            deactivate UI
+
+            ADM -> UI : types the file location
+            activate UI
+
+        ADM -> UI : submits data
+
+        UI -> CTRL : importInformation(fileLocation)
+        activate CTRL
+
+        CTRL -> REPS : getFileDataCollection()
+        activate REPS
+
+        REPS --> CTRL : fileDataCollection
+        deactivate REPS
+
+        CTRL -> FileDataCollection : importInformation(fileLocation)
+        activate FileDataCollection
+
+        FileDataCollection -> REPS : getPersonRepository()
+        activate REPS
+
+        REPS --> FileDataCollection : personRepository
+        deactivate REPS
+
+        FileDataCollection -> REPS : getStoreRepository()
+        activate REPS
+
+        REPS -> FileDataCollection : storeRepository
+        deactivate REPS
+
+        FileDataCollection -> REPS : getPropertyRepository()
+        activate REPS
+
+        REPS --> FileDataCollection : propertyRepository
+        deactivate REPS
+
+        FileDataCollection -> REPS : getRequestRepository()
+        activate REPS
+
+        REPS --> FileDataCollection : requestRepository
+        deactivate REPS
+
+        FileDataCollection -> REPS : getAdvertisementRepository()
+        activate REPS
+
+        REPS --> FileDataCollection : advertisementRepository
+        deactivate REPS
+
+        loop until file end
+
+            FileDataCollection -> personRepository : addPerson(email, name, citizenNum, tin, phoneNum)
+            activate personRepository
+
+                personRepository -> Person** : addPerson(email, name, citizenNum, tin, phoneNum)
+                activate Person
+
+                Person --> personRepository : true/false
+                deactivate Person
+
+            personRepository --> FileDataCollection : true/false
+            deactivate personRepository
+
+            FileDataCollection -> storeRepository : addStore(id, name, email, phoneNum)
+            activate storeRepository
+
+                storeRepository -> Store** : addStore(id, name, email, phoneNum)
+                activate Store
+
+                Store --> storeRepository : true/false
+                deactivate Store
+
+            storeRepository --> FileDataCollection : true/false
+            deactivate storeRepository
+
+            alt propertyType == Land
+
+                FileDataCollection -> propertyRepository : createNewProperty(propertyType, areaProperty, distanceCityCenter, photographs, street, zipCode, stateUS, city, district)
+                activate propertyRepository
+
+                propertyRepository -> Land** : createNewProperty(propertyType, areaProperty, distanceCityCenter, photographs, street, zipCode, stateUS, city, district)
+                activate Land
+
+                Land --> propertyRepository : land
+                deactivate Land
+
+                propertyRepository --> FileDataCollection : land
+                deactivate propertyRepository
+
+                alt businessType == rent
+
+                    FileDataCollection -> requestRepository : createSaleRequest(land, businessType, owner, agent, salePrice)
+                    activate requestRepository
+
+                    requestRepository -> Request** : createSaleRequest(land, businessType, owner, agent, salePrice)
+                    activate Request
+
+                    Request -> requestRepository : request
+                    deactivate Request
+
+                    requestRepository -> FileDataCollection : request
+                    deactivate requestRepository
+
+                else businessType == lease
+
+                    FileDataCollection -> requestRepository : createLeaseRequest(land, businessType, owner, agent, salePrice)
+                    activate requestRepository
+
+                    requestRepository -> Request** : createLeaseRequest(land, businessType, owner, agent, salePrice)
+                    activate Request
+
+                    Request -> requestRepository : request
+                    deactivate Request
+
+                    requestRepository -> FileDataCollection : request
+                    deactivate requestRepository
+
+                end
+
+            else propertyType == Apartment
+
+                FileDataCollection -> propertyRepository : createNewApartmentProperty(propertyType, areaProperty, distanceCityCenter, photographs, street, \nzipCode, stateUS, city, district, numberBedrooms, numberParking, numberBathrooms, availableEquipment)
+                activate propertyRepository
+
+                propertyRepository -> Apartment** : createNewApartmentProperty(propertyType, areaProperty, distanceCityCenter, photographs, street, \nzipCode, stateUS, city, district, numberBedrooms, numberParking, numberBathrooms, availableEquipment)
+                activate Apartment
+
+                Apartment --> propertyRepository : apartment
+                deactivate Apartment
+
+                propertyRepository --> FileDataCollection : apartment
+                deactivate propertyRepository
+
+                alt businessType == rent
+
+                    FileDataCollection -> requestRepository : createSaleRequest(apartment, businessType, owner, agent, salePrice)
+                    activate requestRepository
+
+                    requestRepository -> Request** : createSaleRequest(apartment, businessType, owner, agent, salePrice)
+                    activate Request
+
+                    Request -> requestRepository : request
+                    deactivate Request
+
+                    requestRepository -> FileDataCollection : request
+                    deactivate requestRepository
+
+                else businessType == lease
+
+                    FileDataCollection -> requestRepository : createLeaseRequest(apartment, businessType, owner, agent, salePrice)
+                    activate requestRepository
+
+                    requestRepository -> Request** : createLeaseRequest(apartment, businessType, owner, agent, salePrice)
+                    activate Request
+
+                    Request -> requestRepository : request
+                    deactivate Request
+
+                    requestRepository -> FileDataCollection : request
+                    deactivate requestRepository
+
+                end
+
+            else propertyType == House
+
+                FileDataCollection -> propertyRepository : createNewHouseProperty(propertyType, areaProperty, distanceCityCenter, photographs, street, zipCode, stateUS, \ncity, district, numberBedrooms, numberParking, numberBathrooms, availableEquipment, basement, loft, sunExposure)
+                activate propertyRepository
+
+                propertyRepository -> House** : createNewHouseProperty(propertyType, areaProperty, distanceCityCenter, photographs, street, zipCode, stateUS, \ncity, district, numberBedrooms, numberParking, numberBathrooms, availableEquipment, basement, loft, sunExposure)
+                activate House
+
+                House --> propertyRepository : house
+                deactivate House
+
+                propertyRepository --> FileDataCollection : house
+                deactivate propertyRepository
+
+                alt businessType == rent
+
+                    FileDataCollection -> requestRepository : createSaleRequest(house, businessType, owner, agent, salePrice)
+                    activate requestRepository
+
+                    requestRepository -> Request** : createSaleRequest(house, businessType, owner, agent, salePrice)
+                    activate Request
+
+                    Request -> requestRepository : request
+                    deactivate Request
+
+                    requestRepository -> FileDataCollection : request
+                    deactivate requestRepository
+
+                else businessType == lease
+
+                    FileDataCollection -> requestRepository : createLeaseRequest(land, businessType, owner, agent, salePrice)
+                    activate requestRepository
+
+                    requestRepository -> Request** : createLeaseRequest(land, businessType, owner, agent, salePrice)
+                    activate Request
+
+                    Request -> requestRepository : request
+                    deactivate Request
+
+                    requestRepository -> FileDataCollection : request
+                    deactivate requestRepository
+
+                end
+
+            end
+
+            FileDataCollection -> advertisementRepository : createNewAdvertisement(request, date, commissionType, commissionValue)
+            activate advertisementRepository
+
+            advertisementRepository -> Advertisement** : createNewAdvertisement(request, date, commissionType, commissionValue)
+            activate Advertisement
+
+            Advertisement --> advertisementRepository : advertisement
+            deactivate Advertisement
+
+            advertisementRepository --> FileDataCollection : advertisement
+            deactivate advertisementRepository
+
+        end
+
+        FileDataCollection --> CTRL : true/false
+        deactivate FileDataCollection
+
+
+            'CTRL -> authenticationRepository : getAuthenticationRepository()
+            'activate authenticationRepository
+
+            'authenticationRepository -> CTRL : authenticationRepository()
+            'deactivate
+
+            'CTRL -> authenticationRepository : addUserWithRole(name, email, password, userRole)
+            'activate authenticationRepository
+
+            'authenticationRepository -> User** : addUserWithRole(name, email, password, userRole)
+            'activate User
+
+            'User --> authenticationRepository : true/false
+            'deactivate User
+
+            'authenticationRepository --> CTRL : true/false
+            'deactivate authenticationRepository
+
+            CTRL --> UI : true/false
+            deactivate CTRL
+
+            UI --> ADM: displays operation success
+
+    deactivate UI
+
+deactivate ADM
+
+@enduml

@@ -1,0 +1,241 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Full (SD)
+autonumber
+
+'Client place an order to purchase the property.
+
+'hide footbox
+actor "Client" as User
+participant ":MakeOfferUI" as UI
+participant ":MakeOfferController" as CTRL
+
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as repositories
+participant "userSession\n:UserSession" as userSession
+
+participant "propertyTypeEnum\n:PropertyTypeEnum" as propertyTypeEnum
+participant "businessTypeEnum\n:businessTypeEnum" as businessTypeEnum
+
+participant "advertisementRepository\n:AdvertisementRepository" as advertisementRepository
+participant "advertisementCollection\n:AdvertisementCollection" as advertisementCollection
+
+activate User
+
+    User -> UI : asks to Make a Offer property
+        activate UI
+
+        UI -> CTRL** : create
+        activate CTRL
+
+            CTRL -> RepositorySingleton : getInstance()
+            activate RepositorySingleton
+
+                RepositorySingleton --> CTRL: repositories
+                deactivate RepositorySingleton
+
+            deactivate CTRL
+
+        UI -> CTRL :listAndChoosePropertyType()
+                activate CTRL
+
+            CTRL -> propertyTypeEnum: getPropertyTypesList()
+                activate propertyTypeEnum
+
+                propertyTypeEnum -> CTRL: PropertyTypeList
+                deactivate propertyTypeEnum
+
+            CTRL -> UI : PropertyTypeList
+                deactivate CTRL
+
+        UI --> User : shows Property Type List \n and asks to select one
+        deactivate UI
+
+    User -> UI : selects a Property Type
+            activate UI
+
+        UI  ->  UI: keepPropertyType
+
+        UI -> CTRL :listAndChooseBusinessType()
+                activate CTRL
+
+            CTRL -> businessTypeEnum: getBusinessTypesList()
+                activate businessTypeEnum
+
+                businessTypeEnum -> CTRL: BusinessTypeList
+                deactivate businessTypeEnum
+
+            CTRL -> UI : BusinessTypeList
+                deactivate CTRL
+
+        UI --> User : shows Business Type List \n and asks to select one
+        deactivate UI
+
+    User -> UI : selects a Business Type
+            activate UI
+
+        UI  ->  UI: keepBusinessType
+
+        UI -> CTRL : listAndDisplayandChooseAdvertisementDTO\n(keepPropertyTypeChoice, keepBusinessTypeChoice)
+            activate CTRL
+
+            CTRL -> repositories : getAdvertisementRepository()
+            activate repositories
+
+            repositories -> CTRL: advertisementRepository
+            deactivate repositories
+
+
+            CTRL -> advertisementRepository : getAdvertismentDTOListSorted(keepPropertyTypeChoice, keepBusinessTypeChoice)
+            activate advertisementRepository
+
+                advertisementRepository -> advertisementRepository : getAdvertisementList()
+
+                advertisementRepository -> advertisementCollection : createAdvertisementDTOList(advertisementList)
+                deactivate advertisementRepository
+                activate advertisementCollection
+
+                advertisementCollection -> advertisementCollection : createAdvertisementDTOList()
+
+
+loop (for each object in advertisementList)
+
+                advertisementCollection -> advertisementCollection: Advertisement = get(i)
+                advertisementCollection -> advertisementCollection: getDataFromAdvertisement(propertyType,businessType)
+
+    alt (propertyType = keepPropertyTypeChoice \n&& propertyType = keepPropertyTypeChoice)
+        alt propertyType= HOUSE
+
+                advertisementCollection -> advertisementCollection: getDataFromAdvertisement(propertyType, \narea cms. Distance Kms,\n location(street, zipcode, stateUS, city, district), \nnumberBedrooms, numberParking, \n,numberBathrooms, \navailableEquipment, basement (YES/NO),\n habitable loft (YES/NO), Sun Exposure Type choice, photos)
+
+            alt businessType= SALE
+
+                advertisementCollection -> advertisementCollection: getDataFromAdvertisement(salePrice)
+
+            else businessType= LEASE
+
+                advertisementCollection -> advertisementCollection: getDataFromAdvertisement(rentPrice, ContractDuration)
+
+            end
+
+        else propertyType= APARTMENT
+
+                advertisementCollection -> advertisementCollection: getDataFromAdvertisement(propertyType, \narea cms. Distance Kms,\n location(street, zipcode, stateUS, city, district), \nnumberBedrooms, numberParking, photo,numberBathrooms, \navailableEquipment, photos)
+
+            alt businessType= SALE
+
+                advertisementCollection -> advertisementCollection: getDataFromAdvertisement(salePrice)
+
+            else businessType= LEASE
+
+                advertisementCollection -> advertisementCollection: getDataFromAdvertisement(rentPrice, ContractDuration)
+
+            end
+
+        else propertyType = LAND
+
+                advertisementCollection -> advertisementCollection: getDataFromAdvertisement(propertyType, \narea cms. Distance Kms,\n location(street, zipcode, stateUS, city, district), photo, photos)
+
+            alt businessType= SALE
+
+                advertisementCollection -> advertisementCollection: getDataFromAdvertisement(salePrice)
+
+            else businessType= LEASE
+
+                advertisementCollection -> advertisementCollection: getDataFromAdvertisement(rentPrice, ContractDuration)
+
+            end
+
+        end
+
+    end
+end
+                advertisementCollection -> advertisementCollection : Advertisement to AdvertisementDTO (Data)),\n add to AdvertisementDTOList
+
+                advertisementCollection -> advertisementCollection : sort AdvertisementDTOList by Date
+
+                advertisementCollection -> CTRL : AdvertisementDTOListSortedByDate
+                deactivate advertisementCollection
+
+            CTRL -> UI : AdvertisementDTOListSortedByDate
+            deactivate CTRL
+
+        UI --> User : shows AdvertismentDTO List \n and asks to select one
+        deactivate UI
+
+    User -> UI : selects a AdvertismentDTO
+            activate UI
+
+        UI  ->  UI: keepAdvertismentDTO
+
+        UI -> User : ask value of Offer (offerValue)
+        deactivate UI
+
+    User -> UI : types asked data (OfferValue)
+        activate UI
+
+        UI -> UI: keeOfferValue
+
+        UI -> CTRL: getClientEmail()
+            activate CTRL
+
+            CTRL -> userSession : getClientEmail()
+            activate userSession
+
+            userSession -> CTRL: clientEmail
+            deactivate userSession
+
+            CTRL -> UI: clientEmail
+            deactivate CTRL
+
+        UI -> UI: keepClientEmail
+
+        UI -> CTRL: VerifyOfferValidation (keepAdvertismentDTO, keeOfferValue, keepClientEmail)
+            activate CTRL
+
+            CTRL -> advertisementRepository : verifyOfferValueLowerSalePrice (keepAdvertismentDTO, keeOfferValue, keepClientEmail)
+            activate advertisementRepository
+
+            advertisementRepository -> advertisementRepository: DTOtoAd(keepAdvertisementDTO)
+
+            advertisementRepository -> advertisementRepository: verififyClientOffer(keepAdvertisement,\nkeeOfferValue, keepClientEmail)
+
+            advertisementRepository -> CTRL : verififyClientOffer()=true
+            deactivate advertisementRepository
+
+            CTRL -> UI:verififyClientOffer()=true
+            deactivate CTRL
+
+        UI -> User: Display Offer conditions\n and ask for validation (YES/NO)
+           deactivate UI
+
+    User -> UI: input: validation (YES/NO)
+        activate UI
+
+alt validation = YES
+
+        UI -> CTRL : adNewOffer(keepAdvertisement,keeOfferValue, keepClientEmail)
+        activate CTRL
+
+        CTRL -> advertisementRepository:  adNewOffer(keepAdvertisement,keeOfferValue, keepClientEmail)
+        activate advertisementRepository
+
+        advertisementRepository -> advertisementRepository: adNewOffer(keepAdvertisement,\nkeeOfferValue, keepClientEmail)
+
+
+        advertisementRepository -> CTRL: adNewOffer=true
+        deactivate advertisementRepository
+
+        CTRL -> UI: adNewOffer=true
+        deactivate CTRL
+
+        UI -> User : displays operation success
+        deactivate UI
+end
+
+deactivate User
+
+@enduml

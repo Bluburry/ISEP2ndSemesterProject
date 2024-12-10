@@ -1,0 +1,149 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD)
+
+autonumber
+
+actor "Property Owner" as User
+participant ":System" as System
+
+activate User
+
+    User -> System : asks to submit a new property
+        activate System
+
+	    System --> User :initiate process, asks to chosse type of property
+        deactivate System
+
+    User -> System : selects type of property
+        activate System
+
+        System --> User : requests data: date,\n area cms. Distance Kms,\n location(street, zipcode, stateUS, city, district)
+        deactivate System
+
+    User -> System : input data: date,\n area cms. Distance Kms,\n location(street, zipcode, stateUS, city, district)
+        activate System
+
+alt propertyType = House or Apartment
+
+        System -> User : ask data (numberBedrooms, numberParking)
+        deactivate System
+
+    User -> System : types asked data (numberBedrooms, numberParking)
+    activate System
+
+    group opt
+
+        System -> User : ask data (numberBathrooms, \navailableEquipment)
+        deactivate System
+
+    User -> System : types asked data (numberBathrooms, \navailableEquipment)
+    activate System
+
+    end
+
+else propertyType = House
+
+        System -> User : ask existence basement (YES/NO)
+        deactivate System
+
+    User -> System : types answer existence basement (YES/NO)
+           activate System
+
+        System -> User : ask is habitable loft (YES/NO)
+        deactivate System
+
+    User -> System : types answer habitable loft (YES/NO)
+           activate System
+
+    group opt
+
+        System --> User : shows sunExposureTypesList list and asks to select one
+        deactivate System
+
+    User -> System : selects a Sun Exposure Type
+    activate System
+
+    end
+
+end
+
+        System -> User: request data (photo)
+        deactivate System
+
+    User -> System : input asked data (photo)
+        activate System
+
+    opt
+
+        loop
+
+            System -> User: request data (photos)
+            deactivate System
+
+        User -> System : input asked data (photos)
+                    activate System
+
+        end
+
+    end
+
+        System -> User: Display property conditions and ask for validation (YES/NO)
+        deactivate System
+
+    User -> System: input: validation (YES/NO)
+         activate System
+
+alt validation = YES
+
+        System -> User : displays operation success
+        deactivate System
+end
+
+        System --> User : shows businessTypeList\n and asks to select one
+        deactivate System
+
+    User -> System : selects a Business Type
+    activate System
+
+alt businessType = Sale
+
+        System -> User : ask data (salePrice)
+        deactivate System
+
+    User -> System : types asked data (salePrice)
+    activate System
+
+
+else businessType = Rent
+
+        System -> User : ask data (rentalPrice, duractionContract)
+        deactivate System
+
+    User -> System : types asked data (rentalPrice, duractionContract)
+    activate System
+
+end
+        System --> User : shows Agent List list\n and asks to select one
+        deactivate System
+
+    User -> System : selects Agent
+    activate System
+
+         System -> User: Display Request Conditions and ask for validation (YES/NO)
+         deactivate System
+
+     User -> System: input: validation (YES/NO)
+         activate System
+
+ alt validation = YES
+        System -> User : displays operation success
+        deactivate System
+ end
+
+ deactivate User
+
+@enduml

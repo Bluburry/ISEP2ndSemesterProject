@@ -1,0 +1,105 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+class PropertyType{
+    designation
+}
+
+class Property <<Interface>>{
+    photos
+    areaProperty
+    distanceCityCenter
+}
+
+class House {
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+    basement
+    loft
+    sunExposure
+}
+
+class Apartment{
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+}
+
+class Land{}
+
+class Request<<Interface>>{
+    date
+}
+
+class RequestSale{
+    salePrice
+}
+
+class RequestLease{
+    rentalPrice
+    durationOfContract
+}
+
+class BusinessType {
+    designation
+}
+
+class Store{
+    id
+    name
+    emailAddress
+    phoneNumber
+}
+
+class Location <<Interface>> {
+    street
+    zipCode
+    stateUS
+    city
+    district
+}
+
+class Person{
+    emailAddress
+    passport
+    tin
+    phoneNumber
+    name
+}
+
+class Advertisement {
+    commissionValue
+    commissionType
+    date
+}
+
+Person ..|> Location
+Person "1" -left- "1..*" Request: owns >
+Person "1" - "*" Request: asks to create >
+
+House .up.|> Property
+Apartment .up.|> Property
+Land .up.|> Property
+PropertyType "1" -right- "*" Property: contains <
+
+Location <|.. Property
+Location <|.. Store
+
+Store "1" -up- "*" Advertisement: contains >
+
+Request "1" -- "1" Property
+Request <|.. RequestLease
+Request <|.. RequestSale
+Request "*" -left- "1" BusinessType: contains >
+Request "1" -- "1" Advertisement:contains <
+@enduml

@@ -1,0 +1,35 @@
+@startuml Sequence Diagram Partial - Change Visit Status
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram Partial - Change Visit Status
+autonumber
+
+'hide footbox
+participant ":ListBookingRequestsController" as CTRL
+participant "advertisementRepository\n:AdvertisementRepository" as AR
+participant "advertisement\n:Advertisement" as Advertisement
+participant "visit\n:Visit" as Visit
+
+autonumber 41
+ -> CTRL : answerVisit(advertisement, visit, status)
+activate CTRL
+	CTRL -> AR : respondToVisit(advertisement, visit, status)
+	activate AR
+		AR -> Advertisement : changeStatus(visit, status)
+		activate  Advertisement
+			alt status = accept
+				Advertisement -> Visit : acceptStatus()
+				activate Visit
+				deactivate Visit
+			else status = reject
+				Advertisement -> Visit : rejectStatus()
+				activate Visit
+				deactivate Visit
+			end
+		deactivate Advertisement
+	deactivate AR
+deactivate CTRL
+
+@enduml

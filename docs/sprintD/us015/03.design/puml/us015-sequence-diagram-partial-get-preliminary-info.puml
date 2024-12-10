@@ -1,0 +1,69 @@
+@startuml Sequence Diagram Full - List Booking Request
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram - Partial - Get Preliminary Info
+autonumber
+
+'hide footbox
+participant ":ListBookingRequestsController" as CTRL
+participant ":Repositories" as RepositorySingleton
+participant ":ApplicationSession" as _APP
+participant "appSession\n:ApplicationSession" as APP
+participant "currentSession\n:UserSession" as SESSAO
+participant "repositories\n:Repositories" as REPO
+participant "personRepository\n:PersonRepository" as PR
+participant "config\n:Config" as config
+
+autonumber 2
+
+-> CTRL** : creates
+activate CTRL
+    CTRL -> RepositorySingleton : getInstance()
+    activate RepositorySingleton
+        RepositorySingleton --> CTRL : repositories
+    deactivate RepositorySingleton
+
+    CTRL -> CTRL : getAgentFromSession()
+
+        activate CTRL
+            CTRL -> _APP : getInstance()
+            activate _APP
+                _APP -> CTRL: appSession
+            deactivate _APP
+
+            CTRL -> APP: getCurrentSession()
+            activate APP
+                APP --> CTRL: currentSession
+            deactivate APP
+
+            CTRL -> SESSAO: getUserEmail()
+            activate SESSAO
+                SESSAO --> CTRL: employeeEmail
+            deactivate SESSAO
+
+            CTRL -> REPO : getPersonRepository()
+            activate REPO
+                REPO --> CTRL : PersonRepository
+            deactivate REPO
+            CTRL -> PR : getPersonByEmail(agentEmail)
+            activate PR
+                PR --> CTRL : employee
+            deactivate PR
+        CTRL --> CTRL : employee
+        deactivate CTRL
+
+    CTRL -> REPO : getAdvertisementRepository()
+    activate REPO
+        REPO --> CTRL : AdvertisementRepository
+    deactivate REPO
+
+    CTRL -> config : getSortingAlgorithm()
+    activate config
+        config --> CTRL : algorithm
+    deactivate config
+    
+deactivate CTRL
+
+@enduml

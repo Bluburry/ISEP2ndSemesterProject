@@ -1,0 +1,48 @@
+@startuml System Sequence Diagram (SSD) - List booking request
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - List booking request
+
+autonumber
+
+actor "Agent" as Agent
+participant ":System" as System
+
+activate Agent
+
+    Agent -> System : asks to list booking requests
+    activate System
+        System --> Agent : requests start date for filtering
+    deactivate System
+
+    Agent -> System : types requested data
+    activate System
+        System --> Agent : requests end date for filtering
+    deactivate System
+
+    Agent -> System : types requested data
+
+loop while intended
+    activate System
+        System --> Agent : displays advertisements assigned to him\nand asks to select one\nto show its booking requests
+    deactivate System
+
+    Agent -> System : selects one
+    activate System
+        System --> Agent : lists booking requests for that advertisement\nand asks to select one
+    deactivate System
+
+    Agent -> System : selects one
+    activate System
+        System --> Agent : asks whether to accept or reject it
+    deactivate System
+
+    Agent -> System : selects one
+        
+deactivate Agent
+
+end
+
+@enduml

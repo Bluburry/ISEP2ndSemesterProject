@@ -1,0 +1,13 @@
+Email Domain: DEI
+AgentEmail to Send: AgenteJoao@emprese.pt
+ 	ClientEmail to Receive: cliente@this.app
+ Dear Mrs or Ms Cliente Name
+ Unfortunally it will not be possible to to Schedule your Visit Request.
+Please Schedule another time to visit the Property.
+Real State Agent: joaoPhoneNumber: 2041852963,000000Email Domain: DEI
+AgentEmail to Send: AgenteJoao@emprese.pt
+ 	ClientEmail to Receive: cliente@this.app
+ Dear Mrs or Ms Cliente Name
+ Unfortunally it will not be possible to to Schedule your Visit Request.
+Please Schedule another time to visit the Property.
+Real State Agent: joaoPhoneNumber: 2041852963,000000

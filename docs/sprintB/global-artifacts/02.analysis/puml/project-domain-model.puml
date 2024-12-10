@@ -1,0 +1,141 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+hide circle
+hide methods
+
+
+class Employee{
+}
+
+class Client {
+}
+
+class Owner {
+}
+
+class Agent
+
+class Advertisement {
+    commissionValue
+    commissionType
+    date
+}
+
+class BusinessType {
+    designation
+}
+
+class PropertyType{
+    designation
+}
+
+class Property{
+    photos
+    areaProperty
+    distanceCityCenter
+}
+
+class House {
+    basement
+    loft
+    sunExposure
+}
+
+class Building{
+    numberBedrooms
+    numberBathrooms
+    numberParking
+    availableEquipment
+}
+
+
+class Store{
+    id
+    name
+    emailAddress
+    phoneNumber
+}
+
+class Visit{
+    idVisit
+    report
+}
+
+class Location {
+    street
+    zipCode
+    stateUS
+    city
+    district
+}
+
+class StoreManager {
+}
+
+class StoreNetworkManager {
+}
+
+class Offer{
+    idOffer
+    offer
+}
+
+class SystemAdministrator{
+}
+
+
+
+class Person{
+    emailAddress
+    numberCitizen
+    tin
+    phoneNumber
+    name
+}
+
+class Request{
+    date
+    rentalPrice
+    salePrice
+    durationOfContract
+}
+
+Person <|-- Owner
+Person <|-- Client
+Person <|-- Employee
+
+Person -- Location: owns >
+
+
+
+Owner "1" -- "1..*" Request: owns >
+Agent "1" -- "*" Request: publishes >
+House --|> Building
+
+Building --|> Property
+Store "1" -- "*" Agent: works <
+StoreManager "1" -- "1" Store:  monitors >
+Location "1" -- "1" Property : owns <
+StoreNetworkManager "1" -- "*" Store:  analyzes >
+Employee <|-- Agent
+Employee <|-- StoreManager
+Employee <|-- StoreNetworkManager
+Advertisement"1" -- "*"Offer: receives >
+Client"1" -- "*"Offer: makes >
+Location "1" -- "1" Store: owns <
+Advertisement "1" -- "*" Visit: hosts >
+Client "1" -- "*" Visit: requests >
+Agent "1" -- "*" Visit:  carries out >
+Store "1" -- "*" Advertisement: contains >
+Client "*" -- "*" Advertisement: searches >
+Employee <|-- SystemAdministrator
+Owner "1" - "*" Request: asks to create >
+PropertyType "1" -- "*" Property: contains <
+Request "*" -- "1" BusinessType: contains >
+Request "1" -- "1" Property
+Request "1" -- "1" Advertisement:contains <
+
+@enduml

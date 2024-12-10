@@ -1,0 +1,100 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram Parcial Get AdvertismentDTOList Sorted By Date (SSD)
+
+'hide footbox
+
+participant ":MakeOfferController" as CTRL
+
+participant "repositories\n:Repositories" as repositories
+participant "advertisementCollections\n:AdvertisementCollections" as advertisementCollections
+participant "advertisementRepository\n:AdvertisementRepository" as advertisementRepository
+
+autonumber 24
+
+        activate CTRL
+
+            CTRL -> advertisementCollections : getAdvertismentDTOListSorted (propertyTypeChoice, businessTypeChoice)
+            activate advertisementCollections
+
+                advertisementCollections -> repositories : getAdvertisementRepository()
+                activate repositories
+
+                repositories -> advertisementCollections: advertisementRepository
+                deactivate repositories
+
+                advertisementCollections -> advertisementRepository : getAdvertisementList()
+                activate advertisementRepository
+
+                advertisementRepository -> advertisementCollections : advertisementList
+                deactivate advertisementRepository
+
+                advertisementCollections -> advertisementCollections : createAdvertisementDTOList()
+
+        loop (for each object in advertisementList)
+
+                advertisementCollections -> advertisementCollections: Advertisment = get(i)
+                advertisementCollections -> advertisementCollections: getDataFromAdvertisement(propertyType,businessType)
+
+        alt ((obj.propertyType = keepPropertyTypeChoice \n&& obj.propertyType = keepPropertyTypeChoice))\n
+
+        alt propertyType= HOUSE
+
+                advertisementCollections -> advertisementCollections: getDataFromAdvertisement(propertyType, \narea cms. Distance Kms,\n location(street, zipcode, stateUS, city, district), \nnumberBedrooms, numberParking, \n,numberBathrooms, \navailableEquipment, basement (YES/NO),\n habitable loft (YES/NO), Sun Exposure Type choice, photos)
+
+            alt businessType= SALE
+
+                advertisementCollections -> advertisementCollections: getDataFromAdvertisement(salePrice)
+
+            else businessType= LEASE
+
+                advertisementCollections -> advertisementCollections: getDataFromAdvertisement(rentPrice, ContractDuration)
+
+            end
+
+        else propertyType= APARTMENT
+
+                advertisementCollections -> advertisementCollections: getDataFromAdvertisement(propertyType, \narea cms. Distance Kms,\n location(street, zipcode, stateUS, city, district), \nnumberBedrooms, numberParking, photo,numberBathrooms, \navailableEquipment, photos)
+
+            alt businessType= SALE
+
+                advertisementCollections -> advertisementCollections: getDataFromAdvertisement(salePrice)
+
+            else businessType= LEASE
+
+                advertisementCollections -> advertisementCollections: getDataFromAdvertisement(rentPrice, ContractDuration)
+
+            end
+
+        else propertyType = LAND
+
+                advertisementCollections -> advertisementCollections: getDataFromAdvertisement(propertyType, \narea cms. Distance Kms,\n location(street, zipcode, stateUS, city, district), photo, photos)
+
+            alt businessType= SALE
+
+                advertisementCollections -> advertisementCollections: getDataFromAdvertisement(salePrice)
+
+            else businessType= LEASE
+
+                advertisementCollections -> advertisementCollections: getDataFromAdvertisement(rentPrice, ContractDuration)
+
+            end
+
+        end
+
+        end
+
+                advertisementCollections -> advertisementCollections : Advertisment to AdvertisementDTO (Data)), add to AdvertisementDTOList
+
+                advertisementCollections -> advertisementCollections : sort AdvertisementDTOList by Date
+
+                advertisementCollections -> CTRL : AdvertisementDTOListSortedByDate
+                deactivate advertisementCollections
+
+        deactivate CTRL
+
+
+@enduml

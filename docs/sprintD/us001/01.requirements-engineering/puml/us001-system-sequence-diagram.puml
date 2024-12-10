@@ -1,0 +1,56 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD)
+
+autonumber
+
+actor "Unregistered User" as ADM
+participant ":System" as UI
+
+activate ADM
+
+ADM -> UI : asks to list properties
+
+
+    activate UI
+
+        ADM <-- UI : asks if the user want to use filters (business type, number of bedrooms, property type)
+
+        ADM -> UI: send answer
+
+        group opt [answer = true]
+
+            UI --> ADM : displays business types
+
+            ADM -> UI:selects business type
+
+
+            UI --> ADM : displays property types
+
+            ADM -> UI:selects property type
+
+
+            opt keepPropertyType != Land
+
+                UI --> ADM: asks number of bedrooms
+
+                ADM -> UI: type number of bedrooms
+
+            end
+
+        end
+
+        ADM <-- UI : displays sort methods
+
+        ADM -> UI : selects sort method
+
+            UI --> ADM :  display listed properties
+
+    deactivate UI
+
+deactivate ADM
+
+@enduml

@@ -1,0 +1,20 @@
+@startuml Sequence Diagram (SD) - Create sale announcement
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+participant ":CreateSaleAnnouncementController" as CTRL
+participant "sunExposure\n:SunExposure" as SER
+
+autonumber 60
+-> CTRL : getSunExposureLocation()
+activate CTRL
+	CTRL -> SER : getSunExposureLocation()
+	activate SER
+		SER --> CTRL : sunExposureLocationList
+	deactivate SER
+deactivate CTRL
+
+@enduml
